@@ -1,377 +1,640 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Local Music Organizer for Mac</title>
-  <meta name="description" content="Local Music Organizer is a safe Music.app library cleanup utility for Mac. It finds duplicates, missing files, missing artwork, low bitrate tracks, playlist problems, checks audio quality, builds smart shuffled playlists, and converts unsupported audio formats into Music.app-compatible files.">
-
+  <meta name="description" content="Local Music Organizer is an Early Access macOS app for cleaning, comparing, repairing, inspecting, and organizing large local Music.app libraries." />
   <style>
     :root {
-      --bg: #f7f5f1;
-      --card: #ffffff;
-      --text: #171717;
-      --muted: #666;
-      --line: #e4e0d8;
-      --accent: #8f45d9;
-      --accent2: #6aa8ff;
-      --warning: #fff3d7;
+      --bg: #0f0f14;
+      --panel: #171720;
+      --panel2: #20202b;
+      --text: #f4f4f7;
+      --muted: #b7b7c5;
+      --soft: #8b8ba0;
+      --accent: #9b5cff;
+      --accent2: #4aa8ff;
+      --green: #43d17a;
+      --orange: #ffb14a;
+      --red: #ff6b6b;
+      --line: rgba(255,255,255,.12);
+      --shadow: 0 18px 60px rgba(0,0,0,.38);
+      --radius: 22px;
+      --max: 1180px;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       margin: 0;
-      background: var(--bg);
+      background:
+        radial-gradient(circle at top left, rgba(155,92,255,.26), transparent 34rem),
+        radial-gradient(circle at top right, rgba(74,168,255,.20), transparent 34rem),
+        linear-gradient(180deg, #101016 0%, #0b0b10 100%);
       color: var(--text);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
       line-height: 1.55;
     }
 
-    main {
-      max-width: 1120px;
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .wrap {
+      max-width: var(--max);
       margin: 0 auto;
-      padding: 64px 24px 80px;
+      padding: 0 24px;
     }
 
-    header { padding: 56px 0 40px; }
-
-    .eyebrow {
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 14px;
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(20px);
+      background: rgba(15,15,20,.72);
+      border-bottom: 1px solid var(--line);
     }
 
-    h1 {
-      font-size: clamp(40px, 6vw, 72px);
-      line-height: 1.02;
-      letter-spacing: -0.05em;
-      margin: 0 0 22px;
-      max-width: 920px;
-    }
-
-    .hero-text {
-      font-size: clamp(20px, 2.4vw, 28px);
-      line-height: 1.3;
-      color: #333;
-      max-width: 860px;
-      margin: 0 0 28px;
-    }
-
-    .gradient-line {
-      width: 120px;
-      height: 5px;
-      border-radius: 999px;
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-      margin: 22px 0;
-    }
-
-    .badge-row {
+    .nav {
+      height: 72px;
       display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 24px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: -.02em;
+    }
+
+    .logo {
+      width: 36px;
+      height: 36px;
+      border-radius: 11px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 10px 30px rgba(155,92,255,.32);
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+    }
+
+    .navlinks {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .navlinks a:hover {
+      color: var(--text);
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      padding: 12px 18px;
+      font-weight: 750;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: white;
+      box-shadow: 0 16px 40px rgba(74,168,255,.18);
+      border: 0;
+      cursor: pointer;
+    }
+
+    .button.secondary {
+      background: rgba(255,255,255,.08);
+      border: 1px solid var(--line);
+      box-shadow: none;
+      color: var(--text);
+    }
+
+    .hero {
+      padding: 84px 0 48px;
+    }
+
+    .heroGrid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 34px;
+      align-items: center;
     }
 
     .badge {
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.75);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #dcdcff;
+      background: rgba(155,92,255,.16);
+      border: 1px solid rgba(155,92,255,.32);
+      padding: 8px 12px;
       border-radius: 999px;
-      padding: 8px 13px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(44px, 6vw, 78px);
+      line-height: .96;
+      letter-spacing: -.06em;
+      margin: 0 0 22px;
+    }
+
+    .lead {
+      font-size: clamp(18px, 2vw, 23px);
+      color: var(--muted);
+      max-width: 780px;
+      margin: 0 0 28px;
+    }
+
+    .heroActions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 26px 0 20px;
+    }
+
+    .fine {
+      color: var(--soft);
       font-size: 14px;
-      color: #333;
+      max-width: 760px;
+    }
+
+    .heroCard {
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .mock {
+      background: #111119;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.12);
+      overflow: hidden;
+    }
+
+    .mockTop {
+      height: 42px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0 14px;
+      background: #1b1b26;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+    }
+
+    .dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: #ff5f57;
+    }
+
+    .dot:nth-child(2) {
+      background: #ffbd2e;
+    }
+
+    .dot:nth-child(3) {
+      background: #28c840;
+    }
+
+    .mockBody {
+      padding: 18px;
+    }
+
+    .status {
+      background: rgba(255,255,255,.07);
+      border-radius: 14px;
+      padding: 14px;
+      margin-bottom: 12px;
+    }
+
+    .bar {
+      height: 8px;
+      background: rgba(255,255,255,.12);
+      border-radius: 999px;
+      overflow: hidden;
+      margin-top: 9px;
+    }
+
+    .bar span {
+      display: block;
+      height: 100%;
+      width: 78%;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      border-radius: inherit;
+    }
+
+    .miniGrid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .mini {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.08);
+      padding: 13px;
+      border-radius: 14px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .mini strong {
+      display: block;
+      color: var(--text);
+      font-size: 15px;
+      margin-bottom: 4px;
+    }
+
+    section {
+      padding: 48px 0;
+    }
+
+    h2 {
+      font-size: clamp(30px, 4vw, 46px);
+      line-height: 1.05;
+      letter-spacing: -.04em;
+      margin: 0 0 16px;
+    }
+
+    .sectionLead {
+      color: var(--muted);
+      font-size: 18px;
+      max-width: 860px;
+      margin: 0 0 26px;
     }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 18px;
-      margin-top: 20px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
     }
 
     .card {
-      grid-column: span 6;
-      background: var(--card);
+      background: rgba(255,255,255,.055);
       border: 1px solid var(--line);
-      border-radius: 22px;
-      padding: 26px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+      border-radius: var(--radius);
+      padding: 22px;
+      min-height: 210px;
     }
 
-    .card.wide { grid-column: span 12; }
-    .card.third { grid-column: span 4; }
-
-    h2 {
-      font-size: 28px;
-      line-height: 1.15;
-      letter-spacing: -0.03em;
-      margin: 0 0 14px;
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 20px;
+      letter-spacing: -.02em;
     }
 
-    p { margin: 0 0 14px; }
-    ul { margin: 12px 0 0; padding-left: 22px; }
-    li { margin: 7px 0; }
-
-    .muted { color: var(--muted); }
-    .safety { background: var(--warning); border-color: #ead49a; }
-
-    .status {
-      display: inline-block;
-      background: #191919;
-      color: white;
-      border-radius: 999px;
-      padding: 9px 14px;
-      font-weight: 700;
-      font-size: 14px;
-      margin-top: 10px;
-    }
-
-    footer {
-      border-top: 1px solid var(--line);
-      margin-top: 42px;
-      padding-top: 24px;
+    .card p {
       color: var(--muted);
+      margin: 0;
+      font-size: 15px;
+    }
+
+    .pillRow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .pill {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.06);
+      color: var(--muted);
+      padding: 8px 11px;
+      border-radius: 999px;
+      font-size: 13px;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 22px;
+      align-items: start;
+    }
+
+    .panel {
+      background: rgba(255,255,255,.055);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+
+    .list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 12px;
+    }
+
+    .list li {
+      color: var(--muted);
+      padding-left: 28px;
+      position: relative;
+    }
+
+    .list li:before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--green);
+      font-weight: 900;
+    }
+
+    .warning li:before {
+      content: "!";
+      color: var(--orange);
+    }
+
+    .price {
+      font-size: 42px;
+      font-weight: 900;
+      letter-spacing: -.04em;
+      margin: 10px 0;
+    }
+
+    .footer {
+      padding: 38px 0 52px;
+      border-top: 1px solid var(--line);
+      color: var(--soft);
       font-size: 14px;
     }
 
-    @media (max-width: 800px) {
-      main { padding: 38px 16px 56px; }
-      .card, .card.third { grid-column: span 12; }
+    .highlight {
+      color: white;
+      font-weight: 800;
+    }
+
+    @media (max-width: 900px) {
+      .heroGrid,
+      .split,
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav {
+        height: auto;
+        padding: 14px 0;
+        align-items: flex-start;
+      }
+
+      .navlinks {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 52px;
+      }
     }
   </style>
 </head>
-
 <body>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#">
+        <span class="logo">LM</span>
+        <span>Local Music Organizer</span>
+      </a>
+      <nav class="navlinks">
+        <a href="#features">Features</a>
+        <a href="#cache">Music Cache</a>
+        <a href="#safety">Safety</a>
+        <a href="#early-access">Early Access</a>
+      </nav>
+    </div>
+  </header>
+
   <main>
-    <header>
-      <div class="eyebrow">Local Music Organizer for Mac</div>
-      <h1>Clean up large local Music.app libraries safely.</h1>
-      <p class="hero-text">
-        Local Music Organizer is an offline-first Mac utility for people who keep real local Music.app libraries:
-        playlists, files, artwork, tags, duplicates, audio quality checks, smart shuffle, and repair workflows without cloud lock-in.
-      </p>
-      <div class="gradient-line"></div>
-      <div class="badge-row">
-        <span class="badge">Local Music.app libraries</span>
-        <span class="badge">Smart Shuffle</span>
-        <span class="badge">Audio quality tools</span>
-        <span class="badge">Repair / Convert</span>
-        <span class="badge">Apple Silicon + Intel</span>
-        <span class="badge">macOS 14 Sonoma or later</span>
-        <span class="badge">Private beta</span>
+    <section class="hero">
+      <div class="wrap heroGrid">
+        <div>
+          <div class="badge">Early Access · macOS 14 Sonoma or later · Universal Mac build</div>
+          <h1>Clean up large local Music.app libraries without losing control.</h1>
+          <p class="lead">Local Music Organizer is a macOS utility for people with serious local music collections. It helps inspect large Music.app libraries, compare playlists, find repeated tracks, locate playlist usage, edit Music.app tags, identify missing files and artwork, inspect audio quality, build smarter shuffle lists, and safely repair messy local libraries.</p>
+          <div class="heroActions">
+            <a class="button" href="#early-access">Get Early Access</a>
+            <a class="button secondary" href="#safety">Read Safety Notes</a>
+          </div>
+          <p class="fine">Apple Silicon is recommended. Intel Macs are supported with Universal builds, but very large scans and Music.app operations may be slower. The app is designed for local Music.app libraries, not cloud-only Apple Music streaming collections.</p>
+          <div class="pillRow">
+            <span class="pill">Music.app library tools</span>
+            <span class="pill">Playlist comparison</span>
+            <span class="pill">Duplicate cleanup</span>
+            <span class="pill">Tag editing with undo</span>
+            <span class="pill">Warm Cache acceleration</span>
+            <span class="pill">Audio inspection</span>
+            <span class="pill">Repair / Convert workflows</span>
+          </div>
+        </div>
+
+        <div class="heroCard">
+          <div class="mock">
+            <div class="mockTop">
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+            </div>
+            <div class="mockBody">
+              <div class="status">
+                <strong>Cache ready: Music Library + full records + 8 playlists</strong>
+                <div class="bar"><span></span></div>
+              </div>
+              <div class="miniGrid">
+                <div class="mini"><strong>Playlist Compare</strong>Find the same track across two playlists and remove only the playlist entry.</div>
+                <div class="mini"><strong>Track Usage</strong>See every playlist where a track or file is used.</div>
+                <div class="mini"><strong>Dashboard</strong>Inspect bitrate, codec, sample rate, missing files, artwork, and outliers.</div>
+                <div class="mini"><strong>Undo</strong>Supported tag edits and playlist removals can be reversed.</div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </header>
-
-    <section class="grid">
-      <article class="card wide safety">
-        <h2>Safety-first by design</h2>
-        <p>
-          The app scans first, shows results, exports reports, and only applies changes when you explicitly choose an action.
-          It does not physically delete audio files.
-        </p>
-        <ul>
-          <li>Review result lists before applying changes.</li>
-          <li>Export reports for backup and inspection.</li>
-          <li>Undo is available for supported app actions, but it is not a substitute for a real Music library backup.</li>
-          <li>Physical audio file deletion is intentionally not implemented.</li>
-        </ul>
-      </article>
-
-      <article class="card">
-        <h2>Smart Shuffle Builder</h2>
-        <p>
-          Build shuffled playlist copies that feel more natural than simple random order.
-          Smart Shuffle is designed to reduce repeated artist clusters, album blocks, and predictable local patterns.
-        </p>
-        <ul>
-          <li>Create shuffled copies without damaging the source playlist.</li>
-          <li>Spread artists and albums more evenly across the playlist.</li>
-          <li>Avoid obvious back-to-back repetitions where possible.</li>
-          <li>Useful for large genre, mood, decade, and mixed collection playlists.</li>
-          <li>Works with local Music.app playlists through safe playlist-copy workflows.</li>
-        </ul>
-      </article>
-
-      <article class="card">
-        <h2>Library Dashboard</h2>
-        <p>
-          A read-only overview for large local libraries. It scans Music.app records and file information, then groups practical cleanup problems into clear filters.
-        </p>
-        <ul>
-          <li>Empty artist fields</li>
-          <li>Low bitrate MP3/AAC tracks</li>
-          <li>Missing artwork</li>
-          <li>Missing local files</li>
-          <li>Long duration outliers</li>
-          <li>Export current filtered issue lists</li>
-        </ul>
-      </article>
-
-      <article class="card">
-        <h2>Audio quality inspection</h2>
-        <p>
-          Inspect technical audio details to understand what is actually in your library, not just what Music.app displays.
-        </p>
-        <ul>
-          <li>Codec and container information</li>
-          <li>Bitrate, sample rate, channel count, and duration</li>
-          <li>Lossless/lossy quality clues</li>
-          <li>Bit depth where meaningful</li>
-          <li>MP3/AAC lossy tracks display bit depth as not applicable</li>
-          <li>Spectrogram and waveform-style inspection tools where available</li>
-        </ul>
-      </article>
-
-      <article class="card">
-        <h2>Duplicate cleanup tools</h2>
-        <p>
-          Find repeated entries and duplicate library records without touching physical files.
-        </p>
-        <ul>
-          <li>Duplicate entries inside one playlist</li>
-          <li>Duplicate Music library records pointing to the same local file</li>
-          <li>Quality duplicate candidates across different physical files</li>
-          <li>Verified cleanup workflow for exact duplicate records</li>
-          <li>Recovery playlist support for safer review</li>
-        </ul>
-      </article>
-
-      <article class="card">
-        <h2>Playlist tools</h2>
-        <p>
-          Understand where tracks are used and how playlists overlap.
-        </p>
-        <ul>
-          <li>Library playlist map for repeated tracks</li>
-          <li>Playlist Compare: shared and repeated tracks between two playlists</li>
-          <li>Track Usage search by artist, title, path, filename, or persistent ID</li>
-          <li>Find local files on disk for suspicious or recovered tracks</li>
-        </ul>
-      </article>
-
-      <article class="card">
-        <h2>Artwork and health checks</h2>
-        <p>
-          Find common library problems that are hard to spot manually in a large collection.
-        </p>
-        <ul>
-          <li>Tracks with no Music.app artwork</li>
-          <li>Missing file links</li>
-          <li>Suspicious local path problems</li>
-          <li>Finder metadata and permission checks for local audio files</li>
-          <li>Network Safe mode for NAS, SMB, iCloud, and external-drive libraries</li>
-        </ul>
-      </article>
-
-      <article class="card">
-        <h2>Tag editing from results</h2>
-        <p>
-          Edit visible Music.app metadata directly from result rows.
-        </p>
-        <ul>
-          <li>Title, artist, album, album artist</li>
-          <li>Composer and genre</li>
-          <li>Year, track number, disc number, and comments</li>
-          <li>Dashboard issue counters update after supported tag edits</li>
-        </ul>
-        <p class="muted">
-          Tag editing changes the Music.app record through AppleScript. It does not rewrite the physical audio file.
-        </p>
-      </article>
-
-      <article class="card wide">
-        <h2>Repair / Convert</h2>
-        <p>
-          Convert many common, old-school, and audiophile audio formats into Music.app-compatible output files.
-          This is designed for libraries that contain formats Music.app may not import or play reliably.
-        </p>
-        <ul>
-          <li>Convert FLAC, WAV, AIFF, OGG/Opus/WebM, APE, WV/WVC, TAK+CUE, OFR/OFS, MPC, TTA, SHN, ATRAC, tracker modules, game audio, AC3/EAC3/DTS, CUE, M3U/M3U8/PLS and other supported inputs when the required tools are installed.</li>
-          <li>Output profiles include Music.app-friendly formats such as Apple Lossless ALAC M4A, AAC, MP3, AIFF, and WAV-style workflows.</li>
-          <li>CUE album workflows are supported for splitting or converting album images where helper tools can process them.</li>
-          <li>Optional repair helpers can install or check external command-line tools such as FFmpeg/LAME and old-school codec helpers.</li>
-          <li>Original source files are not overwritten.</li>
-          <li>Converted files are written to a chosen output folder for review before import.</li>
-        </ul>
-      </article>
-
-      <article class="card">
-        <h2>File Maintenance</h2>
-        <p>Focused local file maintenance for audio folders.</p>
-        <ul>
-          <li>Check audio file permissions</li>
-          <li>Normalize common permission problems</li>
-          <li>Scan Finder metadata</li>
-          <li>Remove Finder metadata from local audio files</li>
-          <li>Designed for local folders, external drives, and large media trees</li>
-        </ul>
-      </article>
-
-      <article class="card">
-        <h2>Export and diagnostics</h2>
-        <p>Keep reports outside the app for review, support, and repeatable cleanup.</p>
-        <ul>
-          <li>Export dashboard logs</li>
-          <li>Save current filtered issue lists</li>
-          <li>Open log folder from the app</li>
-          <li>Export diagnostics for troubleshooting</li>
-          <li>Progress counters during long scans</li>
-        </ul>
-      </article>
-
-      <article class="card third">
-        <h2>Offline-first</h2>
-        <p>
-          Built for local Music.app libraries. No cloud music subscription is required, and online-library tools are hidden from the first commercial build.
-        </p>
-      </article>
-
-      <article class="card third">
-        <h2>Large-library ready</h2>
-        <p>
-          Fast, Standard, and Deep scan modes help balance detail and speed. Network Safe mode avoids thousands of slow file-stat calls on NAS, SMB, iCloud, and external drives.
-        </p>
-      </article>
-
-      <article class="card third">
-        <h2>Beta status</h2>
-        <p>
-          Local Music Organizer is currently in private beta. Public downloads will be added after additional testing, code signing, notarization, and release documentation.
-        </p>
-        <span class="status">Private beta</span>
-      </article>
-
-      <article class="card wide">
-        <h2>Requirements</h2>
-        <ul>
-          <li>macOS 14 Sonoma or later</li>
-          <li>Music.app local library</li>
-          <li>Apple Silicon and Intel Universal build</li>
-          <li>Automation permission to control Music.app</li>
-          <li>Full Disk Access may be needed for scanning some local folders</li>
-          <li>Optional external tools are required for some repair/convert formats</li>
-        </ul>
-      </article>
-
-      <article class="card wide">
-        <h2>What it does not do</h2>
-        <ul>
-          <li>It does not physically delete audio files.</li>
-          <li>It does not require a cloud music subscription.</li>
-          <li>It does not upload your music library.</li>
-          <li>It does not replace a proper backup.</li>
-          <li>It does not promise that every rare audio format can be converted without the required external tools.</li>
-        </ul>
-      </article>
     </section>
 
-    <footer>
-      <p>Local Music Organizer is an independent Mac utility and is not affiliated with Apple Inc. Music.app is a trademark of Apple Inc.</p>
-      <p>Current status: private beta. Public download is not available yet.</p>
-    </footer>
+    <section id="features">
+      <div class="wrap">
+        <h2>Built for messy real-world music libraries.</h2>
+        <p class="sectionLead">Large local collections are rarely clean. The same file may appear in many playlists, tags may be inconsistent, albums may be missing artwork, old imports may point to missing files, and quality can vary between versions. Local Music Organizer brings practical maintenance tools into one focused Mac app.</p>
+
+        <div class="grid">
+          <div class="card">
+            <h3>Library Dashboard</h3>
+            <p>Creates a read-only overview of the Music.app library: records scanned, empty artists, low bitrate tracks, missing artwork, missing files, long tracks, codec/container information, storage clues, and suspicious records. It is meant as the main starting point before cleanup.</p>
+          </div>
+          <div class="card">
+            <h3>Music Snapshot Cache</h3>
+            <p>Large libraries can be warmed into memory before heavy work. The cache stores full Music records, lightweight library records, and playlist membership data so repeated scans, comparisons, usage checks, and dashboard operations can become much faster after the first read.</p>
+          </div>
+          <div class="card">
+            <h3>Playlist Compare</h3>
+            <p>Compares two playlists and shows tracks that appear in both. It can detect the same physical file, the same persistent Music.app ID, or strong metadata matches. You can play A/B, inspect both entries, edit tags, copy paths, or remove only the playlist entry from one side.</p>
+          </div>
+          <div class="card">
+            <h3>Playlist Duplicates</h3>
+            <p>Finds duplicate entries inside one playlist. This is for cases where the same song appears twice in the same playlist. Removal affects the playlist entry only; it does not delete the audio file and does not delete the Music library record.</p>
+          </div>
+          <div class="card">
+            <h3>Library Duplicates</h3>
+            <p>Finds Music.app library records pointing to the same local file or exact duplicate candidates. It helps identify unused duplicate records, protect playlist usage, create review playlists, and perform safer cleanup where physical files are not intentionally deleted.</p>
+          </div>
+          <div class="card">
+            <h3>Track Usage</h3>
+            <p>Searches for a track or file and shows every playlist where it is used. It can search the local disk by filename/path and then use the playlist cache to show membership across playlists. It is useful before deleting, renaming, repairing, or moving local files.</p>
+          </div>
+          <div class="card">
+            <h3>Health Check</h3>
+            <p>Scans selected playlists and library records for practical problems: missing files, inaccessible paths, questionable metadata, empty artist/title fields, orphan physical files under a chosen root, and library records that need review. It creates safe reports instead of silently changing data.</p>
+          </div>
+          <div class="card">
+            <h3>Artwork Check</h3>
+            <p>Finds tracks and albums with missing artwork. This is separated from lighter scans because artwork access can be slower through Music.app. The app keeps this as a focused inspection mode so large libraries stay manageable.</p>
+          </div>
+          <div class="card">
+            <h3>Audio Quality Dashboard</h3>
+            <p>Inspects bitrate, sample rate, file kind, duration, size, codec/container clues, missing files, long tracks, and suspicious records. It can use full records cache for faster repeated dashboard scans after the first full library read.</p>
+          </div>
+          <div class="card">
+            <h3>Quality Duplicates</h3>
+            <p>Helps compare multiple versions of similar tracks and choose the better candidate by quality-related signals. It is designed for libraries with old MP3s, ALAC/WAV/AIFF files, remasters, imports, and mixed-quality duplicates.</p>
+          </div>
+          <div class="card">
+            <h3>Audio Inspector</h3>
+            <p>Opens a local audio file and shows technical information such as format, sample rate, bit depth, bitrate, channels, duration, size, raw afinfo data, and a spectrogram-style visual inspection. Useful for checking suspicious, old, or converted files.</p>
+          </div>
+          <div class="card">
+            <h3>Tag Editing</h3>
+            <p>Visible Music.app records can be edited directly from the app. Fields include title, artist, album, album artist, composer, genre, year, track number, disc number, and comments. Tag changes update Music.app and supported edits can be undone.</p>
+          </div>
+          <div class="card">
+            <h3>Undo for real operations</h3>
+            <p>Undo is not only a visual action. Supported tag edits and playlist removals update Music.app and then refresh the visible result list so the change appears immediately. Removed playlist entries can return to the visible list after undo.</p>
+          </div>
+          <div class="card">
+            <h3>Repair / Convert workflows</h3>
+            <p>Designed for libraries with mixed and old-school formats. Workflows can help prepare Music-compatible versions from many common, old-school, and audiophile inputs when helper tools are installed. Original files are not overwritten by default.</p>
+          </div>
+          <div class="card">
+            <h3>Supported conversion direction</h3>
+            <p>Workflows are intended around common inputs such as FLAC, WAV, AIFF, OGG, Opus, WebM, APE, WV/WVC, TAK+CUE, OFR/OFS, MPC, TTA, SHN, ATRAC, tracker modules, game audio, AC3/EAC3/DTS, CUE, M3U/M3U8/PLS and other supported sources, with outputs such as ALAC M4A, AAC, MP3, AIFF, and WAV-style workflows depending on installed tools.</p>
+          </div>
+          <div class="card">
+            <h3>File Maintenance</h3>
+            <p>Helps reveal files in Finder, copy paths, check permissions, compare Music.app references with real files on disk, and understand whether library records point to accessible local media. It is useful before moving, repairing, or backing up a collection.</p>
+          </div>
+          <div class="card">
+            <h3>Smart Shuffle Builder</h3>
+            <p>Creates more natural shuffle-style lists for large libraries by reducing repeated artist clusters, album blocks, and predictable patterns. It is intended for people who want a better listening flow than simple random ordering across huge local collections.</p>
+          </div>
+          <div class="card">
+            <h3>Local-first design</h3>
+            <p>The app is built around local Music.app libraries and local audio files. It does not try to manage cloud-only Apple Music streaming items. It works best when your music files live on your Mac or on mounted storage visible to macOS.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="cache">
+      <div class="wrap split">
+        <div>
+          <h2>Warm Cache makes large libraries practical.</h2>
+          <p class="sectionLead">Music.app automation can be slow, especially with thousands of tracks and many playlists. Local Music Organizer uses a Music Snapshot Cache so the app can read expensive data once and reuse it across multiple tools.</p>
+        </div>
+        <div class="panel">
+          <ul class="list">
+            <li><span class="highlight">Full Library Records Cache</span> feeds Dashboard, Quality checks, Library Duplicates, File Maintenance, and fast library searches.</li>
+            <li><span class="highlight">Light Music Library Cache</span> feeds Library Map, Track Usage, and repeated library matching operations.</li>
+            <li><span class="highlight">Playlist Membership Cache</span> feeds Playlist Compare, Playlist Duplicates, Track Usage, Health Check, and playlist usage protection.</li>
+            <li>The cache panel shows current read progress, overall warm-up progress, elapsed time, and whether a scan is using cached data.</li>
+            <li>For large collections, let Warm Cache finish before running heavy scans. The first read may take time; repeated operations can become much faster afterward.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="safety">
+      <div class="wrap split">
+        <div class="panel">
+          <h2>Safety-first cleanup.</h2>
+          <p class="sectionLead">The app is designed to make library maintenance understandable. It tries to show what it is about to change, avoid silent destructive actions, and keep scan operations read-only unless you explicitly press an action button.</p>
+          <ul class="list">
+            <li>Scans do not delete audio files.</li>
+            <li>Playlist removal actions remove playlist entries, not physical audio files.</li>
+            <li>Tag edits are explicit user actions and are sent to Music.app.</li>
+            <li>Supported edits/removals have Undo and visible result refresh.</li>
+            <li>Cleanup modes explain whether they touch Music.app records, playlist entries, or only reports.</li>
+            <li>Log folders and reports help review what happened.</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h2>Important responsibility note.</h2>
+          <ul class="list warning">
+            <li>Keep a backup of important Music.app libraries before cleanup.</li>
+            <li>Use at your own responsibility when changing tags, playlist entries, or library records.</li>
+            <li>Very large libraries may take time to read from Music.app.</li>
+            <li>Mounted network folders depend on how macOS exposes them.</li>
+            <li>Automation permission for Music.app is required for Music.app operations.</li>
+            <li>Full Disk Access may be needed for file and folder checks.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="early-access">
+      <div class="wrap split">
+        <div>
+          <h2>Early Access release.</h2>
+          <p class="sectionLead">Local Music Organizer is already useful for cleaning and understanding large local Music.app libraries, but it is still an Early Access product. The first public release is intended for careful users with real local collections who understand backups and library maintenance.</p>
+          <div class="pillRow">
+            <span class="pill">Version target: 0.3 Early Access</span>
+            <span class="pill">macOS 14 Sonoma or later</span>
+            <span class="pill">Apple Silicon recommended</span>
+            <span class="pill">Intel supported in Universal builds</span>
+            <span class="pill">Local Music.app libraries</span>
+          </div>
+        </div>
+        <div class="panel">
+          <h3>Planned Early Access license</h3>
+          <div class="price">$19</div>
+          <p class="sectionLead" style="font-size:16px;margin-bottom:18px;">One-time Early Access license. Includes Early Access updates. Final purchase flow and signed download will be added after Developer ID signing and notarization are complete.</p>
+          <a class="button" href="mailto:support@example.com?subject=Local%20Music%20Organizer%20Early%20Access">Request Early Access</a>
+          <p class="fine" style="margin-top:14px;">Replace this email address with your real support address before publishing.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2>What it does not try to be.</h2>
+        <p class="sectionLead">Local Music Organizer is not a streaming service manager, not a cloud Apple Music replacement, not a general media player, and not a one-click magic cleanup tool. It is a focused maintenance utility for people who care about their local Music.app library and want visibility before making changes.</p>
+      </div>
+    </section>
   </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <strong>Local Music Organizer</strong><br />
+      Early Access macOS utility for large local Music.app libraries. Apple Silicon recommended. Intel supported with Universal builds. macOS 14 Sonoma or later. Use at your own responsibility and keep backups of important libraries.
+    </div>
+  </footer>
 </body>
 </html>
