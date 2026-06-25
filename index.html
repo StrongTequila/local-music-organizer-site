@@ -59,11 +59,12 @@
     }
 
     .nav {
-      height: 72px;
+      min-height: 72px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 18px;
+      padding: 10px 0;
     }
 
     .brand {
@@ -72,6 +73,7 @@
       gap: 12px;
       font-weight: 800;
       letter-spacing: -.02em;
+      white-space: nowrap;
     }
 
     .logo {
@@ -91,6 +93,8 @@
       align-items: center;
       color: var(--muted);
       font-size: 14px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
     }
 
     .navlinks a:hover { color: var(--text); }
@@ -171,7 +175,7 @@
     .sectionLead {
       color: var(--muted);
       font-size: 18px;
-      max-width: 860px;
+      max-width: 900px;
       margin: 0 0 18px;
     }
 
@@ -185,7 +189,7 @@
     .fine {
       color: var(--soft);
       font-size: 14px;
-      max-width: 760px;
+      max-width: 780px;
     }
 
     .heroCard,
@@ -388,7 +392,6 @@
     }
   </style>
 </head>
-
 <body>
   <header>
     <div class="wrap nav">
@@ -401,11 +404,13 @@
         <a href="#features">Features</a>
         <a href="#cache">Music Cache</a>
         <a href="#safety">Safety</a>
-        <a href="#early-access">Early Access</a>
+        <a href="#early-access">Pricing</a>
+        <a href="#terms">Terms</a>
+        <a href="#privacy">Privacy</a>
+        <a href="#refunds">Refunds</a>
       </nav>
     </div>
   </header>
-
   <main>
     <section class="hero">
       <div class="wrap heroGrid">
@@ -428,14 +433,9 @@
             <span class="pill">Repair / Convert workflows</span>
           </div>
         </div>
-
         <div class="heroCard">
           <div class="mock">
-            <div class="mockTop">
-              <span class="dot"></span>
-              <span class="dot"></span>
-              <span class="dot"></span>
-            </div>
+            <div class="mockTop"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
             <div class="mockBody">
               <div class="status">
                 <strong>Cache ready: Music Library + full records + playlists</strong>
@@ -452,7 +452,6 @@
         </div>
       </div>
     </section>
-
     <section id="story">
       <div class="wrap split">
         <div>
@@ -475,77 +474,29 @@
         </div>
       </div>
     </section>
-
     <section id="features">
       <div class="wrap">
         <h2>Built for messy real-world music libraries.</h2>
         <p class="sectionLead">Large local collections are rarely clean. The same file may appear in many playlists, tags may be inconsistent, albums may be missing artwork, old imports may point to missing files, and quality can vary between versions. Local Music Organizer brings practical maintenance tools into one focused Mac app.</p>
-
         <div class="grid">
-          <div class="card">
-            <h3>Library Dashboard</h3>
-            <p>Creates a read-only overview of the Music.app library: records scanned, empty artists, low bitrate tracks, missing artwork, missing files, long tracks, codec/container information, storage clues, and suspicious records.</p>
-          </div>
-          <div class="card">
-            <h3>Music Snapshot Cache</h3>
-            <p>Large libraries can be warmed into memory before heavy work. The cache stores full Music records, lightweight library records, and playlist membership data so repeated scans and comparisons can become much faster after the first read.</p>
-          </div>
-          <div class="card">
-            <h3>Playlist Compare</h3>
-            <p>Compares two playlists and shows tracks that appear in both. You can play A/B, inspect entries, edit tags, copy paths, or remove only the playlist entry from one side.</p>
-          </div>
-          <div class="card">
-            <h3>Playlist Duplicates</h3>
-            <p>Finds duplicate entries inside one playlist. Removal affects the playlist entry only; it does not delete the audio file and does not delete the Music library record.</p>
-          </div>
-          <div class="card">
-            <h3>Library Duplicates</h3>
-            <p>Finds Music.app library records pointing to the same local file or exact duplicate candidates. It helps identify unused duplicate records and protect playlist usage.</p>
-          </div>
-          <div class="card">
-            <h3>Track Usage</h3>
-            <p>Searches for a track or file and shows every playlist where it is used. Useful before deleting, renaming, repairing, or moving local files.</p>
-          </div>
-          <div class="card">
-            <h3>Health Check</h3>
-            <p>Scans selected playlists and library records for missing files, inaccessible paths, empty metadata, orphan physical files under a chosen root, and library records that need review.</p>
-          </div>
-          <div class="card">
-            <h3>Artwork Check</h3>
-            <p>Finds tracks and albums with missing artwork. Artwork access is separated from lighter scans because it can be slower through Music.app.</p>
-          </div>
-          <div class="card">
-            <h3>Audio Quality Dashboard</h3>
-            <p>Inspects bitrate, sample rate, file kind, duration, size, codec/container clues, missing files, long tracks, and suspicious records.</p>
-          </div>
-          <div class="card">
-            <h3>Quality Duplicates</h3>
-            <p>Helps compare multiple versions of similar tracks and choose the better candidate by quality-related signals.</p>
-          </div>
-          <div class="card">
-            <h3>Audio Inspector</h3>
-            <p>Opens a local audio file and shows technical information such as format, sample rate, bit depth, bitrate, channels, duration, size, raw afinfo data, and a spectrogram-style visual inspection.</p>
-          </div>
-          <div class="card">
-            <h3>Tag Editing</h3>
-            <p>Visible Music.app records can be edited directly from the app. Supported tag changes update Music.app and can be undone.</p>
-          </div>
-          <div class="card">
-            <h3>Repair / Convert workflows</h3>
-            <p>Designed for libraries with mixed and old-school formats. Workflows can help prepare Music-compatible versions from common, old-school, and audiophile inputs when helper tools are installed.</p>
-          </div>
-          <div class="card">
-            <h3>File Maintenance</h3>
-            <p>Helps reveal files in Finder, copy paths, check permissions, compare Music.app references with real files on disk, and understand whether library records point to accessible local media.</p>
-          </div>
-          <div class="card">
-            <h3>Smart Shuffle Builder</h3>
-            <p>Creates more natural shuffle-style lists by reducing repeated artist clusters, album blocks, and predictable patterns in large local collections.</p>
-          </div>
+          <div class="card"><h3>Library Dashboard</h3><p>Creates a read-only overview of the Music.app library: records scanned, empty artists, low bitrate tracks, missing artwork, missing files, long tracks, codec/container information, storage clues, and suspicious records.</p></div>
+          <div class="card"><h3>Music Snapshot Cache</h3><p>Large libraries can be warmed into memory before heavy work. The cache stores full Music records, lightweight library records, and playlist membership data so repeated scans and comparisons can become much faster after the first read.</p></div>
+          <div class="card"><h3>Playlist Compare</h3><p>Compares two playlists and shows tracks that appear in both. You can play A/B, inspect entries, edit tags, copy paths, or remove only the playlist entry from one side.</p></div>
+          <div class="card"><h3>Playlist Duplicates</h3><p>Finds duplicate entries inside one playlist. Removal affects the playlist entry only; it does not delete the audio file and does not delete the Music library record.</p></div>
+          <div class="card"><h3>Library Duplicates</h3><p>Finds Music.app library records pointing to the same local file or exact duplicate candidates. It helps identify unused duplicate records and protect playlist usage.</p></div>
+          <div class="card"><h3>Track Usage</h3><p>Searches for a track or file and shows every playlist where it is used. Useful before deleting, renaming, repairing, or moving local files.</p></div>
+          <div class="card"><h3>Health Check</h3><p>Scans selected playlists and library records for missing files, inaccessible paths, empty metadata, orphan physical files under a chosen root, and library records that need review.</p></div>
+          <div class="card"><h3>Artwork Check</h3><p>Finds tracks and albums with missing artwork. Artwork access is separated from lighter scans because it can be slower through Music.app.</p></div>
+          <div class="card"><h3>Audio Quality Dashboard</h3><p>Inspects bitrate, sample rate, file kind, duration, size, codec/container clues, missing files, long tracks, and suspicious records.</p></div>
+          <div class="card"><h3>Quality Duplicates</h3><p>Helps compare multiple versions of similar tracks and choose the better candidate by quality-related signals.</p></div>
+          <div class="card"><h3>Audio Inspector</h3><p>Opens a local audio file and shows technical information such as format, sample rate, bit depth, bitrate, channels, duration, size, raw afinfo data, and a spectrogram-style visual inspection.</p></div>
+          <div class="card"><h3>Tag Editing</h3><p>Visible Music.app records can be edited directly from the app. Supported tag changes update Music.app and can be undone.</p></div>
+          <div class="card"><h3>Repair / Convert workflows</h3><p>Designed for libraries with mixed and old-school formats. Workflows can help prepare Music-compatible versions from common, old-school, and audiophile inputs when helper tools are installed.</p></div>
+          <div class="card"><h3>File Maintenance</h3><p>Helps reveal files in Finder, copy paths, check permissions, compare Music.app references with real files on disk, and understand whether library records point to accessible local media.</p></div>
+          <div class="card"><h3>Smart Shuffle Builder</h3><p>Creates more natural shuffle-style lists by reducing repeated artist clusters, album blocks, and predictable patterns in large local collections.</p></div>
         </div>
       </div>
     </section>
-
     <section id="cache">
       <div class="wrap split">
         <div>
@@ -563,7 +514,6 @@
         </div>
       </div>
     </section>
-
     <section id="safety">
       <div class="wrap split">
         <div class="panel">
@@ -589,42 +539,71 @@
         </div>
       </div>
     </section>
-
     <section id="early-access">
       <div class="wrap split">
         <div>
           <h2>Early Access release.</h2>
           <p class="sectionLead">Local Music Organizer is already useful for cleaning and understanding large local Music.app libraries, but it is still an Early Access product. The first public release is intended for careful users with real local collections who understand backups and library maintenance.</p>
+          <p class="sectionLead">After purchase, the license is generated manually. Please open the app, go to the License screen, enter your purchase email, click Copy License Request, and send that request to sergeyappleservice@gmail.com. Because license keys are issued manually, delivery may not be instant. Depending on time zone differences, it may take several hours before your license key is sent.</p>
           <div class="pillRow">
             <span class="pill">Version target: 0.3 Early Access</span>
             <span class="pill">macOS 14 Sonoma or later</span>
             <span class="pill">Apple Silicon recommended</span>
             <span class="pill">Intel supported in Universal builds</span>
             <span class="pill">Local Music.app libraries</span>
+            <span class="pill">Manual license delivery</span>
           </div>
         </div>
         <div class="panel">
-          <h3>Planned Early Access license</h3>
+          <h3>Early Access license</h3>
           <div class="price">$19</div>
           <p class="sectionLead" style="font-size:16px;margin-bottom:18px;">One-time Early Access license. Includes Early Access updates. License keys are generated manually for the buyer email and Mac hardware ID.</p>
+          <p class="fine" style="margin-bottom:16px;">License delivery is manual and may take several hours depending on time zone differences.</p>
           <a class="button" href="mailto:sergeyappleservice@gmail.com?subject=Local%20Music%20Organizer%20Early%20Access">Request Early Access</a>
           <p class="fine" style="margin-top:14px;">For Early Access orders and questions, contact sergeyappleservice@gmail.com.</p>
         </div>
       </div>
     </section>
-
     <section>
       <div class="wrap">
         <h2>What it does not try to be.</h2>
         <p class="sectionLead">Local Music Organizer is not a streaming service manager, not a cloud Apple Music replacement, not a general media player, and not a one-click magic cleanup tool. It is a focused maintenance utility for people who care about their local Music.app library and want visibility before making changes.</p>
       </div>
     </section>
+    <section id="terms">
+      <div class="wrap">
+        <h2>Terms of Service</h2>
+        <p class="sectionLead">Local Music Organizer is provided as Early Access macOS software for local Music.app library maintenance. By purchasing or using the app, you understand that it is intended for careful users who maintain backups of their important music libraries.</p>
+        <p class="sectionLead">The app can read local Music.app library data, inspect local audio files, compare playlists, edit Music.app tags, remove playlist entries, and generate reports when you explicitly choose those actions. You are responsible for reviewing changes before confirming them.</p>
+        <p class="sectionLead">A license is issued for one buyer email and one Mac hardware ID. Hardware replacement, system migration, clean macOS reinstall, or major device changes may require a replacement license key. Early Access features may change during development.</p>
+        <p class="sectionLead">License keys are generated manually after purchase. Because this is a manual Early Access process, license delivery may not be instant and may take several hours depending on time zone differences.</p>
+        <p class="sectionLead">Local Music Organizer is not responsible for damage caused by missing backups, incorrect user actions, third-party tools, corrupted Music.app libraries, file permission problems, unsupported macOS versions, unsupported library setups, or unsupported system configurations. Always keep backups before cleanup or repair work.</p>
+      </div>
+    </section>
+    <section id="privacy">
+      <div class="wrap">
+        <h2>Privacy Policy</h2>
+        <p class="sectionLead">Local Music Organizer is designed as a local macOS utility. The app works with local Music.app libraries and local files on your Mac. It does not require a user account or cloud database for normal operation.</p>
+        <p class="sectionLead">For Early Access licensing, the app displays a license request containing the buyer email, app version, and a hardware ID derived from the Mac. The buyer sends this license request manually by email so a license key can be generated.</p>
+        <p class="sectionLead">The app may store license information locally on the Mac. It does not sell personal data. Payment processing, checkout, tax handling, and transaction records may be handled by the payment provider used for purchase.</p>
+        <p class="sectionLead">Support emails may contain information voluntarily provided by the user, such as license request text, app version, hardware ID, logs, screenshots, or problem descriptions. This information is used only for support, licensing, troubleshooting, and product improvement.</p>
+      </div>
+    </section>
+    <section id="refunds">
+      <div class="wrap">
+        <h2>Refund Policy</h2>
+        <p class="sectionLead">Local Music Organizer is sold as Early Access software. If the app cannot be activated or does not launch on a supported Mac, contact support at sergeyappleservice@gmail.com with your purchase email, app version, macOS version, and license request.</p>
+        <p class="sectionLead">Refund requests are reviewed manually. Refunds may be accepted when the software cannot be activated or cannot reasonably be used on a supported system after troubleshooting.</p>
+        <p class="sectionLead">Refunds may be declined if the license has been issued and the software works as described, or if the problem is caused by unsupported macOS versions, missing permissions, missing backups, unsupported library setups, corrupted local libraries, third-party tools, or user actions outside the app’s intended use.</p>
+        <p class="sectionLead">Because license keys are issued manually, a short delivery delay is not considered a product failure. Depending on time zone differences, license delivery may take several hours.</p>
+        <p class="sectionLead">Before purchase, users should understand that Early Access software may contain bugs, interface changes, and ongoing improvements.</p>
+      </div>
+    </section>
   </main>
-
   <footer class="footer">
     <div class="wrap">
       <strong>Local Music Organizer</strong><br />
-      Early Access macOS utility for large local Music.app libraries. Apple Silicon recommended. Intel supported with Universal builds. macOS 14 Sonoma or later. Use at your own responsibility and keep backups of important libraries.
+      Early Access macOS utility for large local Music.app libraries. Apple Silicon recommended. Intel supported with Universal builds. macOS 14 Sonoma or later. Use at your own responsibility and keep backups of important libraries. License delivery is manual and may take several hours depending on time zone differences.
     </div>
   </footer>
 </body>
