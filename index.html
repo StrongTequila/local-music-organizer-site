@@ -7,6 +7,7 @@
   <link rel="icon" type="image/png" href="/icon.png" />
   <link rel="apple-touch-icon" href="/icon.png" />
   <meta name="description" content="Local Music Organizer is an Early Access macOS app for cleaning, comparing, repairing, inspecting, and organizing large local Music.app libraries." />
+  <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
   <style>
     :root {
       --bg: #0f0f14;
@@ -118,6 +119,18 @@
       border: 1px solid var(--line);
       box-shadow: none;
       color: var(--text);
+    }
+
+    .button:disabled {
+      opacity: .65;
+      cursor: wait;
+    }
+
+    .checkoutStatus {
+      color: var(--soft);
+      font-size: 13px;
+      margin-top: 10px;
+      min-height: 20px;
     }
 
     .hero {
@@ -382,6 +395,7 @@
       </nav>
     </div>
   </header>
+
   <main>
     <section class="hero">
       <div class="wrap heroGrid">
@@ -390,9 +404,10 @@
           <h1>Clean up large local Music.app libraries without losing control.</h1>
           <p class="lead">Local Music Organizer is a macOS utility for people with serious local music collections. It helps inspect large Music.app libraries, compare playlists, find repeated tracks, locate playlist usage, edit Music.app tags, identify missing files and artwork, inspect audio quality, build smarter shuffle lists, and safely repair messy local libraries.</p>
           <div class="heroActions">
-            <a class="button" href="mailto:sergeyappleservice@gmail.com?subject=Local%20Music%20Organizer%20Early%20Access">Get Early Access</a>
+            <button class="button" type="button" onclick="openEarlyAccessCheckout(event)">Get Early Access</button>
             <a class="button secondary" href="#safety">Read Safety Notes</a>
           </div>
+          <div class="checkoutStatus" id="checkoutStatus"></div>
           <p class="fine">Apple Silicon is recommended. Intel Macs are supported with Universal builds, but very large scans and Music.app operations may be slower. The app is designed for local Music.app libraries, not cloud-only Apple Music streaming collections.</p>
           <div class="pillRow">
             <span class="pill">Music.app library tools</span>
@@ -404,6 +419,7 @@
             <span class="pill">Repair / Convert workflows</span>
           </div>
         </div>
+
         <div class="heroCard">
           <div class="heroIconWrap">
             <img class="heroIcon" src="/icon.png" alt="Local Music Organizer app icon" />
@@ -417,6 +433,7 @@
         </div>
       </div>
     </section>
+
     <section id="story">
       <div class="wrap split">
         <div>
@@ -426,6 +443,7 @@
           <p class="sectionLead">So I built Local Music Organizer for my own library first. The goal was practical: understand what is inside Music.app, find where tracks are used, compare playlists, clean duplicates safely, edit tags with undo, inspect audio files, warm a cache for large scans, and avoid dangerous one-click cleanup. The app solved the problems I had in my own collection and helped me finally bring order back to a library that had grown over many years.</p>
           <p class="sectionLead">I decided to make it available because I believe the same problems exist for other people with serious local music collections. If you still care about offline files, curated playlists, clean metadata, local backups, and knowing exactly what will change before you press a button, Local Music Organizer was made for that kind of library.</p>
         </div>
+
         <div class="panel">
           <h3>Why this app exists</h3>
           <ul class="list">
@@ -439,10 +457,12 @@
         </div>
       </div>
     </section>
+
     <section id="features">
       <div class="wrap">
         <h2>Built for messy real-world music libraries.</h2>
         <p class="sectionLead">Large local collections are rarely clean. The same file may appear in many playlists, tags may be inconsistent, albums may be missing artwork, old imports may point to missing files, and quality can vary between versions. Local Music Organizer brings practical maintenance tools into one focused Mac app.</p>
+
         <div class="grid">
           <div class="card"><h3>Library Dashboard</h3><p>Creates a read-only overview of the Music.app library: records scanned, empty artists, low bitrate tracks, missing artwork, missing files, long tracks, codec/container information, storage clues, and suspicious records.</p></div>
           <div class="card"><h3>Music Snapshot Cache</h3><p>Large libraries can be warmed into memory before heavy work. The cache stores full Music records, lightweight library records, and playlist membership data so repeated scans and comparisons can become much faster after the first read.</p></div>
@@ -462,12 +482,14 @@
         </div>
       </div>
     </section>
+
     <section id="cache">
       <div class="wrap split">
         <div>
           <h2>Warm Cache makes large libraries practical.</h2>
           <p class="sectionLead">Music.app automation can be slow with thousands of tracks and many playlists. Local Music Organizer uses a Music Snapshot Cache so the app can read expensive data once and reuse it across multiple tools.</p>
         </div>
+
         <div class="panel">
           <ul class="list">
             <li><span class="highlight">Full Library Records Cache</span> feeds Dashboard, Quality checks, Library Duplicates, File Maintenance, and fast library searches.</li>
@@ -479,6 +501,7 @@
         </div>
       </div>
     </section>
+
     <section id="safety">
       <div class="wrap split">
         <div class="panel">
@@ -492,6 +515,7 @@
             <li>Log folders and reports help review what happened.</li>
           </ul>
         </div>
+
         <div class="panel">
           <h2>Important responsibility note.</h2>
           <ul class="list warning">
@@ -504,6 +528,7 @@
         </div>
       </div>
     </section>
+
     <section id="early-access">
       <div class="wrap split">
         <div>
@@ -519,22 +544,26 @@
             <span class="pill">Manual license delivery</span>
           </div>
         </div>
+
         <div class="panel">
           <h3>Early Access license</h3>
           <div class="price">$19</div>
           <p class="sectionLead" style="font-size:16px;margin-bottom:18px;">One-time Early Access license. Includes Early Access updates. License keys are generated manually for the buyer email and Mac hardware ID.</p>
           <p class="fine" style="margin-bottom:16px;">License delivery is manual and may take several hours depending on time zone differences.</p>
-          <a class="button" href="mailto:sergeyappleservice@gmail.com?subject=Local%20Music%20Organizer%20Early%20Access">Request Early Access</a>
-          <p class="fine" style="margin-top:14px;">For Early Access orders and questions, contact sergeyappleservice@gmail.com.</p>
+          <button class="button" type="button" onclick="openEarlyAccessCheckout(event)">Buy Early Access</button>
+          <p class="fine" style="margin-top:14px;">After payment, open the app, copy your License Request, and send it to sergeyappleservice@gmail.com. Your license key will be generated manually.</p>
+          <div class="checkoutStatus" id="checkoutStatusPricing"></div>
         </div>
       </div>
     </section>
+
     <section>
       <div class="wrap">
         <h2>What it does not try to be.</h2>
         <p class="sectionLead">Local Music Organizer is not a streaming service manager, not a cloud Apple Music replacement, not a general media player, and not a one-click magic cleanup tool. It is a focused maintenance utility for people who care about their local Music.app library and want visibility before making changes.</p>
       </div>
     </section>
+
     <section id="terms">
       <div class="wrap">
         <h2>Terms of Service</h2>
@@ -545,6 +574,7 @@
         <p class="sectionLead">Local Music Organizer is not responsible for damage caused by missing backups, incorrect user actions, third-party tools, corrupted Music.app libraries, file permission problems, unsupported macOS versions, unsupported library setups, or unsupported system configurations. Always keep backups before cleanup or repair work.</p>
       </div>
     </section>
+
     <section id="privacy">
       <div class="wrap">
         <h2>Privacy Policy</h2>
@@ -554,22 +584,82 @@
         <p class="sectionLead">Support emails may contain information voluntarily provided by the user, such as license request text, app version, hardware ID, logs, screenshots, or problem descriptions. This information is used only for support, licensing, troubleshooting, and product improvement.</p>
       </div>
     </section>
+
     <section id="refunds">
       <div class="wrap">
         <h2>Refund Policy</h2>
-        <p class="sectionLead">Local Music Organizer is sold as Early Access software. If the app cannot be activated or does not launch on a supported Mac, contact support at sergeyappleservice@gmail.com with your purchase email, app version, macOS version, and license request.</p>
-        <p class="sectionLead">Refund requests are reviewed manually. Refunds may be accepted when the software cannot be activated or cannot reasonably be used on a supported system after troubleshooting.</p>
-        <p class="sectionLead">Refunds may be declined if the license has been issued and the software works as described, or if the problem is caused by unsupported macOS versions, missing permissions, missing backups, unsupported library setups, corrupted local libraries, third-party tools, or user actions outside the app’s intended use.</p>
+        <p class="sectionLead">Local Music Organizer is sold as Early Access software. Refund requests are reviewed manually and should be submitted within 14 days of purchase.</p>
+        <p class="sectionLead">If the app cannot be activated or does not launch on a supported Mac, contact support at sergeyappleservice@gmail.com with your purchase email, app version, macOS version, and license request.</p>
+        <p class="sectionLead">Refunds may be accepted when the software cannot be activated or cannot reasonably be used on a supported system after troubleshooting.</p>
+        <p class="sectionLead">Refunds may be declined if more than 14 days have passed since purchase, if the license has been issued and the software works as described, or if the problem is caused by unsupported macOS versions, missing permissions, missing backups, unsupported library setups, corrupted local libraries, third-party tools, or user actions outside the app’s intended use.</p>
         <p class="sectionLead">Because license keys are issued manually, a short delivery delay is not considered a product failure. Depending on time zone differences, license delivery may take several hours.</p>
         <p class="sectionLead">Before purchase, users should understand that Early Access software may contain bugs, interface changes, and ongoing improvements.</p>
       </div>
     </section>
   </main>
+
   <footer class="footer">
     <div class="wrap">
       <strong>Local Music Organizer</strong><br />
-      Early Access macOS utility for large local Music.app libraries. Apple Silicon recommended. Intel supported with Universal builds. macOS 14 Sonoma or later. Use at your own responsibility and keep backups of important libraries. License delivery is manual and may take several hours depending on time zone differences.
+      Early Access macOS utility for large local Music.app libraries. Apple Silicon recommended. Intel supported with Universal builds. macOS 14 Sonoma or later. Use at your own responsibility and keep backups of important libraries. License delivery is manual and may take several hours depending on time zone differences. Refund requests should be submitted within 14 days of purchase.
     </div>
   </footer>
+
+  <script>
+    const PADDLE_CLIENT_TOKEN = "live_1e6726cee70aaec4dd551bda1b3";
+    const PADDLE_PRICE_ID = "pri_01kvz3ch0e8wyc5ssab7jakwnb";
+    let paddleInitialized = false;
+
+    function setCheckoutStatus(message) {
+      const topStatus = document.getElementById("checkoutStatus");
+      const pricingStatus = document.getElementById("checkoutStatusPricing");
+      if (topStatus) topStatus.textContent = message || "";
+      if (pricingStatus) pricingStatus.textContent = message || "";
+    }
+
+    function initializePaddleIfNeeded() {
+      if (!window.Paddle) {
+        throw new Error("Paddle.js has not loaded yet.");
+      }
+
+      if (!paddleInitialized) {
+        Paddle.Initialize({
+          token: PADDLE_CLIENT_TOKEN
+        });
+        paddleInitialized = true;
+      }
+    }
+
+    function openEarlyAccessCheckout(event) {
+      if (event) event.preventDefault();
+
+      try {
+        setCheckoutStatus("Opening secure Paddle checkout…");
+        initializePaddleIfNeeded();
+
+        Paddle.Checkout.open({
+          items: [
+            {
+              priceId: PADDLE_PRICE_ID,
+              quantity: 1
+            }
+          ],
+          settings: {
+            displayMode: "overlay",
+            theme: "dark",
+            locale: "en"
+          },
+          customData: {
+            product: "local_music_organizer",
+            license_type: "early_access",
+            delivery: "manual_license_key"
+          }
+        });
+      } catch (error) {
+        console.error(error);
+        setCheckoutStatus("Checkout could not open. Please contact sergeyappleservice@gmail.com for Early Access.");
+      }
+    }
+  </script>
 </body>
 </html>
