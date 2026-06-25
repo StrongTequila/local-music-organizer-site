@@ -6,7 +6,7 @@
   <title>Local Music Organizer for Mac</title>
   <link rel="icon" type="image/png" href="/icon.png" />
   <link rel="apple-touch-icon" href="/icon.png" />
-  <meta name="description" content="Local Music Organizer is an Early Access macOS app for cleaning, comparing, repairing, inspecting, and organizing large local Music.app libraries." />
+  <meta name="description" content="Local Music Organizer is an Early Access macOS app for cleaning, comparing, repairing, inspecting, and organizing large local Music.app libraries. Trial mode analyzes one playlist at a time, up to 50 local tracks." />
   <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
   <style>
     :root {
@@ -294,6 +294,12 @@
       font-size: 13px;
     }
 
+    .pill.strong {
+      color: #fff;
+      border-color: rgba(67,209,122,.42);
+      background: rgba(67,209,122,.12);
+    }
+
     .split {
       display: grid;
       grid-template-columns: .9fr 1.1fr;
@@ -386,6 +392,7 @@
       <nav class="navlinks">
         <a href="#story">Story</a>
         <a href="#features">Features</a>
+        <a href="#trial">Trial</a>
         <a href="#cache">Music Cache</a>
         <a href="#safety">Safety</a>
         <a href="#early-access">Pricing</a>
@@ -400,16 +407,19 @@
     <section class="hero">
       <div class="wrap heroGrid">
         <div>
-          <div class="badge">Early Access · macOS 14 Sonoma or later · Universal Mac build</div>
+          <div class="badge">Early Access · Trial mode included · macOS 14 Sonoma or later · Universal Mac build</div>
           <h1>Clean up large local Music.app libraries without losing control.</h1>
           <p class="lead">Local Music Organizer is a macOS utility for people with serious local music collections. It helps inspect large Music.app libraries, compare playlists, find repeated tracks, locate playlist usage, edit Music.app tags, identify missing files and artwork, inspect audio quality, build smarter shuffle lists, and safely repair messy local libraries.</p>
+          <p class="sectionLead">Trial mode lets you test the app on one playlist at a time, up to 50 local tracks. Activate Early Access for $19 to unlock full-library scans, unlimited playlist analysis, cleanup actions, Repair / Convert, and File Maintenance tools.</p>
           <div class="heroActions">
             <button class="button" type="button" onclick="openEarlyAccessCheckout(event)">Get Early Access</button>
+            <a class="button secondary" href="#trial">Read Trial Details</a>
             <a class="button secondary" href="#safety">Read Safety Notes</a>
           </div>
           <div class="checkoutStatus" id="checkoutStatus"></div>
           <p class="fine">Apple Silicon is recommended. Intel Macs are supported with Universal builds, but very large scans and Music.app operations may be slower. The app is designed for local Music.app libraries, not cloud-only Apple Music streaming collections.</p>
           <div class="pillRow">
+            <span class="pill strong">Trial: one playlist · up to 50 local tracks</span>
             <span class="pill">Music.app library tools</span>
             <span class="pill">Playlist comparison</span>
             <span class="pill">Duplicate cleanup</span>
@@ -425,10 +435,10 @@
             <img class="heroIcon" src="/icon.png" alt="Local Music Organizer app icon" />
           </div>
           <div class="miniGrid">
+            <div class="mini"><strong>Trial Mode</strong>Analyze one playlist at a time, up to 50 local tracks, before buying.</div>
             <div class="mini"><strong>Playlist Compare</strong>Find the same track across two playlists and remove only the playlist entry.</div>
             <div class="mini"><strong>Track Usage</strong>See every playlist where a track or file is used.</div>
             <div class="mini"><strong>Dashboard</strong>Inspect bitrate, codec, sample rate, missing files, artwork, and outliers.</div>
-            <div class="mini"><strong>Undo</strong>Supported tag edits and playlist removals can be reversed.</div>
           </div>
         </div>
       </div>
@@ -458,26 +468,47 @@
       </div>
     </section>
 
+    <section id="trial">
+      <div class="wrap split">
+        <div>
+          <h2>Try it first on a real playlist.</h2>
+          <p class="sectionLead">Local Music Organizer can be opened without an active license. Trial mode is intentionally limited, but useful enough to confirm that the app can read your Music.app playlists and analyze real local tracks from your own library.</p>
+          <p class="sectionLead">In trial mode, you can analyze one playlist at a time, up to 50 local tracks. This is designed as a safe preview for people who want to check how the app works before purchasing Early Access.</p>
+        </div>
+
+        <div class="panel">
+          <h3>Trial mode limits</h3>
+          <ul class="list">
+            <li>Analyze one playlist at a time.</li>
+            <li>Up to 50 local tracks per trial scan.</li>
+            <li>Preview playlist-level duplicate detection and related read-only analysis.</li>
+            <li>Full-library scans require Early Access activation.</li>
+            <li>Cleanup actions, Repair / Convert, File Maintenance, and unlimited playlist analysis require Early Access activation.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
     <section id="features">
       <div class="wrap">
         <h2>Built for messy real-world music libraries.</h2>
         <p class="sectionLead">Large local collections are rarely clean. The same file may appear in many playlists, tags may be inconsistent, albums may be missing artwork, old imports may point to missing files, and quality can vary between versions. Local Music Organizer brings practical maintenance tools into one focused Mac app.</p>
 
         <div class="grid">
-          <div class="card"><h3>Library Dashboard</h3><p>Creates a read-only overview of the Music.app library: records scanned, empty artists, low bitrate tracks, missing artwork, missing files, long tracks, codec/container information, storage clues, and suspicious records.</p></div>
+          <div class="card"><h3>Library Dashboard</h3><p>Creates a read-only overview of the Music.app library: records scanned, empty artists, low bitrate tracks, missing artwork, missing files, long tracks, codec/container information, storage clues, and suspicious records. Full-library dashboard scans require Early Access activation.</p></div>
           <div class="card"><h3>Music Snapshot Cache</h3><p>Large libraries can be warmed into memory before heavy work. The cache stores full Music records, lightweight library records, and playlist membership data so repeated scans and comparisons can become much faster after the first read.</p></div>
           <div class="card"><h3>Playlist Compare</h3><p>Compares two playlists and shows tracks that appear in both. You can play A/B, inspect entries, edit tags, copy paths, or remove only the playlist entry from one side.</p></div>
-          <div class="card"><h3>Playlist Duplicates</h3><p>Finds duplicate entries inside one playlist. Removal affects the playlist entry only; it does not delete the audio file and does not delete the Music library record.</p></div>
-          <div class="card"><h3>Library Duplicates</h3><p>Finds Music.app library records pointing to the same local file or exact duplicate candidates. It helps identify unused duplicate records and protect playlist usage.</p></div>
+          <div class="card"><h3>Playlist Duplicates</h3><p>Finds duplicate entries inside one playlist. Removal affects the playlist entry only; it does not delete the audio file and does not delete the Music library record. Trial mode is limited to one playlist and up to 50 local tracks.</p></div>
+          <div class="card"><h3>Library Duplicates</h3><p>Finds Music.app library records pointing to the same local file or exact duplicate candidates. It helps identify unused duplicate records and protect playlist usage. Full-library duplicate analysis requires Early Access activation.</p></div>
           <div class="card"><h3>Track Usage</h3><p>Searches for a track or file and shows every playlist where it is used. Useful before deleting, renaming, repairing, or moving local files.</p></div>
           <div class="card"><h3>Health Check</h3><p>Scans selected playlists and library records for missing files, inaccessible paths, empty metadata, orphan physical files under a chosen root, and library records that need review.</p></div>
           <div class="card"><h3>Artwork Check</h3><p>Finds tracks and albums with missing artwork. Artwork access is separated from lighter scans because it can be slower through Music.app.</p></div>
           <div class="card"><h3>Audio Quality Dashboard</h3><p>Inspects bitrate, sample rate, file kind, duration, size, codec/container clues, missing files, long tracks, and suspicious records.</p></div>
           <div class="card"><h3>Quality Duplicates</h3><p>Helps compare multiple versions of similar tracks and choose the better candidate by quality-related signals.</p></div>
           <div class="card"><h3>Audio Inspector</h3><p>Opens a local audio file and shows technical information such as format, sample rate, bit depth, bitrate, channels, duration, size, raw afinfo data, and a spectrogram-style visual inspection.</p></div>
-          <div class="card"><h3>Tag Editing</h3><p>Visible Music.app records can be edited directly from the app. Supported tag changes update Music.app and can be undone.</p></div>
-          <div class="card"><h3>Repair / Convert workflows</h3><p>Designed for libraries with mixed and old-school formats. Workflows can help prepare Music-compatible versions from common, old-school, and audiophile inputs when helper tools are installed.</p></div>
-          <div class="card"><h3>File Maintenance</h3><p>Helps reveal files in Finder, copy paths, check permissions, compare Music.app references with real files on disk, and understand whether library records point to accessible local media.</p></div>
+          <div class="card"><h3>Tag Editing</h3><p>Visible Music.app records can be edited directly from the app. Supported tag changes update Music.app and can be undone. Editing actions require Early Access activation.</p></div>
+          <div class="card"><h3>Repair / Convert workflows</h3><p>Designed for libraries with mixed and old-school formats. Workflows can help prepare Music-compatible versions from common, old-school, and audiophile inputs when helper tools are installed. These workflows require Early Access activation.</p></div>
+          <div class="card"><h3>File Maintenance</h3><p>Helps reveal files in Finder, copy paths, check permissions, compare Music.app references with real files on disk, and understand whether library records point to accessible local media. File maintenance actions require Early Access activation.</p></div>
           <div class="card"><h3>Smart Shuffle Builder</h3><p>Creates more natural shuffle-style lists by reducing repeated artist clusters, album blocks, and predictable patterns in large local collections.</p></div>
         </div>
       </div>
@@ -534,9 +565,11 @@
         <div>
           <h2>Early Access release.</h2>
           <p class="sectionLead">Local Music Organizer is already useful for cleaning and understanding large local Music.app libraries, but it is still an Early Access product. The first public release is intended for careful users with real local collections who understand backups and library maintenance.</p>
+          <p class="sectionLead">You can try the app first in trial mode: one playlist at a time, up to 50 local tracks. Early Access activation unlocks full-library scans, unlimited playlist analysis, cleanup actions, Repair / Convert, File Maintenance, and the complete maintenance workflow.</p>
           <p class="sectionLead">After purchase, the license is generated manually. Please open the app, go to the License screen, enter your purchase email, click Copy License Request, and send that request to sergeyappleservice@gmail.com. Because license keys are issued manually, delivery may not be instant. Depending on time zone differences, it may take several hours before your license key is sent.</p>
           <div class="pillRow">
             <span class="pill">Version target: 0.3 Early Access</span>
+            <span class="pill">Trial: one playlist, 50 local tracks</span>
             <span class="pill">macOS 14 Sonoma or later</span>
             <span class="pill">Apple Silicon recommended</span>
             <span class="pill">Intel supported in Universal builds</span>
@@ -548,8 +581,8 @@
         <div class="panel">
           <h3>Early Access license</h3>
           <div class="price">$19</div>
-          <p class="sectionLead" style="font-size:16px;margin-bottom:18px;">One-time Early Access license. Includes Early Access updates. License keys are generated manually for the buyer email and Mac hardware ID.</p>
-          <p class="fine" style="margin-bottom:16px;">License delivery is manual and may take several hours depending on time zone differences.</p>
+          <p class="sectionLead" style="font-size:16px;margin-bottom:18px;">One-time Early Access license. Unlocks full-library scans, unlimited playlist analysis, cleanup actions, Repair / Convert, File Maintenance, and Early Access updates. License keys are generated manually for the buyer email and Mac hardware ID.</p>
+          <p class="fine" style="margin-bottom:16px;">Trial mode works without activation for one playlist at a time, up to 50 local tracks. License delivery is manual and may take several hours depending on time zone differences.</p>
           <button class="button" type="button" onclick="openEarlyAccessCheckout(event)">Buy Early Access</button>
           <p class="fine" style="margin-top:14px;">After payment, open the app, copy your License Request, and send it to sergeyappleservice@gmail.com. Your license key will be generated manually.</p>
           <div class="checkoutStatus" id="checkoutStatusPricing"></div>
@@ -568,6 +601,7 @@
       <div class="wrap">
         <h2>Terms of Service</h2>
         <p class="sectionLead">Local Music Organizer is provided as Early Access macOS software for local Music.app library maintenance. By purchasing or using the app, you understand that it is intended for careful users who maintain backups of their important music libraries.</p>
+        <p class="sectionLead">The app can be opened in trial mode without an active license. Trial mode is limited to analyzing one playlist at a time, up to 50 local tracks. Full-library scans, unlimited playlist analysis, cleanup actions, Repair / Convert, File Maintenance, and other full maintenance features require Early Access activation.</p>
         <p class="sectionLead">The app can read local Music.app library data, inspect local audio files, compare playlists, edit Music.app tags, remove playlist entries, and generate reports when you explicitly choose those actions. You are responsible for reviewing changes before confirming them.</p>
         <p class="sectionLead">A license is issued for one buyer email and one Mac hardware ID. Hardware replacement, system migration, clean macOS reinstall, or major device changes may require a replacement license key. Early Access features may change during development.</p>
         <p class="sectionLead">License keys are generated manually after purchase. Because this is a manual Early Access process, license delivery may not be instant and may take several hours depending on time zone differences.</p>
@@ -579,6 +613,7 @@
       <div class="wrap">
         <h2>Privacy Policy</h2>
         <p class="sectionLead">Local Music Organizer is designed as a local macOS utility. The app works with local Music.app libraries and local files on your Mac. It does not require a user account or cloud database for normal operation.</p>
+        <p class="sectionLead">The app can run in trial mode without activation. Trial mode analysis happens locally on your Mac and is limited to one playlist at a time, up to 50 local tracks.</p>
         <p class="sectionLead">For Early Access licensing, the app displays a license request containing the buyer email, app version, and a hardware ID derived from the Mac. The buyer sends this license request manually by email so a license key can be generated.</p>
         <p class="sectionLead">The app may store license information locally on the Mac. It does not sell personal data. Payment processing, checkout, tax handling, and transaction records may be handled by the payment provider used for purchase.</p>
         <p class="sectionLead">Support emails may contain information voluntarily provided by the user, such as license request text, app version, hardware ID, logs, screenshots, or problem descriptions. This information is used only for support, licensing, troubleshooting, and product improvement.</p>
@@ -589,6 +624,7 @@
       <div class="wrap">
         <h2>Refund Policy</h2>
         <p class="sectionLead">Local Music Organizer is sold as Early Access software. Refund requests are reviewed manually and should be submitted within 14 days of purchase.</p>
+        <p class="sectionLead">Trial mode is available before purchase and allows the app to analyze one playlist at a time, up to 50 local tracks. Users are encouraged to confirm that the app can read their Music.app library before purchasing Early Access.</p>
         <p class="sectionLead">If the app cannot be activated or does not launch on a supported Mac, contact support at sergeyappleservice@gmail.com with your purchase email, app version, macOS version, and license request.</p>
         <p class="sectionLead">Refunds may be accepted when the software cannot be activated or cannot reasonably be used on a supported system after troubleshooting.</p>
         <p class="sectionLead">Refunds may be declined if more than 14 days have passed since purchase, if the license has been issued and the software works as described, or if the problem is caused by unsupported macOS versions, missing permissions, missing backups, unsupported library setups, corrupted local libraries, third-party tools, or user actions outside the app’s intended use.</p>
@@ -601,7 +637,7 @@
   <footer class="footer">
     <div class="wrap">
       <strong>Local Music Organizer</strong><br />
-      Early Access macOS utility for large local Music.app libraries. Apple Silicon recommended. Intel supported with Universal builds. macOS 14 Sonoma or later. Use at your own responsibility and keep backups of important libraries. License delivery is manual and may take several hours depending on time zone differences. Refund requests should be submitted within 14 days of purchase.
+      Early Access macOS utility for large local Music.app libraries. Trial mode analyzes one playlist at a time, up to 50 local tracks. Apple Silicon recommended. Intel supported with Universal builds. macOS 14 Sonoma or later. Use at your own responsibility and keep backups of important libraries. License delivery is manual and may take several hours depending on time zone differences. Refund requests should be submitted within 14 days of purchase.
     </div>
   </footer>
 
