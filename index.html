@@ -206,56 +206,19 @@
       background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
     }
 
-    .mock {
-      background: #111119;
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,.12);
-      overflow: hidden;
+    .heroIconWrap {
+      display: grid;
+      place-items: center;
+      padding: 18px 10px 24px;
     }
 
-    .mockTop {
-      height: 42px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 0 14px;
-      background: #1b1b26;
-      border-bottom: 1px solid rgba(255,255,255,.1);
-    }
-
-    .dot {
-      width: 11px;
-      height: 11px;
-      border-radius: 50%;
-      background: #ff5f57;
-    }
-
-    .dot:nth-child(2) { background: #ffbd2e; }
-    .dot:nth-child(3) { background: #28c840; }
-
-    .mockBody { padding: 18px; }
-
-    .status {
-      background: rgba(255,255,255,.07);
-      border-radius: 14px;
-      padding: 14px;
-      margin-bottom: 12px;
-    }
-
-    .bar {
-      height: 8px;
-      background: rgba(255,255,255,.12);
-      border-radius: 999px;
-      overflow: hidden;
-      margin-top: 9px;
-    }
-
-    .bar span {
-      display: block;
-      height: 100%;
-      width: 78%;
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-      border-radius: inherit;
+    .heroIcon {
+      width: min(320px, 80%);
+      height: auto;
+      border-radius: 34px;
+      box-shadow:
+        0 28px 80px rgba(0,0,0,.45),
+        0 0 70px rgba(155,92,255,.18);
     }
 
     .miniGrid {
@@ -392,6 +355,11 @@
       .navlinks { display: none; }
 
       .hero { padding-top: 52px; }
+
+      .heroIcon {
+        width: min(260px, 82%);
+        border-radius: 28px;
+      }
     }
   </style>
 </head>
@@ -437,20 +405,14 @@
           </div>
         </div>
         <div class="heroCard">
-          <div class="mock">
-            <div class="mockTop"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
-            <div class="mockBody">
-              <div class="status">
-                <strong>Cache ready: Music Library + full records + playlists</strong>
-                <div class="bar"><span></span></div>
-              </div>
-              <div class="miniGrid">
-                <div class="mini"><strong>Playlist Compare</strong>Find the same track across two playlists and remove only the playlist entry.</div>
-                <div class="mini"><strong>Track Usage</strong>See every playlist where a track or file is used.</div>
-                <div class="mini"><strong>Dashboard</strong>Inspect bitrate, codec, sample rate, missing files, artwork, and outliers.</div>
-                <div class="mini"><strong>Undo</strong>Supported tag edits and playlist removals can be reversed.</div>
-              </div>
-            </div>
+          <div class="heroIconWrap">
+            <img class="heroIcon" src="/icon.png" alt="Local Music Organizer app icon" />
+          </div>
+          <div class="miniGrid">
+            <div class="mini"><strong>Playlist Compare</strong>Find the same track across two playlists and remove only the playlist entry.</div>
+            <div class="mini"><strong>Track Usage</strong>See every playlist where a track or file is used.</div>
+            <div class="mini"><strong>Dashboard</strong>Inspect bitrate, codec, sample rate, missing files, artwork, and outliers.</div>
+            <div class="mini"><strong>Undo</strong>Supported tag edits and playlist removals can be reversed.</div>
           </div>
         </div>
       </div>
