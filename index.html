@@ -4,6 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Local Music Organizer for Mac</title>
+  <link rel="icon" type="image/png" href="/icon.png" />
+  <link rel="apple-touch-icon" href="/icon.png" />
   <meta name="description" content="Local Music Organizer is an Early Access macOS app for cleaning, comparing, repairing, inspecting, and organizing large local Music.app libraries." />
   <style>
     :root {
@@ -77,14 +79,12 @@
     }
 
     .logo {
-      width: 36px;
-      height: 36px;
-      border-radius: 11px;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      object-fit: cover;
       box-shadow: 0 10px 30px rgba(155,92,255,.32);
-      display: grid;
-      place-items: center;
-      font-weight: 900;
+      display: block;
     }
 
     .navlinks {
@@ -281,9 +281,9 @@
     }
 
     section {
-  padding: 48px 0;
-  scroll-margin-top: 95px;
-}
+      padding: 48px 0;
+      scroll-margin-top: 95px;
+    }
 
     .grid {
       display: grid;
@@ -399,7 +399,7 @@
   <header>
     <div class="wrap nav">
       <a class="brand" href="#">
-        <span class="logo">LM</span>
+        <img class="logo" src="/icon.png" alt="Local Music Organizer icon" />
         <span>Local Music Organizer</span>
       </a>
       <nav class="navlinks">
