@@ -4,8 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Local Music Organizer for Mac</title>
-  <link rel="icon" type="image/png" href="/icon.png" />
-  <link rel="apple-touch-icon" href="/icon.png" />
+  <link rel="icon" type="image/jpeg" href="/icon.jpeg" />
+  <link rel="apple-touch-icon" href="/icon.jpeg" />
   <meta name="description" content="Local Music Organizer is an Early Access macOS app for cleaning, comparing, repairing, inspecting, and organizing large local Music.app libraries. Trial mode analyzes one playlist at a time, up to 50 local tracks." />
   <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
   <style>
@@ -234,6 +234,27 @@
         0 0 70px rgba(155,92,255,.18);
     }
 
+    .heroIconStack {
+      position: relative;
+      display: grid;
+      place-items: center;
+      width: 100%;
+    }
+
+    .heroIconSmall {
+      position: absolute;
+      right: 7%;
+      bottom: -8px;
+      width: min(118px, 28%);
+      height: auto;
+      border-radius: 24px;
+      box-shadow:
+        0 18px 48px rgba(0,0,0,.48),
+        0 0 46px rgba(155,92,255,.20);
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.18);
+    }
+
     .miniGrid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -358,6 +379,68 @@
       font-size: 14px;
     }
 
+
+    .button.disabled {
+      opacity: .58;
+      cursor: not-allowed;
+      pointer-events: none;
+      background: rgba(255,255,255,.06);
+      border: 1px solid var(--line);
+      box-shadow: none;
+    }
+
+    .stepList {
+      counter-reset: step;
+      margin: 18px 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 12px;
+    }
+
+    .stepList li {
+      counter-increment: step;
+      color: var(--muted);
+      padding-left: 44px;
+      position: relative;
+    }
+
+    .stepList li:before {
+      content: counter(step);
+      position: absolute;
+      left: 0;
+      top: -2px;
+      width: 28px;
+      height: 28px;
+      display: inline-grid;
+      place-items: center;
+      border-radius: 999px;
+      background: rgba(155,92,255,.18);
+      border: 1px solid rgba(155,92,255,.34);
+      color: #fff;
+      font-weight: 900;
+      font-size: 13px;
+    }
+
+    .callout {
+      border: 1px solid rgba(255,177,74,.35);
+      background: rgba(255,177,74,.10);
+      border-radius: 18px;
+      padding: 18px;
+      color: var(--muted);
+      margin-top: 16px;
+    }
+
+    .codeInline {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size: .95em;
+      color: #fff;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.10);
+      padding: 2px 6px;
+      border-radius: 7px;
+    }
+
     @media (max-width: 900px) {
       .heroGrid,
       .split,
@@ -379,6 +462,13 @@
         width: min(260px, 82%);
         border-radius: 28px;
       }
+
+      .heroIconSmall {
+        width: min(92px, 30%);
+        right: 5%;
+        bottom: -4px;
+        border-radius: 20px;
+      }
     }
   </style>
 </head>
@@ -386,19 +476,19 @@
   <header>
     <div class="wrap nav">
       <a class="brand" href="#">
-        <img class="logo" src="/icon.png" alt="Local Music Organizer icon" />
+        <img class="logo" src="/icon.jpeg" alt="Local Music Organizer icon" />
         <span>Local Music Organizer</span>
       </a>
       <nav class="navlinks">
         <a href="#story">Story</a>
         <a href="#features">Features</a>
         <a href="#trial">Trial</a>
-        <a href="#cache">Music Cache</a>
-        <a href="#safety">Safety</a>
+        <a href="#download">Download</a>
+        <a href="#manual">User Guide</a>
+        <a href="#license-activation">License</a>
+        <a href="#repair-requirements">Repair Setup</a>
         <a href="#early-access">Pricing</a>
         <a href="#terms">Terms</a>
-        <a href="#privacy">Privacy</a>
-        <a href="#refunds">Refunds</a>
       </nav>
     </div>
   </header>
@@ -413,6 +503,7 @@
           <p class="sectionLead">Trial mode lets you test the app on one playlist at a time, up to 50 local tracks. Activate Early Access for $19 to unlock full-library scans, unlimited playlist analysis, cleanup actions, Repair / Convert, and File Maintenance tools.</p>
           <div class="heroActions">
             <button class="button" type="button" onclick="openEarlyAccessCheckout(event)">Get Early Access</button>
+            <a class="button secondary" href="/LocalMusicOrganizer_UserGuide.pdf">Download User Guide</a>
             <a class="button secondary" href="#trial">Read Trial Details</a>
             <a class="button secondary" href="#safety">Read Safety Notes</a>
           </div>
@@ -432,7 +523,10 @@
 
         <div class="heroCard">
           <div class="heroIconWrap">
-            <img class="heroIcon" src="/icon.png" alt="Local Music Organizer app icon" />
+            <div class="heroIconStack">
+              <img class="heroIcon" src="/icon.jpeg" alt="Local Music Organizer app icon" />
+              <img class="heroIconSmall" src="/icon.jpeg" alt="" aria-hidden="true" />
+            </div>
           </div>
           <div class="miniGrid">
             <div class="mini"><strong>Trial Mode</strong>Analyze one playlist at a time, up to 50 local tracks, before buying.</div>
@@ -485,6 +579,98 @@
             <li>Full-library scans require Early Access activation.</li>
             <li>Cleanup actions, Repair / Convert, File Maintenance, and unlimited playlist analysis require Early Access activation.</li>
           </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="download">
+      <div class="wrap split">
+        <div>
+          <h2>Download and documentation.</h2>
+          <p class="sectionLead">Local Music Organizer is distributed directly for macOS Early Access users. The public download area will be used for the current build, the PDF user guide, and future update information.</p>
+          <p class="sectionLead">The app download will be published here after the release build is properly signed and notarized for distribution outside the Mac App Store. Until then, Early Access build delivery may be handled manually with the license email.</p>
+          <div class="heroActions">
+            <a class="button" href="/LocalMusicOrganizer_UserGuide.pdf">Download User Guide PDF</a>
+            <a class="button secondary disabled" href="#download" aria-disabled="true">App download coming after notarization</a>
+          </div>
+          <p class="fine">The user guide is intended to reduce support questions. It explains permissions, trial limits, activation, Repair / Convert setup, Homebrew, codecs, old-school helpers, SACD Extract, OptimFROG, safety, backups, and troubleshooting.</p>
+        </div>
+
+        <div class="panel">
+          <h3>Planned download files</h3>
+          <ul class="list">
+            <li><span class="highlight">LocalMusicOrganizer.dmg</span> - signed and notarized macOS app package.</li>
+            <li><span class="highlight">LocalMusicOrganizer_UserGuide.pdf</span> - detailed user guide and support manual.</li>
+            <li><span class="highlight">appcast.xml</span> - future Sparkle update feed for Check for Updates.</li>
+            <li>Large app builds may be hosted through Cloudflare R2 while the website remains on Cloudflare Pages.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="manual">
+      <div class="wrap split">
+        <div class="panel">
+          <h2>User Guide PDF.</h2>
+          <p class="sectionLead">The PDF manual explains how to use the app safely before running cleanup actions on a valuable Music.app library. It should be read before using Repair / Convert, File Maintenance, tag editing, or duplicate cleanup workflows.</p>
+          <a class="button" href="/LocalMusicOrganizer_UserGuide.pdf">Download User Guide PDF</a>
+        </div>
+
+        <div class="panel">
+          <h3>What the guide covers</h3>
+          <ul class="list">
+            <li>Trial mode and Early Access activation.</li>
+            <li>Music.app automation permission and Full Disk Access.</li>
+            <li>Library Dashboard, Warm Cache, duplicates, Track Usage, Playlist Compare, Health Check, Artwork Check, and Smart Shuffle.</li>
+            <li>Repair / Convert setup with Homebrew, Command Line Tools, FFmpeg, LAME, xmp, WavPack, SACD Extract, and OptimFROG notes.</li>
+            <li>Backup rules, safe cleanup, undo, logs, and troubleshooting.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="license-activation">
+      <div class="wrap split">
+        <div>
+          <h2>License and activation.</h2>
+          <p class="sectionLead">Early Access activation requires an internet connection. A license is generated manually for the buyer email and the Mac Hardware ID shown in the app's License screen.</p>
+          <p class="sectionLead">The app checks license status during activation, at startup, and periodically while running. The current policy is a server check about every 60 minutes while the app is open. If the license server is temporarily unavailable, the last successful active check allows up to 24 hours of offline use.</p>
+          <p class="sectionLead">If a payment is refunded, charged back, disputed, flagged for fraud, or a license is otherwise revoked, full-version access may be disabled during a future license check. Trial mode remains available without activation.</p>
+        </div>
+
+        <div class="panel">
+          <h3>Activation steps</h3>
+          <ol class="stepList">
+            <li>Open the app and go to the <span class="codeInline">License</span> screen.</li>
+            <li>Enter the buyer email used for purchase.</li>
+            <li>Click <span class="codeInline">Copy License Request</span>.</li>
+            <li>Email the request to <span class="codeInline">sergeyappleservice@gmail.com</span>.</li>
+            <li>Receive a manual license key and activate online.</li>
+          </ol>
+          <div class="callout">License delivery is manual and may take several hours depending on time zone differences. A short manual delivery delay is not considered a product failure.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="repair-requirements">
+      <div class="wrap split">
+        <div>
+          <h2>Repair / Convert requirements.</h2>
+          <p class="sectionLead">Repair / Convert workflows may need optional external helper tools. The app can check what is installed and open Terminal-based installers for common helpers. These tools are used for inspection and conversion workflows; they are not required for basic playlist and library analysis.</p>
+          <p class="sectionLead">On a clean Mac, Homebrew may ask macOS to install Apple Command Line Tools. This is not the full Xcode app. It is Apple's smaller command-line developer tools package needed by Homebrew for some installations.</p>
+          <p class="sectionLead">Original audio files should be preserved. Converted files should be reviewed before replacing references or removing anything from a library.</p>
+        </div>
+
+        <div class="panel">
+          <h3>Recommended setup order</h3>
+          <ol class="stepList">
+            <li><span class="highlight">Install Homebrew</span> if Check Tools says brew is missing.</li>
+            <li>Run <span class="highlight">Open Terminal Installer</span> for FFmpeg and LAME.</li>
+            <li>Run <span class="highlight">Install Old-School Helpers</span> for xmp and WavPack tools.</li>
+            <li>Run <span class="highlight">Install SACD Extract</span> only if you use SACD ISO files.</li>
+            <li>Use <span class="highlight">Copy OptimFROG Notes</span> for manual OFR/OFS decoder setup.</li>
+            <li>Return to the app and click <span class="highlight">Check Tools</span> again.</li>
+          </ol>
         </div>
       </div>
     </section>
@@ -581,8 +767,8 @@
         <div class="panel">
           <h3>Early Access license</h3>
           <div class="price">$19</div>
-          <p class="sectionLead" style="font-size:16px;margin-bottom:18px;">One-time Early Access license. Unlocks full-library scans, unlimited playlist analysis, cleanup actions, Repair / Convert, File Maintenance, and Early Access updates. License keys are generated manually for the buyer email and Mac hardware ID.</p>
-          <p class="fine" style="margin-bottom:16px;">Trial mode works without activation for one playlist at a time, up to 50 local tracks. License delivery is manual and may take several hours depending on time zone differences.</p>
+          <p class="sectionLead" style="font-size:16px;margin-bottom:18px;">One-time Early Access license. Unlocks full-library scans, unlimited playlist analysis, cleanup actions, Repair / Convert, File Maintenance, and Early Access updates. License keys are generated manually for the buyer email and Mac hardware ID. Activation and license status checks require an internet connection.</p>
+          <p class="fine" style="margin-bottom:16px;">Trial mode works without activation for one playlist at a time, up to 50 local tracks. Activated licenses are checked online at activation, at startup, and periodically while running. If the license server is temporarily unavailable, the last successful active check allows up to 24 hours of offline use.</p>
           <button class="button" type="button" onclick="openEarlyAccessCheckout(event)">Buy Early Access</button>
           <p class="fine" style="margin-top:14px;">After payment, open the app, copy your License Request, and send it to sergeyappleservice@gmail.com. Your license key will be generated manually.</p>
           <div class="checkoutStatus" id="checkoutStatusPricing"></div>
@@ -603,9 +789,10 @@
         <p class="sectionLead">Local Music Organizer is provided as Early Access macOS software for local Music.app library maintenance. By purchasing or using the app, you understand that it is intended for careful users who maintain backups of their important music libraries.</p>
         <p class="sectionLead">The app can be opened in trial mode without an active license. Trial mode is limited to analyzing one playlist at a time, up to 50 local tracks. Full-library scans, unlimited playlist analysis, cleanup actions, Repair / Convert, File Maintenance, and other full maintenance features require Early Access activation.</p>
         <p class="sectionLead">The app can read local Music.app library data, inspect local audio files, compare playlists, edit Music.app tags, remove playlist entries, and generate reports when you explicitly choose those actions. You are responsible for reviewing changes before confirming them.</p>
-        <p class="sectionLead">A license is issued for one buyer email and one Mac hardware ID. Hardware replacement, system migration, clean macOS reinstall, or major device changes may require a replacement license key. Early Access features may change during development.</p>
+        <p class="sectionLead">A license is issued for one buyer email and one Mac hardware ID. Activation requires an internet connection. Local Music Organizer may check license status during activation, at startup, and periodically while running. If the license server is temporarily unavailable, the last successful active check allows up to 24 hours of offline use.</p>
+        <p class="sectionLead">Licenses may be revoked after refunds, chargebacks, payment disputes, fraud, misuse, or other manual review. If a license is revoked, full-version access may stop during a future license check while trial mode remains available. Hardware replacement, system migration, clean macOS reinstall, or major device changes may require a replacement license key. Early Access features may change during development.</p>
         <p class="sectionLead">License keys are generated manually after purchase. Because this is a manual Early Access process, license delivery may not be instant and may take several hours depending on time zone differences.</p>
-        <p class="sectionLead">Local Music Organizer is not responsible for damage caused by missing backups, incorrect user actions, third-party tools, corrupted Music.app libraries, file permission problems, unsupported macOS versions, unsupported library setups, or unsupported system configurations. Always keep backups before cleanup or repair work.</p>
+        <p class="sectionLead">Repair / Convert workflows may require optional external helper tools such as Homebrew-installed audio utilities. Some rare decoders, such as OptimFROG for OFR/OFS files, may require manual installation. Local Music Organizer is not responsible for damage caused by missing backups, incorrect user actions, third-party tools, corrupted Music.app libraries, file permission problems, unsupported macOS versions, unsupported library setups, unsupported helper tools, or unsupported system configurations. Always keep backups before cleanup or repair work.</p>
       </div>
     </section>
 
@@ -615,6 +802,7 @@
         <p class="sectionLead">Local Music Organizer is designed as a local macOS utility. The app works with local Music.app libraries and local files on your Mac. It does not require a user account or cloud database for normal operation.</p>
         <p class="sectionLead">The app can run in trial mode without activation. Trial mode analysis happens locally on your Mac and is limited to one playlist at a time, up to 50 local tracks.</p>
         <p class="sectionLead">For Early Access licensing, the app displays a license request containing the buyer email, app version, and a hardware ID derived from the Mac. The buyer sends this license request manually by email so a license key can be generated.</p>
+        <p class="sectionLead">Activation and license status checks may contact the license server and send the buyer email, Mac Hardware ID, license key, app version, and basic license status information. This is used only for activation, license validation, refund handling, fraud prevention, support, and troubleshooting.</p>
         <p class="sectionLead">The app may store license information locally on the Mac. It does not sell personal data. Payment processing, checkout, tax handling, and transaction records may be handled by the payment provider used for purchase.</p>
         <p class="sectionLead">Support emails may contain information voluntarily provided by the user, such as license request text, app version, hardware ID, logs, screenshots, or problem descriptions. This information is used only for support, licensing, troubleshooting, and product improvement.</p>
       </div>
@@ -627,7 +815,8 @@
         <p class="sectionLead">Trial mode is available before purchase and allows the app to analyze one playlist at a time, up to 50 local tracks. Users are encouraged to confirm that the app can read their Music.app library before purchasing Early Access.</p>
         <p class="sectionLead">If the app cannot be activated or does not launch on a supported Mac, contact support at sergeyappleservice@gmail.com with your purchase email, app version, macOS version, and license request.</p>
         <p class="sectionLead">Refunds may be accepted when the software cannot be activated or cannot reasonably be used on a supported system after troubleshooting.</p>
-        <p class="sectionLead">Refunds may be declined if more than 14 days have passed since purchase, if the license has been issued and the software works as described, or if the problem is caused by unsupported macOS versions, missing permissions, missing backups, unsupported library setups, corrupted local libraries, third-party tools, or user actions outside the app’s intended use.</p>
+        <p class="sectionLead">Refunds may be declined if more than 14 days have passed since purchase, if the license has been issued and the software works as described, or if the problem is caused by unsupported macOS versions, missing permissions, missing backups, unsupported library setups, corrupted local libraries, third-party tools, optional helper tools, or user actions outside the app’s intended use.</p>
+        <p class="sectionLead">If a refund, chargeback, payment dispute, fraud review, or manual license review results in revocation after a license has been issued, the license may be disabled on the license server and the app may stop accepting that license during future license checks.</p>
         <p class="sectionLead">Because license keys are issued manually, a short delivery delay is not considered a product failure. Depending on time zone differences, license delivery may take several hours.</p>
         <p class="sectionLead">Before purchase, users should understand that Early Access software may contain bugs, interface changes, and ongoing improvements.</p>
       </div>
@@ -637,7 +826,7 @@
   <footer class="footer">
     <div class="wrap">
       <strong>Local Music Organizer</strong><br />
-      Early Access macOS utility for large local Music.app libraries. Trial mode analyzes one playlist at a time, up to 50 local tracks. Apple Silicon recommended. Intel supported with Universal builds. macOS 14 Sonoma or later. Use at your own responsibility and keep backups of important libraries. License delivery is manual and may take several hours depending on time zone differences. Refund requests should be submitted within 14 days of purchase.
+      Early Access macOS utility for large local Music.app libraries. Trial mode analyzes one playlist at a time, up to 50 local tracks. Apple Silicon recommended. Intel supported with Universal builds. macOS 14 Sonoma or later. Activation requires internet and periodic license status checks. Use at your own responsibility and keep backups of important libraries. License delivery is manual and may take several hours depending on time zone differences. Refund requests should be submitted within 14 days of purchase.
     </div>
   </footer>
 
