@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://local-music-organizer-site.pages.dev/sitemap.xml
