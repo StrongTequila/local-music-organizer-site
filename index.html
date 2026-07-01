@@ -1,0 +1,1280 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Local Music Organizer for Mac</title>
+  <link rel="icon" type="image/png" href="/icon.png" />
+  <link rel="apple-touch-icon" href="/icon.png" />
+  <meta name="description" content="Local Music Organizer is an Early Access macOS app for cleaning, comparing, repairing, inspecting, and organizing large local Music.app libraries. Trial mode analyzes one playlist at a time, up to 50 local tracks." />
+  <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
+  <style>
+    :root {
+      --bg: #0f0f14;
+      --panel: #171720;
+      --panel2: #20202b;
+      --text: #f4f4f7;
+      --muted: #b7b7c5;
+      --soft: #8b8ba0;
+      --accent: #9b5cff;
+      --accent2: #4aa8ff;
+      --green: #43d17a;
+      --orange: #ffb14a;
+      --line: rgba(255,255,255,.12);
+      --shadow: 0 18px 60px rgba(0,0,0,.38);
+      --radius: 22px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top left, rgba(155,92,255,.26), transparent 34rem),
+        radial-gradient(circle at top right, rgba(74,168,255,.20), transparent 34rem),
+        linear-gradient(180deg, #101016 0%, #0b0b10 100%);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+      line-height: 1.55;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .wrap {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(20px);
+      background: rgba(15,15,20,.72);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 10px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: -.02em;
+      white-space: nowrap;
+    }
+
+    .logo {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      object-fit: cover;
+      box-shadow: 0 10px 30px rgba(155,92,255,.32);
+      display: block;
+    }
+
+    .navlinks {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 14px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .navlinks a:hover { color: var(--text); }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      padding: 12px 18px;
+      font-weight: 750;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: white;
+      box-shadow: 0 16px 40px rgba(74,168,255,.18);
+      border: 0;
+      cursor: pointer;
+    }
+
+    .button.secondary {
+      background: rgba(255,255,255,.08);
+      border: 1px solid var(--line);
+      box-shadow: none;
+      color: var(--text);
+    }
+
+    .button:disabled {
+      opacity: .65;
+      cursor: wait;
+    }
+
+    .checkoutStatus {
+      color: var(--soft);
+      font-size: 13px;
+      margin-top: 10px;
+      min-height: 20px;
+    }
+
+    .hero {
+      padding: 84px 0 48px;
+    }
+
+    .heroGrid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #dcdcff;
+      background: rgba(155,92,255,.16);
+      border: 1px solid rgba(155,92,255,.32);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(44px, 6vw, 78px);
+      line-height: .96;
+      letter-spacing: -.06em;
+      margin: 0 0 22px;
+    }
+
+    h2 {
+      font-size: clamp(30px, 4vw, 46px);
+      line-height: 1.05;
+      letter-spacing: -.04em;
+      margin: 0 0 16px;
+    }
+
+    h3 {
+      margin: 0 0 10px;
+      font-size: 20px;
+      letter-spacing: -.02em;
+    }
+
+    .lead {
+      font-size: clamp(18px, 2vw, 23px);
+      color: var(--muted);
+      max-width: 780px;
+      margin: 0 0 28px;
+    }
+
+    .sectionLead {
+      color: var(--muted);
+      font-size: 18px;
+      max-width: 900px;
+      margin: 0 0 18px;
+    }
+
+    .heroActions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 26px 0 20px;
+    }
+
+    .fine {
+      color: var(--soft);
+      font-size: 14px;
+      max-width: 780px;
+    }
+
+    .heroCard,
+    .panel,
+    .card {
+      background: rgba(255,255,255,.055);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+    }
+
+    .heroCard {
+      padding: 24px;
+      box-shadow: var(--shadow);
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+    }
+
+    .heroIconWrap {
+      display: grid;
+      place-items: center;
+      padding: 18px 10px 24px;
+    }
+
+    .heroIcon {
+      width: min(320px, 80%);
+      height: auto;
+      border-radius: 34px;
+      box-shadow:
+        0 28px 80px rgba(0,0,0,.45),
+        0 0 70px rgba(155,92,255,.18);
+    }
+
+    .heroIconStack {
+      position: relative;
+      display: grid;
+      place-items: center;
+      width: 100%;
+    }
+
+    .heroIconSmall {
+      position: absolute;
+      right: 7%;
+      bottom: -8px;
+      width: min(118px, 28%);
+      height: auto;
+      border-radius: 24px;
+      box-shadow:
+        0 18px 48px rgba(0,0,0,.48),
+        0 0 46px rgba(155,92,255,.20);
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.18);
+    }
+
+    .miniGrid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .mini {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.08);
+      padding: 13px;
+      border-radius: 14px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .mini strong {
+      display: block;
+      color: var(--text);
+      font-size: 15px;
+      margin-bottom: 4px;
+    }
+
+    section {
+      padding: 48px 0;
+      scroll-margin-top: 95px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .card {
+      padding: 22px;
+      min-height: 210px;
+    }
+
+    .card p {
+      color: var(--muted);
+      margin: 0;
+      font-size: 15px;
+    }
+
+    .pillRow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .pill {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.06);
+      color: var(--muted);
+      padding: 8px 11px;
+      border-radius: 999px;
+      font-size: 13px;
+    }
+
+    .pill.strong {
+      color: #fff;
+      border-color: rgba(67,209,122,.42);
+      background: rgba(67,209,122,.12);
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 22px;
+      align-items: start;
+    }
+
+    .panel {
+      padding: 24px;
+    }
+
+    .list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 12px;
+    }
+
+    .list li {
+      color: var(--muted);
+      padding-left: 28px;
+      position: relative;
+    }
+
+    .list li:before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--green);
+      font-weight: 900;
+    }
+
+    .warning li:before {
+      content: "!";
+      color: var(--orange);
+    }
+
+    .price {
+      font-size: 42px;
+      font-weight: 900;
+      letter-spacing: -.04em;
+      margin: 10px 0;
+    }
+
+    .highlight {
+      color: white;
+      font-weight: 800;
+    }
+
+    .footer {
+      padding: 38px 0 52px;
+      border-top: 1px solid var(--line);
+      color: var(--soft);
+      font-size: 14px;
+    }
+
+
+    .button.disabled {
+      opacity: .58;
+      cursor: not-allowed;
+      pointer-events: none;
+      background: rgba(255,255,255,.06);
+      border: 1px solid var(--line);
+      box-shadow: none;
+    }
+
+    .stepList {
+      counter-reset: step;
+      margin: 18px 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 12px;
+    }
+
+    .stepList li {
+      counter-increment: step;
+      color: var(--muted);
+      padding-left: 44px;
+      position: relative;
+    }
+
+    .stepList li:before {
+      content: counter(step);
+      position: absolute;
+      left: 0;
+      top: -2px;
+      width: 28px;
+      height: 28px;
+      display: inline-grid;
+      place-items: center;
+      border-radius: 999px;
+      background: rgba(155,92,255,.18);
+      border: 1px solid rgba(155,92,255,.34);
+      color: #fff;
+      font-weight: 900;
+      font-size: 13px;
+    }
+
+    .callout {
+      border: 1px solid rgba(255,177,74,.35);
+      background: rgba(255,177,74,.10);
+      border-radius: 18px;
+      padding: 18px;
+      color: var(--muted);
+      margin-top: 16px;
+    }
+
+    .codeInline {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size: .95em;
+      color: #fff;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.10);
+      padding: 2px 6px;
+      border-radius: 7px;
+    }
+
+    @media (max-width: 900px) {
+      .heroGrid,
+      .split,
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav {
+        height: auto;
+        padding: 14px 0;
+        align-items: flex-start;
+      }
+
+      .navlinks { display: none; }
+
+      .hero { padding-top: 52px; }
+
+      .heroIcon {
+        width: min(260px, 82%);
+        border-radius: 28px;
+      }
+
+      .heroIconSmall {
+        width: min(92px, 30%);
+        right: 5%;
+        bottom: -4px;
+        border-radius: 20px;
+      }
+    }
+  
+.philosophy {
+  margin-top: 24px;
+}
+.philosophy p {
+  max-width: 980px;
+}
+
+.storage-benefit {
+  margin-top: 24px;
+}
+.storage-benefit p {
+  max-width: 980px;
+}
+
+  
+    /* RESPONSIVE CLICKABLE SCREENSHOTS */
+    #screenshots {
+      padding: 54px 0 !important;
+      overflow: hidden !important;
+    }
+
+    #screenshots .screenshotsWrap {
+      max-width: 1280px !important;
+      margin: 0 auto !important;
+      padding-left: 24px !important;
+      padding-right: 24px !important;
+    }
+
+    #screenshots .screenshotsGridCompact {
+      display: grid !important;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)) !important;
+      gap: 22px !important;
+      align-items: stretch !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      margin-top: 28px !important;
+    }
+
+    #screenshots .screenshotCard {
+      display: flex !important;
+      flex-direction: column !important;
+      min-width: 0 !important;
+      overflow: hidden !important;
+      border-radius: 20px !important;
+      background: rgba(255,255,255,.055) !important;
+      border: 1px solid rgba(255,255,255,.14) !important;
+      box-shadow: 0 16px 48px rgba(0,0,0,.30) !important;
+      transition: transform .16s ease, border-color .16s ease, box-shadow .16s ease;
+    }
+
+    #screenshots .screenshotCard:hover {
+      transform: translateY(-2px);
+      border-color: rgba(155,92,255,.45) !important;
+      box-shadow: 0 20px 60px rgba(0,0,0,.38) !important;
+    }
+
+    #screenshots .screenshotLink {
+      display: block !important;
+      width: 100% !important;
+      aspect-ratio: 16 / 10 !important;
+      background: #f4f3ef !important;
+      overflow: hidden !important;
+      cursor: zoom-in !important;
+      border-bottom: 1px solid rgba(255,255,255,.10) !important;
+    }
+
+    #screenshots .screenshotLink img {
+      display: block !important;
+      width: 100% !important;
+      height: 100% !important;
+      max-width: 100% !important;
+      object-fit: contain !important;
+      object-position: center center !important;
+      background: #f4f3ef !important;
+    }
+
+    #screenshots .screenshotCaption {
+      padding: 16px 18px 18px !important;
+      flex: 1 !important;
+    }
+
+    #screenshots .screenshotCaption h3 {
+      margin: 0 0 6px !important;
+      font-size: 17px !important;
+      line-height: 1.25 !important;
+    }
+
+    #screenshots .screenshotCaption p {
+      margin: 0 !important;
+      font-size: 14px !important;
+      line-height: 1.45 !important;
+      color: var(--muted) !important;
+    }
+
+    @media (min-width: 1500px) {
+      #screenshots .screenshotsWrap {
+        max-width: 1400px !important;
+      }
+
+      #screenshots .screenshotsGridCompact {
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+      }
+    }
+
+    @media (max-width: 820px) {
+      #screenshots .screenshotsGridCompact {
+        grid-template-columns: 1fr !important;
+      }
+
+      #screenshots .screenshotLink {
+        aspect-ratio: 16 / 11 !important;
+      }
+    }
+
+  </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Local Music Organizer",
+  "operatingSystem": "macOS 14 Sonoma or later",
+  "applicationCategory": "MultimediaApplication",
+  "screenshot": [
+    "https://local-music-organizer-site.pages.dev/screenshots/01-library-dashboard.jpg",
+    "https://local-music-organizer-site.pages.dev/screenshots/02-setup-file-search-roots.jpg",
+    "https://local-music-organizer-site.pages.dev/screenshots/03-library-map.jpg",
+    "https://local-music-organizer-site.pages.dev/screenshots/04-playlist-duplicates.jpg",
+    "https://local-music-organizer-site.pages.dev/screenshots/05-library-duplicates-1.jpg",
+    "https://local-music-organizer-site.pages.dev/screenshots/06-library-duplicates-2.jpg",
+    "https://local-music-organizer-site.pages.dev/screenshots/07-playlist-compare.jpg",
+    "https://local-music-organizer-site.pages.dev/screenshots/08-track-usage.jpg",
+    "https://local-music-organizer-site.pages.dev/screenshots/09-quality-duplicates.jpg",
+    "https://local-music-organizer-site.pages.dev/screenshots/10-audio-inspector-1.jpg",
+    "https://local-music-organizer-site.pages.dev/screenshots/11-audio-inspector-2.jpg",
+    "https://local-music-organizer-site.pages.dev/screenshots/12-file-maintenance.jpg",
+    "https://local-music-organizer-site.pages.dev/screenshots/13-repair-convert-1.jpg",
+    "https://local-music-organizer-site.pages.dev/screenshots/14-repair-convert-2.jpg",
+    "https://local-music-organizer-site.pages.dev/screenshots/15-shuffle-builder.jpg",
+    "https://local-music-organizer-site.pages.dev/screenshots/16-license-activated.jpg",
+    "https://local-music-organizer-site.pages.dev/screenshots/17-license-trial.jpg",
+    "https://local-music-organizer-site.pages.dev/screenshots/18-setup-general.jpg"
+  ]
+}
+</script>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#">
+        <img class="logo" src="/icon.png" alt="Local Music Organizer icon" />
+        <span>Local Music Organizer</span>
+      </a>
+      <nav class="navlinks">
+        <a href="#story">Story</a>
+        <a href="#features">Features</a>
+        <a href="#screenshots">Screenshots</a>
+        <a href="#trial">Trial</a>
+        <a href="#download">Download</a>
+        <a href="#manual">User Guide</a>
+        <a href="#license-activation">License</a>
+        <a href="#repair-requirements">Repair Setup</a>
+        <a href="#early-access">Pricing</a>
+        <a href="#terms">Terms</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap heroGrid">
+        <div>
+          <div class="badge">Early Access · Trial mode included · macOS 14 Sonoma or later · Universal Mac build</div>
+          <h1>Clean up large local Music.app libraries without losing control.</h1>
+          <p class="lead">Local Music Organizer is a macOS utility for people with serious local music collections. It helps inspect large Music.app libraries, compare playlists, find repeated tracks, locate playlist usage, edit Music.app tags, identify missing files and artwork, inspect audio quality, build smarter shuffle lists, and safely repair messy local libraries.</p>
+          <p class="sectionLead">Trial mode lets you test the app on one playlist at a time, up to 50 local tracks. Early Access is currently $19. This is an introductory Early Access price; the regular 1.0 price is expected to increase after the app leaves Early Access. Activation unlocks full-library scans, unlimited playlist analysis, cleanup actions, Repair / Convert, and File Maintenance tools. Serial numbers are currently delivered manually by email, usually within 24 hours after purchase.</p>
+          <div class="heroActions">
+            <button class="button" type="button" onclick="openEarlyAccessCheckout(event)">Get Early Access</button>
+            <a class="button secondary" href="/LocalMusicOrganizer_UserGuide.pdf">Download User Guide</a>
+            <a class="button secondary" href="#trial">Read Trial Details</a>
+            <a class="button secondary" href="#safety">Read Safety Notes</a>
+          </div>
+          <div class="checkoutStatus" id="checkoutStatus"></div>
+          <p class="fine">Apple Silicon is recommended. Intel Macs are supported with Universal builds, but very large scans and Music.app operations may be slower. The app is designed for local Music.app libraries, not cloud-only Apple Music streaming collections.</p>
+          <div class="pillRow">
+            <span class="pill strong">Trial: one playlist · up to 50 local tracks</span>
+            <span class="pill">Music.app library tools</span>
+            <span class="pill">Playlist comparison</span>
+            <span class="pill">Duplicate cleanup</span>
+            <span class="pill">Tag editing with undo</span>
+            <span class="pill">Warm Cache acceleration</span>
+            <span class="pill">Audio inspection</span>
+            <span class="pill">Repair / Convert workflows</span>
+          </div>
+        </div>
+
+        <div class="heroCard">
+          <div class="heroIconWrap">
+            <div class="heroIconStack">              <img class="heroIcon" src="/icon.png" alt="Local Music Organizer app icon" />
+            </div>
+          </div>
+          <div class="miniGrid">
+            <div class="mini"><strong>Trial Mode</strong>Analyze one playlist at a time, up to 50 local tracks, before buying.</div>
+            <div class="mini"><strong>Playlist Compare</strong>Find the same track across two playlists and remove only the playlist entry.</div>
+            <div class="mini"><strong>Track Usage</strong>Find files, press Enter to search, preview physical files, or play cached Music.app matches.</div>
+            <div class="mini"><strong>Dashboard</strong>Inspect bitrate, codec, sample rate, missing files, artwork, and outliers.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+
+<section class="story-card-section">
+      <div class="wrap">
+        <div class="card philosophy containedCard">
+<p class="eyebrow">Built for offline collectors</p>
+  <h2>For the libraries streaming forgot</h2>
+  <p>
+    The modern music world is moving toward subscriptions, cloud catalogs, and rented access.
+    That works for many listeners, but there is another side of music collecting: people with
+    offline libraries built carefully over years from CDs, downloads, rare releases, CUE albums,
+    old formats, DJ archives, and personal folder structures.
+  </p>
+  <p>
+    Local Music Organizer was created from that side of the world. I am one of those users:
+    I wanted a practical way to keep a large local Music.app library clean, playable, and
+    under my control without turning everything into a subscription workflow.
+  </p>
+  <p>
+    This app is for people who still care about owning their files, keeping music available
+    offline, and maintaining a real local collection. It focuses on the work that is easy to
+    neglect and hard to do by hand: finding broken records, checking duplicates, repairing
+    metadata, converting incompatible files, working with CUE sheets, and keeping Music.app
+    useful for a library that has history.
+  </p>
+        </div>
+      </div>
+    </section>
+
+<section class="story-card-section">
+      <div class="wrap">
+        <div class="card storage-benefit containedCard">
+<p class="eyebrow">Cleaner library, less wasted space</p>
+  <h2>A well-maintained library can be smaller and easier to sync</h2>
+  <p>
+    Large local music collections often grow messy over time: duplicate records, repeated playlist
+    entries, missing files, old converted copies, incompatible formats, oversized files, and albums
+    kept in several versions. Local Music Organizer helps you review these problems before cleanup,
+    so you can keep the library you actually use instead of carrying years of accidental clutter.
+  </p>
+  <p>
+    A properly cleaned and optimized offline library can take significantly less space on your Mac —
+    and even more importantly, on an iPhone or iPad where storage is limited. The app is designed to
+    help you find what is safe to review, repair, convert, or remove from playlists without blindly
+    deleting your original archive files.
+  </p>
+        </div>
+      </div>
+    </section>
+
+<section id="story">
+      <div class="wrap split">
+        <div>
+          <h2>Built from a real library problem by an independent creator.</h2>
+          <p class="sectionLead">Local Music Organizer started as a personal tool, not as a generic software product. I built it because I was maintaining a large offline Music.app library collected over many years, and the usual manual checking became too slow and unreliable.</p>
+          <p class="sectionLead">The problem was practical: repeated tracks, unclear playlist usage, old duplicates, missing artwork, inconsistent tags, suspicious file references, CUE albums, rare formats, and shuffle playlists that could start to feel repetitive. I needed one place to inspect the library, compare playlists, find where tracks were used, and review problems before changing anything.</p>
+          <p class="sectionLead">The app was built around that real workflow: visibility first, safe review before cleanup, undo where possible, and no blind automatic deletion. It helped me bring order back to my own collection before I decided to make it available to other people with serious local music libraries.</p>
+          <p class="sectionLead">That is why Local Music Organizer focuses on local files, Music.app playlists, clean metadata, rare releases, safe review, and knowing exactly what will change before you press a button.</p>
+        </div>
+
+        <div class="panel">
+          <h3>Why this app exists</h3>
+          <ul class="list">
+            <li>Created by an independent music collector to solve a real library problem.</li>
+            <li>Built for large offline Music.app libraries with local files and real playlists.</li>
+            <li>Focused on inspection and review before cleanup, not blind automatic deletion.</li>
+            <li>Designed to find repeated tracks, broken references, messy tags, and unclear playlist usage.</li>
+            <li>Includes Smart Shuffle Builder for more natural large-library listening sessions.</li>
+            <li>Made for people who still value carefully maintained local music collections.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    
+    <section id="screenshots">
+      <div class="wrap screenshotsWrap">
+        <h2>Screenshots</h2>
+        <p class="sectionLead">Current JPG screenshots from the latest build. Each image is clickable and opens the full-size file for review, Google indexing, and catalog submissions.</p>
+
+        <div class="screenshotsGrid screenshotsGridCompact">
+          <article class="screenshotCard">
+            <a class="screenshotLink" href="/screenshots/01-library-dashboard.jpg" target="_blank" rel="noopener" aria-label="Open full screenshot: Library Dashboard">
+              <img src="/screenshots/01-library-dashboard.jpg" alt="Library Dashboard screenshot" loading="lazy" />
+            </a>
+            <div class="screenshotCaption">
+              <h3>Library Dashboard</h3>
+              <p>Overview of Music.app records, quality signals, missing files, artwork state, and issue filters.</p>
+            </div>
+          </article>
+          <article class="screenshotCard">
+            <a class="screenshotLink" href="/screenshots/02-setup-file-search-roots.jpg" target="_blank" rel="noopener" aria-label="Open full screenshot: Setup: File Search Roots">
+              <img src="/screenshots/02-setup-file-search-roots.jpg" alt="Setup: File Search Roots screenshot" loading="lazy" />
+            </a>
+            <div class="screenshotCaption">
+              <h3>Setup: File Search Roots</h3>
+              <p>Primary and additional roots for local folders, external disks, old libraries, and backup folders.</p>
+            </div>
+          </article>
+          <article class="screenshotCard">
+            <a class="screenshotLink" href="/screenshots/03-library-map.jpg" target="_blank" rel="noopener" aria-label="Open full screenshot: Library Map">
+              <img src="/screenshots/03-library-map.jpg" alt="Library Map screenshot" loading="lazy" />
+            </a>
+            <div class="screenshotCaption">
+              <h3>Library Map</h3>
+              <p>Repeated tracks across selected user playlists, with play, stop, inspect, and edit actions.</p>
+            </div>
+          </article>
+          <article class="screenshotCard">
+            <a class="screenshotLink" href="/screenshots/04-playlist-duplicates.jpg" target="_blank" rel="noopener" aria-label="Open full screenshot: Playlist Duplicates">
+              <img src="/screenshots/04-playlist-duplicates.jpg" alt="Playlist Duplicates screenshot" loading="lazy" />
+            </a>
+            <div class="screenshotCaption">
+              <h3>Playlist Duplicates</h3>
+              <p>Repeated entries inside one playlist; removal affects playlist entries only.</p>
+            </div>
+          </article>
+          <article class="screenshotCard">
+            <a class="screenshotLink" href="/screenshots/05-library-duplicates-1.jpg" target="_blank" rel="noopener" aria-label="Open full screenshot: Library Duplicates">
+              <img src="/screenshots/05-library-duplicates-1.jpg" alt="Library Duplicates screenshot" loading="lazy" />
+            </a>
+            <div class="screenshotCaption">
+              <h3>Library Duplicates</h3>
+              <p>Music.app duplicate-record manager for records pointing to the same local file.</p>
+            </div>
+          </article>
+          <article class="screenshotCard">
+            <a class="screenshotLink" href="/screenshots/06-library-duplicates-2.jpg" target="_blank" rel="noopener" aria-label="Open full screenshot: Library Duplicates Details">
+              <img src="/screenshots/06-library-duplicates-2.jpg" alt="Library Duplicates Details screenshot" loading="lazy" />
+            </a>
+            <div class="screenshotCaption">
+              <h3>Library Duplicates Details</h3>
+              <p>Review keep/merge candidates, playlist usage, reveal, inspect, and edit actions.</p>
+            </div>
+          </article>
+          <article class="screenshotCard">
+            <a class="screenshotLink" href="/screenshots/07-playlist-compare.jpg" target="_blank" rel="noopener" aria-label="Open full screenshot: Playlist Compare">
+              <img src="/screenshots/07-playlist-compare.jpg" alt="Playlist Compare screenshot" loading="lazy" />
+            </a>
+            <div class="screenshotCaption">
+              <h3>Playlist Compare</h3>
+              <p>Compare Playlist A and Playlist B with diagnostics for ID, location, and metadata matches.</p>
+            </div>
+          </article>
+          <article class="screenshotCard">
+            <a class="screenshotLink" href="/screenshots/08-track-usage.jpg" target="_blank" rel="noopener" aria-label="Open full screenshot: Track Usage">
+              <img src="/screenshots/08-track-usage.jpg" alt="Track Usage screenshot" loading="lazy" />
+            </a>
+            <div class="screenshotCaption">
+              <h3>Track Usage</h3>
+              <p>Find where a track is used and locate matching physical files.</p>
+            </div>
+          </article>
+          <article class="screenshotCard">
+            <a class="screenshotLink" href="/screenshots/09-quality-duplicates.jpg" target="_blank" rel="noopener" aria-label="Open full screenshot: Quality Duplicates">
+              <img src="/screenshots/09-quality-duplicates.jpg" alt="Quality Duplicates screenshot" loading="lazy" />
+            </a>
+            <div class="screenshotCaption">
+              <h3>Quality Duplicates</h3>
+              <p>Review better/worse versions using codec, bitrate, sample rate, duration, size, and metadata.</p>
+            </div>
+          </article>
+          <article class="screenshotCard">
+            <a class="screenshotLink" href="/screenshots/10-audio-inspector-1.jpg" target="_blank" rel="noopener" aria-label="Open full screenshot: Audio Inspector">
+              <img src="/screenshots/10-audio-inspector-1.jpg" alt="Audio Inspector screenshot" loading="lazy" />
+            </a>
+            <div class="screenshotCaption">
+              <h3>Audio Inspector</h3>
+              <p>Inspect format, codec, sample rate, bitrate, channels, duration, and file size.</p>
+            </div>
+          </article>
+          <article class="screenshotCard">
+            <a class="screenshotLink" href="/screenshots/11-audio-inspector-2.jpg" target="_blank" rel="noopener" aria-label="Open full screenshot: Audio Inspector Details">
+              <img src="/screenshots/11-audio-inspector-2.jpg" alt="Audio Inspector Details screenshot" loading="lazy" />
+            </a>
+            <div class="screenshotCaption">
+              <h3>Audio Inspector Details</h3>
+              <p>Detailed technical audio inspection before repair, conversion, or cleanup.</p>
+            </div>
+          </article>
+          <article class="screenshotCard">
+            <a class="screenshotLink" href="/screenshots/12-file-maintenance.jpg" target="_blank" rel="noopener" aria-label="Open full screenshot: File Maintenance">
+              <img src="/screenshots/12-file-maintenance.jpg" alt="File Maintenance screenshot" loading="lazy" />
+            </a>
+            <div class="screenshotCaption">
+              <h3>File Maintenance</h3>
+              <p>Inline permission and Finder metadata cards with safe review actions.</p>
+            </div>
+          </article>
+          <article class="screenshotCard">
+            <a class="screenshotLink" href="/screenshots/13-repair-convert-1.jpg" target="_blank" rel="noopener" aria-label="Open full screenshot: Repair / Convert">
+              <img src="/screenshots/13-repair-convert-1.jpg" alt="Repair / Convert screenshot" loading="lazy" />
+            </a>
+            <div class="screenshotCaption">
+              <h3>Repair / Convert</h3>
+              <p>Queue-based repair/conversion for difficult audio formats and Music.app-compatible output.</p>
+            </div>
+          </article>
+          <article class="screenshotCard">
+            <a class="screenshotLink" href="/screenshots/14-repair-convert-2.jpg" target="_blank" rel="noopener" aria-label="Open full screenshot: Repair / Convert De-click">
+              <img src="/screenshots/14-repair-convert-2.jpg" alt="Repair / Convert De-click screenshot" loading="lazy" />
+            </a>
+            <div class="screenshotCaption">
+              <h3>Repair / Convert De-click</h3>
+              <p>De-click preview samples and comparison of cleanup modes.</p>
+            </div>
+          </article>
+          <article class="screenshotCard">
+            <a class="screenshotLink" href="/screenshots/15-shuffle-builder.jpg" target="_blank" rel="noopener" aria-label="Open full screenshot: Smart Shuffle Builder">
+              <img src="/screenshots/15-shuffle-builder.jpg" alt="Smart Shuffle Builder screenshot" loading="lazy" />
+            </a>
+            <div class="screenshotCaption">
+              <h3>Smart Shuffle Builder</h3>
+              <p>Create reviewed anti-repeat Music.app playlists from existing playlists.</p>
+            </div>
+          </article>
+          <article class="screenshotCard">
+            <a class="screenshotLink" href="/screenshots/16-license-activated.jpg" target="_blank" rel="noopener" aria-label="Open full screenshot: License Activated">
+              <img src="/screenshots/16-license-activated.jpg" alt="License Activated screenshot" loading="lazy" />
+            </a>
+            <div class="screenshotCaption">
+              <h3>License Activated</h3>
+              <p>Activated Early Access license state.</p>
+            </div>
+          </article>
+          <article class="screenshotCard">
+            <a class="screenshotLink" href="/screenshots/17-license-trial.jpg" target="_blank" rel="noopener" aria-label="Open full screenshot: Trial / License State">
+              <img src="/screenshots/17-license-trial.jpg" alt="Trial / License State screenshot" loading="lazy" />
+            </a>
+            <div class="screenshotCaption">
+              <h3>Trial / License State</h3>
+              <p>Trial and license information before or after activation.</p>
+            </div>
+          </article>
+          <article class="screenshotCard">
+            <a class="screenshotLink" href="/screenshots/18-setup-general.jpg" target="_blank" rel="noopener" aria-label="Open full screenshot: Setup / Diagnostics">
+              <img src="/screenshots/18-setup-general.jpg" alt="Setup / Diagnostics screenshot" loading="lazy" />
+            </a>
+            <div class="screenshotCaption">
+              <h3>Setup / Diagnostics</h3>
+              <p>General setup, permissions, logs, and diagnostics.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+<section id="trial">
+      <div class="wrap split">
+        <div>
+          <h2>Try it first on a real playlist.</h2>
+          <p class="sectionLead">Local Music Organizer can be opened without an active license. Trial mode is intentionally limited, but useful enough to confirm that the app can read your Music.app playlists and analyze real local tracks from your own library.</p>
+          <p class="sectionLead">In trial mode, you can analyze one playlist at a time, up to 50 local tracks. This is designed as a safe preview for people who want to check how the app works before purchasing Early Access.</p>
+        </div>
+
+        <div class="panel">
+          <h3>Trial mode limits</h3>
+          <ul class="list">
+            <li>Analyze one playlist at a time.</li>
+            <li>Up to 50 local tracks per trial scan.</li>
+            <li>Preview playlist-level duplicate detection and related read-only analysis.</li>
+            <li>Full-library scans require Early Access activation.</li>
+            <li>Cleanup actions, Repair / Convert, File Maintenance, and unlimited playlist analysis require Early Access activation.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="download">
+      <div class="wrap split">
+        <div>
+          <h2>Download and documentation.</h2>
+          <p class="sectionLead">Local Music Organizer is distributed directly for macOS Early Access users. The public download area will be used for the current build, the PDF user guide, and future update information.</p>
+          <p class="sectionLead">The app download will be published here after the release build is properly signed and notarized for distribution outside the Mac App Store. Until then, Early Access build delivery may be handled manually with the license email.</p>
+          <div class="heroActions">
+            <a class="button" href="/LocalMusicOrganizer_UserGuide.pdf">Download User Guide PDF</a>
+            <a class="button secondary disabled" href="#download" aria-disabled="true">App download coming after notarization</a>
+          </div>
+          <p class="fine">The user guide is intended to reduce support questions. It explains permissions, trial limits, activation, Repair / Convert setup, Homebrew, codecs, old-school helpers, SACD Extract, OptimFROG, safety, no automatic backup playlists, undo, and troubleshooting.</p>
+        </div>
+
+        <div class="panel">
+          <h3>Planned download files</h3>
+          <ul class="list">
+            <li><span class="highlight">LocalMusicOrganizer.dmg</span> - signed and notarized macOS app package.</li>
+            <li><span class="highlight">LocalMusicOrganizer_UserGuide.pdf</span> - detailed user guide and support manual.</li>
+            <li><span class="highlight">appcast.xml</span> - future Sparkle update feed for Check for Updates.</li>
+            <li>Large app builds may be hosted through Cloudflare R2 while the website remains on Cloudflare Pages.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="manual">
+      <div class="wrap split">
+        <div class="panel">
+          <h2>User Guide PDF.</h2>
+          <p class="sectionLead">The PDF manual explains how to use the app safely before running cleanup actions on a valuable Music.app library. It should be read before using Repair / Convert, File Maintenance, tag editing, or duplicate cleanup workflows.</p>
+          <a class="button" href="/LocalMusicOrganizer_UserGuide.pdf">Download User Guide PDF</a>
+        </div>
+
+        <div class="panel">
+          <h3>What the guide covers</h3>
+          <ul class="list">
+            <li>Trial mode and Early Access activation.</li>
+            <li>Music.app automation permission and Full Disk Access.</li>
+            <li>Library Dashboard, Warm Cache, duplicates, Track Usage, Playlist Compare, Health Check, Artwork Check, and Smart Shuffle.</li>
+            <li>Track Usage playback behavior: Play in Music for cached Music.app matches, Preview for physical files, Stop for playback, and Enter-to-search shortcuts.</li>
+            <li>Repair / Convert setup with Homebrew, Command Line Tools, FFmpeg, LAME, CUE sheets, xmp, WavPack, SACD Extract, and OptimFROG notes.</li>
+            <li>Safe cleanup rules, no automatic backup playlists, immediate Stop behavior, log files only after completed scans, undo, and troubleshooting.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="license-activation">
+      <div class="wrap split">
+        <div>
+          <h2>License and activation.</h2>
+          <p class="sectionLead">Early Access activation requires an internet connection. A license is generated manually for the buyer email and the Mac Hardware ID shown in the app's License screen.</p>
+          <p class="sectionLead">The app checks license status during activation, at startup, and periodically while running. The current policy is a server check about every 60 minutes while the app is open. If the license server is temporarily unavailable, the last successful active check allows up to 24 hours of offline use.</p>
+          <p class="sectionLead">If a payment is refunded, charged back, disputed, flagged for fraud, or a license is otherwise revoked, full-version access may be disabled during a future license check. Trial mode remains available without activation.</p>
+        </div>
+
+        <div class="panel">
+          <h3>Activation steps</h3>
+          <ol class="stepList">
+            <li>Open the app and go to the <span class="codeInline">License</span> screen.</li>
+            <li>Enter the buyer email used for purchase.</li>
+            <li>Click <span class="codeInline">Copy License Request</span>.</li>
+            <li>Email the request to <span class="codeInline">sergeyappleservice@gmail.com</span>.</li>
+            <li>Receive a manual license key and activate online.</li>
+          </ol>
+          <div class="callout">License delivery is manual during Early Access. Your serial number is sent to the email address used at checkout, usually within 24 hours after purchase. Please keep your Paddle receipt/invoice email as proof of purchase. A manual delivery delay within this period is not considered a product failure.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="repair-requirements">
+      <div class="wrap split">
+        <div>
+          <h2>Repair / Convert requirements.</h2>
+          <p class="sectionLead">Repair / Convert workflows may need optional external helper tools. The app can check what is installed and open Terminal-based installers for common helpers. Repair / Convert works with files on disk, CUE sheets, FFmpeg, and helper tools; it does not need Music.app playlist refresh or background Music cache while converting.</p>
+          <p class="sectionLead">On a clean Mac, Homebrew may ask macOS to install Apple Command Line Tools. This is not the full Xcode app. It is Apple's smaller command-line developer tools package needed by Homebrew for some installations.</p>
+          <p class="sectionLead">Original audio files should be preserved. Converted files should be reviewed before replacing references or removing anything from a library.</p>
+        </div>
+
+        <div class="panel">
+          <h3>Recommended setup order</h3>
+          <ol class="stepList">
+            <li><span class="highlight">Install Homebrew</span> if Check Tools says brew is missing.</li>
+            <li>Run <span class="highlight">Open Terminal Installer</span> for FFmpeg and LAME.</li>
+            <li>Run <span class="highlight">Install Old-School Helpers</span> for xmp and WavPack tools.</li>
+            <li>Run <span class="highlight">Install SACD Extract</span> only if you use SACD ISO files.</li>
+            <li>Use <span class="highlight">Copy OptimFROG Notes</span> for manual OFR/OFS decoder setup.</li>
+            <li>Use <span class="highlight">Add Files</span> or <span class="highlight">Add CUE Sheet</span>. Buttons and the drop zone accept drag and drop.</li>
+            <li>Click <span class="highlight">Analyze Queue</span> before conversion to refresh detected names, tags, ranges, codec/source info, and CUE parsing.</li>
+            <li>Return to the app and click <span class="highlight">Check Tools</span> again.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section id="features">
+      <div class="wrap">
+        <h2>Built for messy real-world music libraries.</h2>
+        <p class="sectionLead">Large local collections are rarely clean. The same file may appear in many playlists, tags may be inconsistent, albums may be missing artwork, old imports may point to missing files, and quality can vary between versions. Local Music Organizer brings practical maintenance tools into one focused Mac app.</p>
+        <p class="fine" style="margin-top:-6px;margin-bottom:24px;">Scan and processing times can vary significantly depending on library size, the number of playlists and local files, Music.app response time, and disk speed. Very large libraries or slower external drives may take longer to analyze.</p>
+
+        <div class="grid">
+          <div class="card"><h3>Library Dashboard</h3><p>Creates a read-only overview of the Music.app library: records scanned, empty artists, low bitrate tracks, missing artwork, missing files, long tracks, codec/container information, storage clues, and suspicious records. Full-library dashboard scans require Early Access activation.</p></div>
+          <div class="card"><h3>Music Snapshot Cache</h3><p>Large libraries can be warmed into memory before heavy work. The cache stores full Music records, lightweight library records, and playlist membership data so repeated scans and comparisons can become much faster after the first read.</p></div>
+          <div class="card"><h3>Playlist Compare</h3><p>Compares two playlists and shows tracks that appear in both. You can play A/B without bringing Music.app forward, stop playback from the app, inspect entries, edit tags, copy paths, or remove only the playlist entry from one side.</p></div>
+          <div class="card"><h3>Playlist Duplicates</h3><p>Finds duplicate entries inside one playlist. Removal affects the playlist entry only; it does not delete the audio file and does not delete the Music library record. Trial mode is limited to one playlist and up to 50 local tracks.</p></div>
+          <div class="card"><h3>Library Duplicates</h3><p>Finds Music.app library records pointing to the same local file or exact duplicate candidates. It helps identify unused duplicate records and protect playlist usage. Full-library duplicate analysis requires Early Access activation.</p></div>
+          <div class="card"><h3>Track Usage</h3><p>Searches for a track or file and shows playlist usage or physical file matches. Press Enter to run the fast Find File on Disk search. Cached Music.app matches show Play in Music; physical-only matches show Preview. Stop controls playback from the app.</p></div>
+          <div class="card"><h3>Health Check</h3><p>Scans selected playlists and library records for missing files, inaccessible paths, empty metadata, orphan physical files under a chosen root, and library records that need review.</p></div>
+          <div class="card"><h3>Artwork Check</h3><p>Finds tracks and albums with missing artwork. Artwork access is separated from lighter scans because it can be slower through Music.app.</p></div>
+          <div class="card"><h3>Audio Quality Dashboard</h3><p>Inspects bitrate, sample rate, file kind, duration, size, codec/container clues, missing files, long tracks, and suspicious records.</p></div>
+          <div class="card"><h3>Quality Duplicates</h3><p>Helps compare multiple versions of similar tracks and choose the better candidate by quality-related signals.</p></div>
+          <div class="card"><h3>Audio Inspector</h3><p>Opens a local audio file and shows technical information such as format, sample rate, bit depth, bitrate, channels, duration, size, raw afinfo data, and a spectrogram-style visual inspection.</p></div>
+          <div class="card"><h3>Tag Editing</h3><p>Visible Music.app records can be edited directly from the app. Supported tag changes update Music.app and can be undone. Editing actions require Early Access activation.</p></div>
+          <div class="card"><h3>Repair / Convert workflows</h3><p>Designed for mixed and old-school formats. Add Files and Add CUE Sheet support click or drag and drop. Multi-file CUE converts each referenced source as its own track; single-file CUE splits by INDEX 01. Analyze Queue refreshes names, tags, ranges, codec/source info, and CUE mode before Start Conversion.</p></div>
+          <div class="card"><h3>File Maintenance</h3><p>Helps reveal files in Finder, copy paths, check permissions, compare Music.app references with real files on disk, and understand whether library records point to accessible local media. File maintenance actions require Early Access activation.</p></div>
+          <div class="card"><h3>Smart Shuffle Builder</h3><p>Creates more natural shuffle-style lists by reducing repeated artist clusters, album blocks, and predictable patterns in large local collections.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="cache">
+      <div class="wrap split">
+        <div>
+          <h2>Warm Cache makes large libraries practical.</h2>
+          <p class="sectionLead">Music.app automation can be slow with thousands of tracks and many playlists. Local Music Organizer uses a Music Snapshot Cache so the app can read expensive data once and reuse it across multiple tools.</p>
+        </div>
+
+        <div class="panel">
+          <ul class="list">
+            <li><span class="highlight">Full Library Records Cache</span> feeds Dashboard, Quality checks, Library Duplicates, File Maintenance, and fast library searches.</li>
+            <li><span class="highlight">Light Music Library Cache</span> feeds Library Map, Track Usage, and repeated library matching operations.</li>
+            <li><span class="highlight">Playlist Membership Cache</span> feeds Playlist Compare, Playlist Duplicates, Track Usage, Health Check, and playlist usage protection.</li>
+            <li>The cache panel shows current read progress, overall warm-up progress, elapsed time, and whether a scan is using cached data.</li>
+            <li>For large collections, let Warm Cache finish before running heavy Music.app scans. Repair / Convert skips Music.app cache because it works with local files and converter tools.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="safety">
+      <div class="wrap split">
+        <div class="panel">
+          <h2>Safety-first cleanup.</h2>
+          <p class="sectionLead">The app is designed to make library maintenance understandable. It shows what it is about to change, avoids silent destructive actions, and keeps scan operations read-only unless you explicitly press an action button.</p>
+          <ul class="list">
+            <li>Scans do not delete audio files.</li>
+            <li>Playlist removal actions remove playlist entries, not physical audio files.</li>
+            <li>Tag edits are explicit user actions and are sent to Music.app.</li>
+            <li>Supported edits/removals have Undo and visible result refresh.</li>
+            <li>Log folders and reports help review completed scans. If you press Stop, the scan should stop immediately and no log file should be written for that stopped run.</li>
+          </ul>
+        </div>
+
+        <div class="panel">
+          <h2>Important responsibility note.</h2>
+          <ul class="list warning">
+            <li>Keep your own backup of important Music.app libraries before cleanup.</li>
+            <li>Use at your own responsibility when changing tags, playlist entries, or library records.</li>
+            <li>Very large libraries may take time to read from Music.app.</li>
+            <li>Automation permission for Music.app is required for Music.app operations.</li>
+            <li>Full Disk Access may be needed for file and folder checks.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="latest-workflows">
+      <div class="wrap split">
+        <div>
+          <h2>Latest workflow behavior.</h2>
+          <p class="sectionLead">Recent Early Access builds focus on reducing confusing background work, making playback controls clearer, and keeping stopped scans quiet.</p>
+        </div>
+        <div class="panel">
+          <ul class="list">
+            <li><span class="highlight">Track Usage:</span> press Enter in the search field to run Find File on Disk. Physical-only results use Preview; cached Music.app matches use Play in Music.</li>
+            <li><span class="highlight">Playback:</span> Stop Music / Stop stops Music.app, Quick Look preview, and local preview playback without opening Music.app manually.</li>
+            <li><span class="highlight">Stop behavior:</span> pressing Stop makes the UI stop immediately. Stopped scans should not create a log file. Logs are for completed scans.</li>
+            <li><span class="highlight">Repair / Convert:</span> Music.app playlist refresh and background cache are hidden/paused. The queue owns Add Files, Add CUE Sheet, Analyze Queue, Start Conversion, and Clear Queue.</li>
+            <li><span class="highlight">CUE:</span> multi-file CUE and single-file CUE are handled differently and clearly reported in the queue summary.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="early-access">
+      <div class="wrap split">
+        <div>
+          <h2>Early Access release.</h2>
+          <p class="sectionLead">Local Music Organizer is already useful for cleaning and understanding large local Music.app libraries, but it is still an Early Access product. The first public release is intended for careful users with real local collections who understand backups and library maintenance.</p>
+          <p class="sectionLead">You can try the app first in trial mode: one playlist at a time, up to 50 local tracks. Early Access activation unlocks full-library scans, unlimited playlist analysis, cleanup actions, Repair / Convert, File Maintenance, and the complete maintenance workflow.</p>
+          <p class="sectionLead">During Early Access, license keys are generated manually rather than automatically. The checkout panel explains the delivery process before purchase.</p>
+          <div class="pillRow">
+            <span class="pill">Version target: 0.3 Early Access</span>
+            <span class="pill">Trial: one playlist, 50 local tracks</span>
+            <span class="pill">macOS 14 Sonoma or later</span>
+            <span class="pill">Apple Silicon recommended</span>
+            <span class="pill">Intel supported in Universal builds</span>
+            <span class="pill">Local Music.app libraries</span>
+            <span class="pill">Manual license delivery</span>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h3>Early Access license</h3>
+          <div class="price">$19</div>
+          <p class="sectionLead" style="font-size:16px;margin-bottom:18px;">Introductory one-time Early Access license. Unlocks full-library scans, unlimited playlist analysis, cleanup actions, Repair / Convert, File Maintenance, and Early Access updates. License keys are generated manually for the buyer email and Mac hardware ID. Activation and license status checks require an internet connection.</p>
+          <p class="fine" style="margin-bottom:16px;"><strong>Early Access price:</strong> $19 now. <strong>Expected regular price after 1.0:</strong> $39-49. The Early Access price is intentionally lower while the app is still being refined.</p>
+          <p class="fine" style="margin-bottom:16px;">Trial mode works without activation for one playlist at a time, up to 50 local tracks. Activated licenses are checked online at activation, at startup, and periodically while running. If the license server is temporarily unavailable, the last successful active check allows up to 24 hours of offline use.</p>
+          <p class="fine" style="margin-bottom:16px;"><strong>License delivery:</strong> after payment, open the app, copy your License Request, and send it to sergeyappleservice@gmail.com. Your serial number is generated manually and sent by email, usually within 24 hours after purchase.</p>
+          <button class="button" type="button" onclick="openEarlyAccessCheckout(event)">Buy Early Access</button>
+          <div class="checkoutStatus" id="checkoutStatusPricing"></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2>What it does not try to be.</h2>
+        <p class="sectionLead">Local Music Organizer is not a streaming service manager, not a cloud Apple Music replacement, not a general media player, and not a one-click magic cleanup tool. It is a focused maintenance utility for people who care about their local Music.app library and want visibility before making changes.</p>
+      </div>
+    </section>
+
+    <section id="terms">
+      <div class="wrap">
+        <h2>Terms of Service</h2>
+        <p class="sectionLead">Local Music Organizer is provided as Early Access macOS software for local Music.app library maintenance. By purchasing or using the app, you understand that it is intended for careful users who maintain their own backups of important music libraries.</p>
+        <p class="sectionLead">The app can be opened in trial mode without an active license. Trial mode is limited to analyzing one playlist at a time, up to 50 local tracks. Full-library scans, unlimited playlist analysis, cleanup actions, Repair / Convert, File Maintenance, and other full maintenance features require Early Access activation.</p>
+        <p class="sectionLead">The app can read local Music.app library data, inspect local audio files, compare playlists, edit Music.app tags, remove playlist entries, and generate reports when you explicitly choose those actions. You are responsible for reviewing changes before confirming them.</p>
+        <p class="sectionLead">A license is issued for one buyer email and one Mac hardware ID. Activation requires an internet connection. Local Music Organizer may check license status during activation, at startup, and periodically while running. If the license server is temporarily unavailable, the last successful active check allows up to 24 hours of offline use.</p>
+        <p class="sectionLead">Licenses may be revoked after refunds, chargebacks, payment disputes, fraud, misuse, or other manual review. If a license is revoked, full-version access may stop during a future license check while trial mode remains available. Hardware replacement, system migration, clean macOS reinstall, or major device changes may require a replacement license key. Early Access features may change during development. The $19 price is an introductory Early Access price; the regular price is expected to increase after the app reaches a stable 1.0 release.</p>
+        <p class="sectionLead">License keys are generated manually after purchase. Because this is a manual Early Access process, license delivery is not instant. The serial number is sent to the email address used at checkout, usually within 24 hours after purchase.</p>
+        <p class="sectionLead">Repair / Convert workflows may require optional external helper tools such as Homebrew-installed audio utilities. Some rare decoders, such as OptimFROG for OFR/OFS files, may require manual installation. Local Music Organizer is not responsible for damage caused by missing user backups, incorrect user actions, third-party tools, corrupted Music.app libraries, file permission problems, unsupported macOS versions, unsupported library setups, unsupported helper tools, or unsupported system configurations. Always keep your own backups before cleanup or repair work.</p>
+      </div>
+    </section>
+
+    <section id="privacy">
+      <div class="wrap">
+        <h2>Privacy Policy</h2>
+        <p class="sectionLead">Local Music Organizer is designed as a local macOS utility. The app works with local Music.app libraries and local files on your Mac. It does not require a user account or cloud database for normal operation.</p>
+        <p class="sectionLead">The app can run in trial mode without activation. Trial mode analysis happens locally on your Mac and is limited to one playlist at a time, up to 50 local tracks.</p>
+        <p class="sectionLead">For Early Access licensing, the app displays a license request containing the buyer email, app version, and a hardware ID derived from the Mac. The buyer sends this license request manually by email so a license key can be generated.</p>
+        <p class="sectionLead">Activation and license status checks may contact the license server and send the buyer email, Mac Hardware ID, license key, app version, and basic license status information. This is used only for activation, license validation, refund handling, fraud prevention, support, and troubleshooting.</p>
+        <p class="sectionLead">The app may store license information locally on the Mac. It does not sell personal data. Payment processing, checkout, tax handling, and transaction records may be handled by the payment provider used for purchase.</p>
+        <p class="sectionLead">Support emails may contain information voluntarily provided by the user, such as license request text, app version, hardware ID, logs, screenshots, or problem descriptions. This information is used only for support, licensing, troubleshooting, and product improvement.</p>
+      </div>
+    </section>
+
+    <section id="refunds">
+      <div class="wrap">
+        <h2>Refund Policy</h2>
+        <p class="sectionLead">Local Music Organizer is sold as Early Access software with a trial mode available before purchase. Refund requests are reviewed manually and should be submitted within 48 hours after purchase.</p>
+        <p class="sectionLead">Trial mode allows the app to analyze one playlist at a time, up to 50 local tracks. Users are encouraged to confirm that the app launches, can request Music.app automation permission, can read playlists, and can analyze real local tracks before purchasing Early Access.</p>
+        <p class="sectionLead">Because the full version provides immediate access to full-library scanning, playlist comparison, cleanup actions, File Maintenance, Repair / Convert, and other practical library maintenance tools, refunds are generally limited to activation or launch failures on a supported Mac after reasonable troubleshooting.</p>
+        <p class="sectionLead">If the app cannot be activated or does not launch on a supported Mac, contact support at sergeyappleservice@gmail.com within 48 hours after purchase with your purchase email, app version, macOS version, license request, and a short description of the problem.</p>
+        <p class="sectionLead">Refunds may be declined if the license has been issued and the app works as described, if full-library scans or cleanup tools have already been used, or if the problem is caused by unsupported macOS versions, missing permissions, missing user backups, unsupported library setups, corrupted Music.app libraries, third-party tools, optional helper tools, file permission problems, external drive problems, or user actions outside the app’s intended use.</p>
+        <p class="sectionLead">If a refund, chargeback, payment dispute, fraud review, or manual license review results in revocation after a license has been issued, the license may be disabled on the license server and the app may stop accepting that license during future license checks.</p>
+        <p class="sectionLead">Because license keys are issued manually during Early Access, delivery is not instant. A delivery delay within the stated manual delivery window is not considered a product failure. The serial number is usually sent within 24 hours after purchase.</p>
+        <p class="sectionLead">This policy does not limit any mandatory consumer rights that may apply in the buyer’s country or region.</p>
+        <p class="sectionLead">Before purchase, users should understand that Early Access software may contain bugs, interface changes, and ongoing improvements.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <strong>Local Music Organizer</strong><br />
+      Early Access macOS utility for large local Music.app libraries. Trial mode analyzes one playlist at a time, up to 50 local tracks. Apple Silicon recommended. Intel supported with Universal builds. macOS 14 Sonoma or later. Activation requires internet and periodic license status checks. Use at your own responsibility and keep your own backups of important libraries. License delivery is manual during Early Access; serial numbers are usually sent by email within 24 hours after purchase. Refund requests are reviewed manually and should be submitted within 48 hours after purchase. The $19 Early Access price is introductory and the regular price is expected to increase after 1.0.
+    </div>
+  </footer>
+
+  <script>
+    const PADDLE_CLIENT_TOKEN = "live_1e6726cee70aaec4dd551bda1b3";
+    const PADDLE_PRICE_ID = "pri_01kvz3ch0e8wyc5ssab7jakwnb";
+    let paddleInitialized = false;
+
+    function setCheckoutStatus(message) {
+      const topStatus = document.getElementById("checkoutStatus");
+      const pricingStatus = document.getElementById("checkoutStatusPricing");
+      if (topStatus) topStatus.textContent = message || "";
+      if (pricingStatus) pricingStatus.textContent = message || "";
+    }
+
+    function initializePaddleIfNeeded() {
+      if (!window.Paddle) {
+        throw new Error("Paddle.js has not loaded yet.");
+      }
+
+      if (!paddleInitialized) {
+        Paddle.Initialize({
+          token: PADDLE_CLIENT_TOKEN
+        });
+        paddleInitialized = true;
+      }
+    }
+
+    function openEarlyAccessCheckout(event) {
+      if (event) event.preventDefault();
+
+      try {
+        setCheckoutStatus("Opening secure Paddle checkout…");
+        initializePaddleIfNeeded();
+
+        Paddle.Checkout.open({
+          items: [
+            {
+              priceId: PADDLE_PRICE_ID,
+              quantity: 1
+            }
+          ],
+          settings: {
+            displayMode: "overlay",
+            theme: "dark",
+            locale: "en"
+          },
+          customData: {
+            product: "local_music_organizer",
+            license_type: "early_access",
+            delivery: "manual_license_key"
+          }
+        });
+      } catch (error) {
+        console.error(error);
+        setCheckoutStatus("Checkout could not open. Please contact sergeyappleservice@gmail.com for Early Access.");
+      }
+    }
+  </script>
+</body>
+</html>
