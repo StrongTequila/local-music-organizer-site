@@ -1,0 +1,610 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width,initial-scale=1" name="viewport">
+<title>Local Music Organizer for Mac - Music.app Libraries and Standalone Audio Files</title>
+<meta content="Find missing files, duplicates, playlist relationships, metadata problems and suspicious audio quality in large local Music.app libraries. Inspect, repair or convert standalone audio files on Mac. Free 3-day trial, one-time purchase, no subscription." name="description">
+<link href="https://local-music-organizer-site.pages.dev/" rel="canonical">
+<link href="favicon.ico" rel="icon">
+<link href="apple-touch-icon.png" rel="apple-touch-icon">
+<link href="manifest.webmanifest" rel="manifest">
+<link href="style.css?v=20260827d" rel="stylesheet">
+<meta content="Local Music Organizer for Mac" property="og:title">
+<meta content="A private macOS toolkit for Music.app libraries and standalone audio files, with a free 3-day trial and one-time unlock." property="og:description">
+<meta content="website" property="og:type">
+<meta content="https://local-music-organizer-site.pages.dev/" property="og:url">
+<meta content="https://local-music-organizer-site.pages.dev/icon.png" property="og:image">
+<meta content="summary_large_image" name="twitter:card">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Local Music Organizer","applicationCategory":"MultimediaApplication","operatingSystem":"macOS 14 or later","offers":[{"@type":"Offer","price":"0","priceCurrency":"USD","description":"Free download with a 3-day full-access trial"},{"@type":"Offer","price":"29.99","priceCurrency":"USD","description":"One-time Full Version purchase; regional prices and taxes are set by Apple"}],"author":{"@type":"Person","name":"Sergey Belenky"}}</script>
+<meta content="2026-08-27-docs2" name="site-revision">
+</head>
+<body>
+<header class="top">
+<nav class="wrap">
+<a class="brand" href="index.html">
+<img alt="" src="icon.png">
+<span>Local Music Organizer</span>
+</a>
+<div class="links">
+<a class="keep" href="https://apps.apple.com/us/app/local-music-organizer/id6790746382?mt=12" rel="noopener" target="_blank">Mac App Store</a>
+<a href="#trial">Free Trial</a>
+<a href="#updates">Updates</a>
+<a href="#features">Features</a>
+<a href="#library-index">Library Index</a>
+<a href="#formats">Formats</a>
+<a href="#live-spectrum">Live Spectrum</a>
+<a href="#audio-authenticity">Audio Authenticity</a>
+<a href="#drag-drop">Drag &amp; Drop</a>
+<a href="#screenshots">Screenshots</a>
+<a class="keep" href="LocalMusicOrganizer_UserGuide.pdf">User Guide</a>
+<a class="keep" href="privacy.html">Privacy</a>
+</div>
+</nav>
+</header>
+<main>
+<section class="hero">
+<div class="wrap hero-grid">
+<div>
+<span class="badge">macOS 14+ · Apple Silicon and Intel</span>
+<h1>Your local music collection, finally understandable.</h1>
+<p class="lead">Understand and maintain a large local Music.app library: find missing files and duplicates, see where tracks are used, review metadata and audio quality, and inspect or convert standalone audio files. Everything stays local, and nothing changes until you choose an explicit action.</p>
+<div class="actions">
+<a class="button" href="https://apps.apple.com/us/app/local-music-organizer/id6790746382?mt=12" rel="noopener" target="_blank">View on the Mac App Store</a>
+<a class="button secondary" href="LocalMusicOrganizer_UserGuide.pdf">Download User Guide</a>
+<a class="button secondary" href="#start">See what LMO can help with</a>
+</div>
+<p class="fine">Free 3-day trial with full access. Then unlock once for <strong>US$29.99</strong>. Regional prices and taxes are set by Apple. <strong>No subscription or automatic charge.</strong>
+</p>
+</div>
+<aside class="hero-card">
+<img alt="Local Music Organizer application icon" src="icon.png">
+<div class="facts">
+<div class="fact">
+<strong>Music.app and standalone files</strong>Library tools plus direct file workflows.</div>
+<div class="fact">
+<strong>Private by design</strong>No accounts, audio/library uploads or cross-site tracking.</div>
+<div class="fact">
+<strong>Built for large libraries</strong>Persistent indexing and paged results keep large collections practical.</div>
+<div class="fact">
+<strong>Nothing changes automatically</strong>Review first; edits and file actions happen only when you choose them.</div>
+</div>
+</aside>
+</div>
+</section>
+<section id="start">
+<div class="wrap">
+<span class="badge">New to Local Music Organizer?</span>
+<h2>Start with the problem, not the technology.</h2>
+<p class="section-lead">You do not need to learn every tool before using the app. Choose what you are trying to understand, run the relevant check, review the result, and make a change only when you intentionally choose an action.</p>
+<div class="grid">
+<article class="card"><div class="icon">⌕</div><h3>I cannot find a file</h3><p><strong>Health Check</strong> finds Music.app records whose local files are missing, inaccessible or suspicious. <strong>File Search</strong> searches the physical music folders on disk and can reveal the exact file in Finder.</p></article>
+<article class="card"><div class="icon">◎</div><h3>I think I have duplicates</h3><p><strong>Playlist Duplicates</strong> finds repeated entries inside one playlist. <strong>Library Duplicates</strong> finds multiple Music.app records that may point to the same file. <strong>Quality Duplicates</strong> compares different physical versions of the same recording.</p></article>
+<article class="card"><div class="icon">≡</div><h3>Where is this track used?</h3><p><strong>Track Usage</strong> and <strong>Library Map</strong> show which playlists contain a track and where repeated recordings occur. <strong>Playlist Compare</strong> shows what two playlists share and what is unique to each.</p></article>
+<article class="card"><div class="icon">✎</div><h3>My metadata is a mess</h3><p><strong>File Maintenance</strong> can find repeated spaces and incorrect parenthesis spacing in Music.app Title / Artist / Album and local filenames. Review one row or batch-fix selected issues; safe physical filename renaming verifies the same Music.app track and artwork. Supported tags can also be edited directly, with <strong>Undo Last Change</strong>.</p></article>
+<article class="card"><div class="icon">↻</div><h3>Music.app shows old file information</h3><p>Run <strong>Library Dashboard</strong> in Deep mode. If Music.app still has outdated technical information for a local track, the <strong>Music.app info outdated</strong> card isolates those files. <strong>Refresh Music.app Info</strong> asks Music.app to reread the actual audio file without rewriting it.</p></article>
+<article class="card"><div class="icon">▣</div><h3>Artwork is missing</h3><p><strong>Artwork Check</strong> finds tracks without cover artwork. Use the longer live verification when you need to confirm recent Music.app changes rather than relying only on saved index data.</p></article>
+<article class="card"><div class="icon">≋</div><h3>Is this audio really the quality it claims?</h3><p><strong>Audio Authenticity Analyzer</strong> looks for technical signs of lossy-to-lossless conversion, suspicious bandwidth limits, bitrate mismatches and possible sample-rate upscaling. Results are estimates to review, not automatic verdicts.</p></article>
+<article class="card"><div class="icon">⌁</div><h3>I want to inspect one file</h3><p><strong>Audio Inspector</strong> shows codec/container details, bitrate, sample rate, bit depth, channels, duration, file size, an authenticity assessment, a dB-scale spectrogram and raw technical output. The static Inspector does not show a waveform; the interactive full-track waveform belongs to <strong>Live Spectrum</strong>. Both work without adding the file to Music.app.</p></article>
+<article class="card"><div class="icon">⇄</div><h3>I need to convert or repair audio</h3><p><strong>Repair / Convert</strong> handles common and specialist formats with engines included in the app, plus batch normalization for sample rate and lossless bit depth. After a verified conversion you decide whether to keep the source, move it to Trash or archive it in a dated LMO Backup Folder. <strong>Vinyl De-click</strong> lets you compare short before-and-after samples before processing a full recording.</p></article>
+<article class="card"><div class="icon">⤨</div><h3>I want a better shuffle</h3><p><strong>Shuffle Builder</strong> creates a new playlist with spacing rules for artists, related projects, albums, repeated titles and covers while leaving the original playlist unchanged.</p></article>
+</div>
+<div class="split" style="margin-top:24px">
+<div class="panel safe">
+<h3>First five minutes</h3>
+<ol class="list">
+<li>In <strong>Setup</strong>, choose the local music folder and report folder and allow Music.app Automation access when macOS asks.</li>
+<li>Open <strong>Library Dashboard</strong>. On the first run, leave <strong>Include playlist usage</strong> enabled and click <strong>Build / Refresh Library Index</strong>.</li>
+<li>For a quick overview use Standard. Use <strong>Deep</strong> when you want file-level details such as real lossless bit depth; leave <strong>Skip slow file checks</strong> off when every available local file must be checked.</li>
+<li>Run <strong>Audio Quality Dashboard</strong>. The category numbers are filters, not automatic error verdicts: click one to see the tracks behind it.</li>
+<li>After small additions, removals or replacements, use <strong>Refresh Music Changes</strong> instead of rebuilding everything.</li>
+</ol>
+</div>
+<div class="panel">
+<h3>Know when something can change</h3>
+<ul class="list">
+<li>Dashboards, searches, comparisons and authenticity analysis are diagnostic until you choose an explicit action.</li>
+<li>Playlist cleanup removes playlist entries, not the physical audio file.</li>
+<li>Manual tag editing changes supported Music.app fields and provides one-step Undo Last Change.</li>
+<li>Naming &amp; Tag Formatting scans are read-only. Tag fixes and physical filename renames happen only after explicit review or batch selection; safe filename renames are verified and rolled back if verification fails.</li>
+<li>Hidden-tag cleanup changes a physical file only after you choose cleanup; the rebuilt file is verified and the original is restored if verification fails.</li>
+<li>Conversion verifies the new output before the selected original-handling action. Choose Keep original, Move original to Trash or Move original to LMO Backup Folder.</li>
+</ul>
+</div>
+</div>
+<div class="notice" style="margin-top:18px"><strong>Not using Music.app?</strong> Audio Inspector, Live Spectrum, Audio Authenticity analysis, metadata inspection, repair and conversion can also work with individual local files opened from Finder or added by drag and drop.</div>
+<div class="split" style="margin-top:18px">
+<div class="panel">
+<h3>How to read scan results</h3>
+<ul class="list">
+<li><strong>Found does not automatically mean wrong.</strong> Dashboard and scan counters are review filters. For example, 48 kHz, AAC or a lossless file above 16-bit can be perfectly valid.</li>
+<li>Format and sample-rate cards are there to make a mixed collection understandable. Click ALAC, MP3, AAC, AIFF, WAV, Other audio formats, 44.1 kHz, 48 kHz or &gt;16-bit lossless to inspect the matching tracks.</li>
+<li>A large hidden-tag count can be normal in a large collection; review the field names and values before selecting cleanup. Web addresses found inside Title or Artist are surfaced for manual review rather than removed automatically.</li>
+<li>Health Check and Audio Authenticity results are diagnostic evidence, not automatic repair commands.</li>
+<li>Open representative results in Audio Inspector, Finder or Music.app when you need confirmation.</li>
+</ul>
+</div>
+<div class="panel safe">
+<h3>For very large libraries</h3>
+<ul class="list">
+<li>Build the Library Index first.</li>
+<li>Let one long scan finish before starting another.</li>
+<li>Keep external disks connected while a scan depends on them.</li>
+<li>After small Music.app changes, use Refresh Music Changes instead of rebuilding everything.</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="trial">
+<div class="wrap split">
+<div>
+<span class="badge">Free 3-day trial · full access</span>
+<h2>Test every tool with your own library and files.</h2>
+<p class="section-lead">Start the trial only when you are ready. For three days, every feature is available for both a locally stored Music.app library and standalone audio files opened from Finder or added by drag and drop.</p>
+<p class="section-lead">The trial does not renew and creates no automatic charge. After it ends, continued use requires a one-time Full Version purchase for US$29.99. Regional prices and taxes are set by Apple. There is no subscription.</p>
+</div>
+<div class="panel safe">
+<h3>Simple, transparent access</h3>
+<ul class="list">
+<li><a href="https://apps.apple.com/us/app/local-music-organizer/id6790746382?mt=12" rel="noopener" target="_blank">Free download from the Mac App Store.</a></li>
+<li>Full access for three days.</li>
+<li>No Apple Music streaming subscription required.</li>
+<li>No Local Music Organizer account or sign-in.</li>
+<li>One-time Full Version unlock after the trial: US$29.99.</li>
+<li>Restore Purchases is available from the access screen.</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="updates">
+<div class="wrap">
+<span class="badge">Recent updates</span>
+<h2>Large-library reliability, clearer Music.app diagnostics and safer incremental maintenance.</h2>
+<div class="grid">
+<article class="card"><div class="icon">Ä</div><h3>Accents and umlauts</h3><p>Improved matching and metadata handling for artist, album and track text containing umlauts, accents and other non-ASCII characters.</p></article>
+<article class="card"><div class="icon">▦</div><h3>Saved Library Index reliability</h3><p>Saved Music.app records restore after relaunch without forcing a rebuild. On extremely large libraries, full records can become ready before every playlist-membership row; LMO labels that playlist coverage as partial and lets targeted indexing fill the remaining gaps without discarding the useful saved snapshot.</p></article>
+<article class="card"><div class="icon">↻</div><h3>Refresh only what changed</h3><p>Refresh Music Changes detects new, replaced and removed audio files without rebuilding the complete physical index. A selected playlist can be indexed separately after a playlist-only edit.</p></article>
+<article class="card"><div class="icon">◉</div><h3>Music.app Diagnostics</h3><p>Setup can expose explicit read-only support tests for Music.app Startup State and Track Flags. These diagnostics do not edit Music.app, playlists, metadata, artwork, audio files or the Saved Library Index; when Music.app is closed, the explicit diagnostic may launch it without sending Play.</p></article>
+<article class="card"><div class="icon">⚑</div><h3>Track Flags for huge libraries</h3><p>The Track Flags audit reads Music.app in bounded ranges and retries difficult ranges in smaller pieces. A progress counter can pause during that split-and-retry work and then continue. The audit does not traverse physical music folders and does not require Additional Folders.</p></article>
+<article class="card"><div class="icon">◎</div><h3>Fix outdated Music.app file information</h3><p>Deep Dashboard can isolate tracks whose saved Music.app file information no longer matches the actual local file. Refresh one track or the whole group so Music.app rereads the file, while LMO verifies the result and leaves the audio file, protected tags and artwork unchanged.</p></article>
+<article class="card"><div class="icon">✓</div><h3>Reliable duplicate cleanup</h3><p>Playlist duplicate detection and removal now handles consecutive identical entries and recent Music.app changes while preserving the remaining occurrence and the physical file.</p></article>
+<article class="card"><div class="icon">≋</div><h3>Faster authenticity analysis</h3><p>Saved rechecks, clearer result categories and visible reasons for skipped files make full-library Audio Authenticity scans faster and easier to understand.</p></article>
+<article class="card"><div class="icon">⌕</div><h3>Paged diagnostics</h3><p>Health Check, orphan-file inventory, physical File Search and other large result sets use paged SQLite queries instead of loading the whole library into the interface.</p></article>
+<article class="card"><div class="icon">✎</div><h3>Tag editing and Undo</h3><p>Clear All Comments, direct tag editing, Music.app synchronization and one-step Undo Last Change are more reliable across dashboard and result-card workflows.</p></article>
+<article class="card"><div class="icon">Aa</div><h3>Naming &amp; Tag Formatting</h3><p>File Maintenance can find repeated spaces and incorrect spacing around round parentheses in Music.app Title / Artist / Album and local filenames. Review one row or batch-fix selected issues; physical filename changes use Music.app link, artwork and file verification with rollback protection.</p></article>
+<article class="card"><div class="icon">⛨</div><h3>Safer file maintenance</h3><p>Hidden-tag cleanup uses strict artwork verification and rollback protection, then refreshes Music.app file information after a verified physical remux. Conversion has a dedicated Stop control and removes incomplete output after cancellation.</p></article>
+<article class="card"><div class="icon">48</div><h3>Sample-rate and format categories</h3><p>Dashboard cards now expose 44.1 kHz, 48 kHz, ALAC, MP3, AAC, AIFF, WAV, other formats and unusual sample rates as directly inspectable groups instead of making you build search queries.</p></article>
+<article class="card"><div class="icon">16</div><h3>High-bit-depth review</h3><p>Deep mode can identify local lossless/PCM files above 16-bit. MP3 and AAC are deliberately excluded from this bit-depth category because lossy codecs do not use source PCM depth in the same way.</p></article>
+<article class="card"><div class="icon">⇣</div><h3>Batch Normalize</h3><p>Send 48 kHz or &gt;16-bit lossless results to Repair / Convert for 48→44.1 kHz, &gt;16→16-bit or combined normalization. MP3/AAC resampling requires explicit lossy re-encoding confirmation.</p></article>
+<article class="card"><div class="icon">▤</div><h3>Choose what happens to originals</h3><p>After a verified conversion, keep the original, move it to macOS Trash, or move it into a dated LMO Converted Originals backup session that preserves the source folder path.</p></article>
+</div>
+</div>
+</section>
+<section id="features">
+<div class="wrap">
+<h2>One toolkit for the problems that build up over years.</h2>
+<p class="section-lead">Use the overview above when you want a quick starting point. The complete toolkit below shows the individual tools in more detail. Library organization features integrate with Music.app, while Audio Inspector, Audio Authenticity, Live Spectrum, playback, repair and conversion also work directly with files outside Music.app. No Apple Music streaming subscription is required.</p>
+<div class="grid">
+<article class="card">
+<div class="icon">◫</div>
+<h3>Library Dashboard</h3>
+<p>Start here when you are not sure what is unusual in the library. One read-only scan groups tracks by missing files, artwork, bitrate, duration and metadata, and also shows clear technical categories such as 44.1 kHz, 48 kHz, ALAC, MP3, AAC, AIFF, WAV, other formats and lossless files above 16-bit. Select a category to see the actual tracks behind the number.</p>
+</article>
+<article class="card">
+<div class="icon">↻</div>
+<h3>Music.app File Info Refresh</h3>
+<p>Deep Dashboard can find tracks where Music.app still holds old technical file information after a file was replaced or changed. <strong>Refresh Music.app Info</strong> tells Music.app to reread the actual local file, verifies the result, keeps protected tags and artwork unchanged, and does not convert, move, delete or rewrite the audio file.</p>
+</article>
+<article class="card">
+<div class="icon">◉</div>
+<h3>Music.app Diagnostics</h3>
+<p>When technical error logging is enabled in Setup, open explicit read-only support tests for <strong>Startup State</strong> and <strong>Track Flags</strong>. Startup State records several short Music.app player-state snapshots after launching Music.app without Play; Track Flags audits playback-related Music.app fields in bounded ranges and never traverses the physical library.</p>
+</article>
+<article class="card">
+<div class="icon">≡</div>
+<h3>Library Map</h3>
+<p>Understand where every track is used, inspect playlist membership, locate repeated records and reveal the exact Music.app playlist containing a selected item.</p>
+</article>
+<article class="card">
+<div class="icon">◎</div>
+<h3>Duplicate Review</h3>
+<p>Find duplicate playlist entries, repeated library records and competing quality versions. Exact occurrence handling preserves the remaining copy when repeated entries share one Persistent ID.</p>
+</article>
+<article class="card">
+<div class="icon">✓</div>
+<h3>Health &amp; Artwork</h3>
+<p>Run read-only diagnostics for missing files, inaccessible locations, metadata problems and artwork. Fast SQLite candidates are complemented by an explicit full live verification for recent changes.</p>
+</article>
+<article class="card">
+<div class="icon">⌕</div>
+<h3>File Search</h3>
+<p>Search a saved SQLite physical-file index by artist, title, album, filename or path, load large results in pages, see exact playlist use and reveal files in Finder.</p>
+</article>
+<article class="card">
+<div class="icon">↔</div>
+<h3>Playlist Compare</h3>
+<p>Compare every saved entry from two playlists in SQLite and receive completed matches in pages, with a targeted long refresh available after either playlist changed.</p>
+</article>
+<article class="card">
+<div class="icon">⌁</div>
+<h3>Audio Inspector</h3>
+<p>Open a standalone local file to inspect codec/container family, channels, bit depth, sample rate, bitrate, duration and file size, together with an authenticity assessment, a dB-scale spectrogram and raw <code>afinfo</code> output. The static Inspector does not show a waveform; use <strong>Live Spectrum</strong> for the interactive full-track waveform. Filenames, paths and technical text can be selected and copied for research or support.</p>
+</article>
+<article class="card">
+<div class="icon">≋</div>
+<h3>Audio Authenticity Analyzer</h3>
+<p>Scan the saved Music.app Library Index, one selected playlist or an individual file for possible lossy-to-lossless transcodes, sample-rate upscales and bitrate mismatches. Every flagged track includes confidence, detected cutoff, estimated source class and a plain-language explanation.</p>
+</article>
+<article class="card">
+<div class="icon">▥</div>
+<h3>Live Spectrum &amp; Player</h3>
+<p>Play local files in an independent window with a real-time 512-band logarithmic analyzer, full-track waveform, draggable seeking, technical meters, gain control and configurable appearance.</p>
+</article>
+<article class="card">
+<div class="icon">⇲</div>
+<h3>Drag &amp; Drop Conversion</h3>
+<p>Drop files, folders or CUE sheets into Repair / Convert, or onto the app icon, to begin local background conversion with the selected profile and visible progress.</p>
+</article>
+<article class="card">
+<div class="icon">±</div>
+<h3>Verified Gain</h3>
+<p>Preview a gain change, build a temporary candidate, verify audio structure, metadata and artwork, then replace the original only after every safety check passes.</p>
+</article>
+<article class="card">
+<div class="icon">⇄</div>
+<h3>Repair / Convert</h3>
+<p>Convert common and specialist audio sources with offline engines included in the application. Batch Normalize can keep the format family while reducing 48 kHz to 44.1 kHz and/or lossless depth above 16-bit to 16-bit. Choose how the verified conversion handles the original: keep it, move it to Trash or archive it in a dated LMO Backup Folder.</p>
+</article>
+<article class="card">
+<div class="icon">◌</div>
+<h3>Vinyl De-click</h3>
+<p>Create short before-and-after samples, compare processing strength and choose the weakest effective mode before applying de-clicking to the full recording.</p>
+</article>
+<article class="card">
+<div class="icon">⌘</div>
+<h3>File Maintenance</h3>
+<p>Review file paths and permissions, inspect Finder metadata and hidden embedded tags, and scan Music.app Title / Artist / Album plus local filenames for repeated spaces and incorrect parenthesis spacing. Review or batch-fix selected naming/tag issues; physical filename renames preserve the folder and extension and use Music.app link, artwork and file verification with rollback protection.</p>
+</article>
+<article class="card">
+<div class="icon">⤨</div>
+<h3>Shuffle Builder</h3>
+<p>Create a new anti-repeat shuffled playlist while preserving the original source playlists and avoiding destructive library changes.</p>
+</article>
+<article class="card">
+<div class="icon">✎</div>
+<h3>Tag Review</h3>
+<p>Edit supported Music.app tags manually from visible result cards. Changes appear in Music.app immediately, and Undo Last Change restores the values from the most recent tag edit.</p>
+</article>
+</div>
+</div>
+</section>
+<section id="library-index">
+<div class="wrap split">
+<div>
+<span class="badge">Important for large libraries</span>
+<h2>Build once, then refresh only what changed.</h2>
+<p class="section-lead">The Library Index is LMO's saved working copy of Music.app information. It lets library-wide tools reuse what has already been read instead of asking Music.app for every record again.</p>
+<p class="section-lead">Recent additions, replacements and removals can be refreshed selectively, and a playlist-only change can be indexed without rebuilding every playlist.</p>
+<p class="section-lead">Read-only tools use the available saved snapshot and clearly label partial coverage. Use <strong>Refresh Music Changes</strong> after adding, replacing or removing a few tracks, or <strong>Index Selected Playlist</strong> after changing one playlist in Music.app.</p>
+<div class="notice">
+<strong>No mandatory rebuild after relaunch:</strong> saved Library Index data is available immediately. On a normal launch, LMO restores the saved SQLite snapshot and applies its small FSEvents physical-change catch-up <strong>without launching Music.app</strong>. Automatic Library Index also waits until Music.app is already running; explicit user-triggered Music-backed actions such as manual Library Index, Refresh Music Changes or Music.app Diagnostics may launch Music.app when needed. Rebuild the full index only on first use, after a major library change or when the app explicitly reports that verification is required.</div>
+<div class="notice" style="margin-top:12px">
+<strong>Very large libraries:</strong> full Music.app records can be ready before every playlist-membership row. LMO labels that playlist usage as partial instead of treating it as complete. Use <strong>Index Playlist Usage</strong> or <strong>Index Selected Playlist</strong> to extend coverage; do not clear the Saved Library Index merely because playlist usage is still partial.</div>
+</div>
+<div class="panel safe">
+<h3>Recommended first workflow</h3>
+<ol class="list">
+<li>In <strong>Setup</strong>, test Music.app access and choose the primary music folder if needed.</li>
+<li>On first use, leave <strong>Include playlist usage</strong> enabled and click <strong>Build / Refresh Library Index</strong>.</li>
+<li>Use File Search, Library Map, Playlist Compare, Playlist Duplicates and dashboard categories directly from the saved Library Index.</li>
+<li>After adding, replacing or removing a few tracks, click <strong>Refresh Music Changes</strong>.</li>
+<li>After changing only one playlist, choose it and use <strong>Index Selected Playlist</strong>.</li>
+</ol>
+<div class="notice">
+<strong>Important distinction:</strong> the Library Index accelerates Music.app library work. Audio Inspector and Repair / Convert work directly with selected files and do not require a Library Index.</div>
+</div>
+</div>
+</section>
+<section id="dashboard-guide">
+<div class="wrap">
+<span class="badge">Library Dashboard in plain language</span>
+<h2>Numbers first, tracks second, changes only when you choose them.</h2>
+<p class="section-lead">The Dashboard is designed to answer a simple first question: “What is actually in my library?” Run the scan, then select a card to turn a number into a list of tracks you can inspect. The cards do not silently change files.</p>
+<div class="grid">
+<article class="card"><div class="icon">1</div><h3>Choose scan depth</h3><p><strong>Standard</strong> is the normal starting point. <strong>Deep</strong> reads the actual local audio files for more reliable codec, bitrate, duration and lossless bit-depth information. Turn off <strong>Skip slow file checks</strong> when complete local-file coverage matters more than speed.</p></article>
+<article class="card"><div class="icon">2</div><h3>Understand the category cards</h3><p><strong>44.1 kHz</strong> and <strong>48 kHz</strong> are informational sample-rate groups, not errors. <strong>ALAC, MP3, AAC, AIFF, WAV</strong> and <strong>Other audio formats</strong> show how the collection is encoded. Select any card to see the tracks behind the number.</p></article>
+<article class="card"><div class="icon">3</div><h3>Fix outdated Music.app file information</h3><p>In Deep mode, <strong>Music.app info outdated</strong> appears when Music.app's saved file information does not match the actual local file. Select the card to isolate those tracks, then use <strong>Refresh Music.app Info</strong> for one track or the whole group. A corrected track disappears from the outdated list after verification.</p></article>
+<article class="card"><div class="icon">4</div><h3>Know what Refresh Music.app Info changes</h3><p>LMO asks Music.app to reread the existing file and verifies the result. It does <strong>not</strong> convert, move, delete or rewrite the audio file, and protected tag and artwork fields are checked for unexpected changes. Refresh history is written to the selected log folder when logging is enabled.</p></article>
+<article class="card"><div class="icon">5</div><h3>Review high-resolution files</h3><p><strong>&gt;16-bit lossless</strong> comes from real local-file inspection in Deep mode. It is useful when you want to find 20/24/32-bit lossless or PCM files and decide whether their extra size is useful for your library.</p></article>
+<article class="card"><div class="icon">6</div><h3>Normalize only when you mean to</h3><p><strong>Batch Normalize</strong> can send selected 48 kHz or high-bit-depth results to Repair / Convert. Nothing is normalized merely because it appears in a Dashboard category.</p></article>
+<article class="card"><div class="icon">7</div><h3>Metadata that needs a human decision</h3><p>LMO can surface web-address text such as <strong>www</strong>, <strong>http</strong> or <strong>https</strong> inside Title or Artist for manual review. It does not automatically cut that text out because it may be part of a legitimate title.</p></article>
+<article class="card"><div class="icon">8</div><h3>Clear Comments without touching audio files</h3><p><strong>Clear All Comments</strong> changes only the Music.app Comments field for the matching records. LMO verifies the live Music.app value, updates the Saved Library Index so an old cache cannot bring the comment back, and keeps Undo data for values that were actually present before the operation. The physical audio files are not renamed or rewritten.</p></article>
+</div>
+<div class="notice" style="margin-top:18px"><strong>Good default:</strong> build the Library Index once, run Standard first, use Deep for file-level questions, and treat every category as evidence to review rather than an instruction to clean.</div>
+</div>
+</section>
+<section id="story">
+<div class="wrap split">
+<div>
+<h2>Built by a collector, for collectors.</h2>
+<p class="section-lead">I am a music collector and Music.app user with a large offline library accumulated over many years. Eventually it became total disorder: duplicate records, repeated playlist entries, missing artwork, inconsistent tags, broken references, several versions of the same album and rare formats scattered across different folders and disks.</p>
+<p class="section-lead">The project began as a small utility for randomizing playlists without changing the originals. As the collection and its practical problems grew, that focused tool expanded into Local Music Organizer: one place to understand the library before touching it, see what was duplicated, learn where a track was used, compare versions and clean safely.</p>
+<p class="section-lead">Conversion was another part of the same problem. No single converter handled every difficult source I owned. TAK, SACD ISO, DSD, DTS, AC3, CUE albums, tracker modules and other archival formats often required several tools and a fragile sequence of actions.</p>
+<p class="section-lead">The program brought order back to my own collection and solved the practical problems I had lived with for years. Only then did I realize that it could also be useful to other people like me - people who still maintain serious offline music libraries and want control instead of automatic destructive cleanup.</p>
+<p class="section-lead">The interface is intentionally restrained and tool-first. Local Music Organizer is not designed as a decorative showcase: screen space is used for evidence, paths, technical details, explicit actions and safety explanations that help solve real library problems.</p>
+</div>
+<div class="panel">
+<h3>Why it feels different</h3>
+<ul class="list">
+<li>Created by a real user to repair a real long-term library.</li>
+<li>Built around inspection and understanding before cleanup.</li>
+<li>Designed for large offline collections, local files and real playlists.</li>
+<li>Combines organization, diagnostics, search and difficult-format conversion.</li>
+<li>Protects originals and makes consequential actions explicit.</li>
+<li>Made for people who care about the collection they built over years.</li>
+<li>A deliberately practical interface that prioritizes information and problem solving over visual decoration.</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="live-spectrum">
+<div class="wrap">
+<h2>Live Spectrum, interactive waveform and local player.</h2>
+<p class="section-lead">Open a physical audio file in an independent macOS player window without creating another Music.app record. The window combines real-time analysis, full-track navigation, transport controls and a cautious gain workflow.</p>
+<div class="split">
+<div class="panel">
+<h3>Detailed analysis</h3>
+<ul class="list">
+<li>512 FFT bands on a logarithmic frequency scale with dBFS markings, peak trace and named frequency regions.</li>
+<li>Full-track waveform with transient detail and a current-position cursor.</li>
+<li>Click or drag across the waveform to seek; the lower progress bar is also draggable. After a track reaches the end, drag back and resume from any position.</li>
+<li>Technical cards report format, resolution, channels, duration, elapsed time, remaining time, progress, peak, RMS, headroom and clipping.</li>
+<li>Fine, Balanced and Bold presets adjust analyzer density; bar thickness, gap, segmented LEDs, waveform and technical cards can be configured individually.</li>
+</ul>
+</div>
+<div class="panel safe">
+<h3>Transport and independent window</h3>
+<ul class="list">
+<li>Pause keeps the current position. Stop ends playback and returns to 0:00 while keeping the loaded track and waveform. Eject clears the player.</li>
+<li>The yellow window button minimizes to Dock. The red button hides the window without stopping playback.</li>
+<li>When the hidden player is still playing, click the Local Music Organizer icon in Dock to restore it.</li>
+<li>The player and main organizer window remain independent; clicking the player does not intentionally raise the main window.</li>
+<li>Background conversion and gain processing do not intentionally close the Finder folder containing the source file.</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="audio-authenticity">
+<div class="wrap">
+<h2>Audio Authenticity Analyzer.</h2>
+<p class="section-lead">Batch-check the audio behind a local Music.app library without altering the source files. The analyzer compares declared codec, bitrate, sample rate and bit depth with measured spectral behavior, then surfaces only recordings that deserve review.</p>
+<div class="split">
+<div class="panel">
+<h3>Library and playlist scanning</h3>
+<ul class="list">
+<li>Scan the saved Music.app Library Index, one selected playlist, or keep the existing single-file drag-and-drop workflow in Audio Inspector.</li>
+<li>Analyze each physical path once even when the same recording appears in several playlists.</li>
+<li>Check MP3 and AAC files for obvious disagreement between declared bitrate and observed spectral bandwidth.</li>
+<li>Check ALAC, FLAC, WAV, AIFF and other lossless files for evidence consistent with an earlier MP3 or AAC source.</li>
+<li>Check high-resolution files for possible sample-rate upscaling and bit-depth padding.</li>
+<li>Use distributed short analysis windows across the track so large-library scans remain practical without decoding every file from beginning to end.</li>
+</ul>
+</div>
+<div class="panel safe">
+<h3>Conservative, explainable results</h3>
+<ul class="list">
+<li>
+<strong>No obvious issue</strong> means the measured content is broadly consistent with the declared format and is omitted from the detailed report.</li>
+<li>
+<strong>Review recommended</strong> means one or more unusual indicators were found, but the evidence is not decisive and manual inspection is appropriate.</li>
+<li>
+<strong>Likely authenticity mismatch</strong> means a stronger combination of persistent cutoff, transition, occupancy and format-mismatch evidence was detected.</li>
+<li>
+<strong>Detailed reasoning</strong>: every flagged result shows confidence, detected bandwidth or cutoff, transition width, roll-off slope, Brickwall Score, cutoff stability, high-frequency occupancy, estimated source class and a plain-language explanation.</li>
+<li>
+<strong>Focused output</strong>: normal files stay in summary counts and are omitted from the actionable list and log. A completed or stopped scan writes Audio Authenticity Analyzer.txt when log creation is enabled; only Review, Likely and failed items are listed in detail.</li>
+<li>
+<strong>Non-destructive analysis</strong>: the analyzer never modifies audio files. Results are technical estimates, not absolute proof of a recording’s history.</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="formats">
+<div class="wrap">
+<h2>Broad audio-format support.</h2>
+<p class="section-lead">Actual decoding depends on the source being valid and supported by the bundled engine. Encrypted, corrupted or non-standard files can still fail.</p>
+<div class="panel">
+<h3>Common and audiophile sources</h3>
+<div class="formats">
+<span class="pill">FLAC</span>
+<span class="pill">ALAC</span>
+<span class="pill">WAV</span>
+<span class="pill">AIFF</span>
+<span class="pill">AAC / M4A</span>
+<span class="pill">MP3</span>
+<span class="pill">Ogg Vorbis</span>
+<span class="pill">Opus</span>
+<span class="pill">WavPack / WVC</span>
+<span class="pill">APE</span>
+<span class="pill">TAK</span>
+<span class="pill">TTA</span>
+<span class="pill">SHN</span>
+<span class="pill">DSF / DFF / DSD</span>
+<span class="pill">SACD ISO</span>
+<span class="pill">DTS</span>
+<span class="pill">AC3 / E-AC3</span>
+<span class="pill">CUE sheets</span>
+<span class="pill">Tracker modules</span>
+</div>
+<h3>Output profiles</h3>
+<div class="formats">
+<span class="pill">AAC</span>
+<span class="pill">ALAC</span>
+<span class="pill">MP3</span>
+<span class="pill">FLAC</span>
+<span class="pill">WAV</span>
+<span class="pill">AIFF</span>
+<span class="pill">Ogg Vorbis</span>
+<span class="pill">Opus</span>
+<span class="pill">WavPack</span>
+</div>
+</div>
+</div>
+</section>
+<section id="drag-drop">
+<div class="wrap split">
+<div>
+<h2>Drag files from Finder and start work immediately.</h2>
+<p class="section-lead">Repair / Convert accepts file drops directly in its queue area. You can add one file, several files or CUE sheets, inspect the queue, select only the required items and convert with the current output profile.</p>
+<p class="section-lead">Files and CUE sheets can also be dropped onto the Local Music Organizer application icon. A normal drop starts an automatic background conversion batch using the current Repair / Convert profile. Hold Option while dropping to open the first file in Audio Inspector instead of converting it.</p>
+<p class="section-lead">For CUE albums, macOS may request access to the album folder containing the CUE sheet and its referenced audio files. The authorized root is remembered for later CUE files inside that folder. Multi-file CUE sheets are interpreted per referenced source file, so track ranges stay attached to the correct FILE entry.</p>
+</div>
+<div class="panel">
+<h3>Drop workflow</h3>
+<ol class="list">
+<li>Choose the required output profile and output folder.</li>
+<li>Drop files or a CUE sheet into Repair / Convert, or drop them onto the application icon.</li>
+<li>Use Analyze Queue when source details are uncertain.</li>
+<li>Convert only the selected queue items.</li>
+<li>Listen to and inspect every result before importing it into Music.app.</li>
+</ol>
+<div class="notice">
+<strong>Important:</strong> Repair / Convert works directly with local files and does not require the Music.app Library Index.</div>
+</div>
+</div>
+</section>
+<section>
+<div class="wrap split">
+<div class="panel safe">
+<h2>Local and private.</h2>
+<ul class="list">
+<li>No advertising or cross-site tracking.</li>
+<li>The website may use privacy-first, cookie-free Cloudflare Web Analytics for aggregate visit statistics.</li>
+<li>No user account or separate activation.</li>
+<li>No audio or library uploads.</li>
+<li>No internet required for analysis or conversion.</li>
+<li>Website and Discogs searches open only when chosen.</li>
+</ul>
+<a href="privacy.html">Read the complete Privacy Policy →</a>
+</div>
+<div class="panel">
+<h2>Careful file handling.</h2>
+<ul class="list">
+<li>Conversion verifies the new output first. You can keep the source, move it to macOS Trash, or archive it in a dated LMO Converted Originals session that preserves the source path.</li>
+<li>Playlist cleanup does not delete the physical audio file.</li>
+<li>Diagnostics remain read-only.</li>
+<li>Long tasks can be stopped.</li>
+<li>Keep a current backup before maintenance.</li>
+<li>Gain replacement uses a temporary candidate, structural verification and rollback before the original is committed.</li>
+<li>Embedded artwork is checked with SHA-256 before and after gain or hidden-metadata remux operations.</li>
+<li>Hidden metadata cleanup removes only explicitly selected removable tags and preserves core tags, lyrics, grouping and technical/container metadata.</li>
+<li>The narrowly scoped recopy xattr cleanup removes only <code>com.apple.lastuseddate#PS</code> and preserves quarantine, FinderInfo, macl and Finder tags.</li>
+<li>Naming &amp; Tag Formatting scans are read-only. Physical filename renames are explicit, stay in the same folder with the same extension, verify the same Music.app track and artwork, and roll back when verification fails.</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="support-diagnostics">
+<div class="wrap split">
+<div>
+<span class="badge">When support asks for logs</span>
+<h2>Record the problem from the beginning.</h2>
+<p class="section-lead">Enable the requested logging options before reproducing the issue, run the requested checks without applying fixes, and keep the same LMO session open until the requested scans and logs are complete.</p>
+</div>
+<div class="panel">
+<ol class="list">
+<li>In <strong>Library Dashboard</strong>, enable <strong>Create Library Index Log</strong> before indexing.</li>
+<li>On scan pages that provide it, enable <strong>Create log files</strong> before the scan.</li>
+<li>In <strong>Setup</strong>, enable <strong>Write technical errors to a local log</strong>. This also exposes <strong>Music.app Diagnostics...</strong> for explicit support tests.</li>
+<li>For <strong>Startup State</strong>, quit Music.app first. The diagnostic then launches Music.app <strong>without sending Play</strong> and records several short state snapshots. For <strong>Track Flags</strong>, allow the bounded audit to continue through temporary pauses; difficult ranges may be retried in smaller pieces, and physical music folders are not traversed.</li>
+<li>After the tests finish, send the generated LMO text/log files from the selected log folder (commonly Desktop) together with the requested screenshots. Use Export Diagnostics only if support specifically asks for it.</li>
+</ol>
+</div>
+</div>
+</section>
+<section id="screenshots">
+<div class="wrap">
+<h2>See the actual application.</h2>
+<p class="section-lead">All application screenshots are collected here once. Select any image to open the full-resolution version.</p>
+<div class="gallery" id="gallery">
+</div>
+</div>
+</section>
+<section id="resources" class="resource-section">
+<div class="wrap">
+<span class="badge">Community &amp; listings</span>
+<h2>Local Music Organizer around the web.</h2>
+<p class="section-lead">Launch pages, community discussions and independent software listings.</p>
+<div class="resource-grid">
+<a class="resource-card" href="go-1.html" target="_blank" rel="noopener noreferrer">
+<span class="resource-mark" aria-hidden="true"><svg viewBox="0 0 48 48" focusable="false"><circle cx="24" cy="24" r="22"/><path d="M18 13h9.1c6 0 9.9 3.6 9.9 9.1S33.1 31.2 27.1 31.2H23V36h-5V13Zm5 4.8v8.6h4c3 0 4.9-1.5 4.9-4.3s-1.9-4.3-4.9-4.3h-4Z"/></svg></span>
+<span class="resource-copy"><strong>Product Hunt</strong><small>Launch page</small></span><span class="resource-arrow" aria-hidden="true">↗</span>
+</a>
+<a class="resource-card" href="go-2.html" target="_blank" rel="noopener noreferrer">
+<span class="resource-mark" aria-hidden="true"><svg viewBox="0 0 48 48" focusable="false"><circle cx="24" cy="24" r="22"/><path d="M34.7 22.1c-1.1 0-2.1.4-2.8 1.1-2-1.3-4.6-2.1-7.4-2.2l1.3-6 4.3.9a3.2 3.2 0 1 0 .5-2l-5.4-1.1a1.2 1.2 0 0 0-1.4.9l-1.5 7.2c-3 .1-5.7.9-7.7 2.3a4 4 0 1 0-4.1 6.4c0 .3-.1.7-.1 1 0 5.3 6.1 9.6 13.6 9.6s13.6-4.3 13.6-9.6c0-.3 0-.6-.1-1a4 4 0 0 0-2.8-7.5Zm-17.1 7.2a2.1 2.1 0 1 1 0 4.2 2.1 2.1 0 0 1 0-4.2Zm12.8 7.1c-1.8 1.8-4.3 2.6-6.4 2.6s-4.6-.8-6.4-2.6a1 1 0 0 1 1.4-1.4c1.4 1.4 3.4 2 5 2s3.6-.6 5-2a1 1 0 0 1 1.4 1.4Zm0-2.9a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2Z"/></svg></span>
+<span class="resource-copy"><strong>Reddit</strong><small>r/macapps discussion</small></span><span class="resource-arrow" aria-hidden="true">↗</span>
+</a>
+<a class="resource-card" href="go-3.html" target="_blank" rel="noopener noreferrer">
+<span class="resource-mark" aria-hidden="true">MR</span>
+<span class="resource-copy"><strong>MacRumors Forums</strong><small>Discussion thread</small></span><span class="resource-arrow" aria-hidden="true">↗</span>
+</a>
+<a class="resource-card" href="go-4.html" target="_blank" rel="noopener noreferrer">
+<span class="resource-mark" aria-hidden="true">MU</span>
+<span class="resource-copy"><strong>MacUpdate</strong><small>App listing</small></span><span class="resource-arrow" aria-hidden="true">↗</span>
+</a>
+<a class="resource-card" href="go-5.html" target="_blank" rel="noopener noreferrer">
+<span class="resource-mark" aria-hidden="true">A</span>
+<span class="resource-copy"><strong>AlternativeTo</strong><small>Listing &amp; alternatives</small></span><span class="resource-arrow" aria-hidden="true">↗</span>
+</a>
+</div>
+</div>
+</section>
+<section>
+<div class="wrap split">
+<div>
+<h2>Available on the Mac App Store.</h2>
+<p class="section-lead">Local Music Organizer uses App Sandbox, macOS system file pickers and Music.app Automation permission. It includes universal Apple Silicon and Intel engines, a privacy manifest and a typed SQLite Library Index designed for large local collections.</p>
+</div>
+<div class="panel">
+<div class="price">3 days free</div>
+<p>Try every feature, then unlock the Full Version once for US$29.99. Apple determines regional equivalents and taxes. No subscription or automatic charge.</p>
+<div class="actions">
+<a class="button" href="LocalMusicOrganizer_UserGuide.pdf">Read the manual</a>
+<a class="button secondary" href="support.html">Support</a>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="footer">
+<div class="wrap footer-grid">
+<div>
+<strong>Local Music Organizer</strong>
+<br>Local tools for serious music libraries.</div>
+<div>
+<a href="privacy.html">Privacy</a>
+<a href="support.html">Support</a>
+<a href="open-source.html">Open Source</a>
+<a href="#resources">Around the web</a>
+<a href="LocalMusicOrganizer_UserGuide.pdf">User Guide</a>
+</div>
+<div>© 2026 Sergey Belenky</div>
+</div>
+</footer>
+<div aria-hidden="true" aria-label="Screenshot preview" aria-modal="true" class="modal" id="modal" role="dialog">
+<button aria-label="Close enlarged screenshot" class="modal-close" id="modalClose" type="button">Close</button>
+<button aria-label="Previous screenshot" class="modal-nav modal-previous" id="modalPrevious" type="button">‹</button>
+<div class="modal-content">
+<img alt="" id="modalImage">
+<div class="modal-caption" id="modalCaption">
+</div>
+</div>
+<button aria-label="Next screenshot" class="modal-nav modal-next" id="modalNext" type="button">›</button>
+</div>
+<script src="site.js?v=fm2">
+</script>
+</body>
+</html>
