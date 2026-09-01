@@ -76,3 +76,10 @@ Plain-language documentation refresh: clearer task routing, result interpretatio
 - Embedded the current illustrated User Guide PDF.
 
 GitHub: upload/replace the CONTENTS of this folder at repository root. Do not upload the ZIP itself.
+
+2026-09-01 Health Check gallery update:
+- Added four current Health Check screenshots (8.2–8.5) and matching optimized thumbnails.
+- The new images document orphan physical-file actions, multi-playlist import selection, explicit import confirmation and the Trash safety confirmation.
+- Preserved the existing full-size modal viewer, Previous/Next buttons, Left/Right keyboard navigation and Escape-to-close behavior.
+- The embedded User Guide remains the current 63-page illustrated guide.
+- Updated the gallery cache revision so deployed browsers request the current site.js and screenshot assets.
