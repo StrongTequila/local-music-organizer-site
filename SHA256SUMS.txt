@@ -1,0 +1,3 @@
+9d8556a6ea954744d11a17193550c8cb0be1adc779648a32e2441bee880f8cc9  READ_ME_SECOND_UPDATE.txt
+8c321afdd492f585ce3ec40418cf8f694cb4dff1c96c11f372119091579d5052  glass-spectrum-background-v2.webp
+e98b1d59e5dcd64e085ca3b5f87e5121bfbd0ef8a4cc7f74012cb210dde013e2  style.css
