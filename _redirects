@@ -1,0 +1,19 @@
+# LMO: permanent redirects from legacy screenshot names.
+# Cloudflare Pages reads this file from the deployed root (next to index.html).
+# Only redirect when there is a matching replacement image.
+/screenshots/01-library-dashboard.jpg /screenshots/2-library-dashboard.jpg 301
+/screenshots/02-setup-file-search-roots.jpg /screenshots/1-settings.jpg 301
+/screenshots/03-library-map.jpg /screenshots/4-library-map-result.jpg 301
+/screenshots/04-playlist-duplicates.jpg /screenshots/5-playlist-duplicate-result.jpg 301
+/screenshots/05-library-duplicates-1.jpg /screenshots/7-library-duplicates.jpg 301
+/screenshots/06-library-duplicates-2.jpg /screenshots/7-library-duplicates.jpg 301
+/screenshots/07-playlist-compare.jpg /screenshots/13-playlist-compare.jpg 301
+/screenshots/08-track-usage.jpg /screenshots/14-track-usage.jpg 301
+/screenshots/09-quality-duplicates.jpg /screenshots/17-quality-duplicates.jpg 301
+/screenshots/10-audio-inspector-1.jpg /screenshots/19-audio-inspector-lossless.jpg 301
+/screenshots/11-audio-inspector-2.jpg /screenshots/20-audio-inspector-lossy.jpg 301
+/screenshots/12-file-maintenance.jpg /screenshots/15-file-maintenance.jpg 301
+/screenshots/13-repair-convert-1.jpg /screenshots/10-repair-convert-format.jpg 301
+/screenshots/14-repair-convert-2.jpg /screenshots/11-repair-convert-format.jpg 301
+/screenshots/15-shuffle-builder.jpg /screenshots/18-shuffle-builder.jpg 301
+/screenshots/18-setup-general.jpg /screenshots/1.2-settings.jpg 301
