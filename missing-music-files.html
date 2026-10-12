@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Find Missing Music Files in Music.app on Mac | LMO</title>
+<meta name="description" content="Music.app cannot find a song after moving folders or drives? Learn how to identify missing local files and safely relink existing tracks on Mac.">
+<link rel="canonical" href="https://local-music-organizer-site.pages.dev/missing-music-files">
+<link rel="icon" href="favicon.ico?v=20261010c">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=20261010c">
+<link rel="stylesheet" href="style.css?v=20261012seo1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Find Missing Music Files in Music.app on Mac | LMO">
+<meta property="og:description" content="Music.app cannot find a song after moving folders or drives? Learn how to identify missing local files and safely relink existing tracks on Mac.">
+<meta property="og:url" content="https://local-music-organizer-site.pages.dev/missing-music-files">
+<meta property="og:image" content="https://local-music-organizer-site.pages.dev/icon.png">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"How to find missing music files in Music.app on Mac","url":"https://local-music-organizer-site.pages.dev/missing-music-files","description":"Music.app cannot find a song after moving folders or drives? Learn how to identify missing local files and safely relink existing tracks on Mac.","isPartOf":{"@type":"WebSite","name":"Local Music Organizer","url":"https://local-music-organizer-site.pages.dev/"},"about":{"@type":"SoftwareApplication","name":"Local Music Organizer","url":"https://local-music-organizer-site.pages.dev/"}}</script>
+</head>
+<body>
+<header class="top">
+<nav class="wrap">
+<a class="brand" href="/">
+<img alt="Local Music Organizer app icon" src="icon.png?v=20261010c">
+<span>Local Music Organizer</span>
+</a>
+<div class="links">
+<a class="keep" href="/">Home</a>
+<a href="/#guides">Guides</a>
+<a href="support">Support</a>
+<a class="keep" href="https://apps.apple.com/us/app/local-music-organizer/id6790746382?mt=12" rel="noopener" target="_blank">Mac App Store</a>
+</div>
+</nav>
+</header>
+<main class="subpage">
+<article class="wrap panel guide-content">
+<span class="badge">Music.app missing files</span>
+<h1>How to find missing music files in Music.app on Mac</h1>
+<p class="guide-intro">Music.app may still show a track after its audio file has been moved. The library entry remains, but its saved file path is no longer valid. Before importing another copy, check whether the original file is still on your Mac or an external drive.</p>
+<h2>Check where the file went</h2>
+<p>If the music is on an external drive, connect it and confirm that Finder can open the folder. Also check whether the folder was renamed or moved. A missing Music.app link does not necessarily mean the audio file is gone.</p>
+<ol class="list">
+<li>Open <strong>Library Dashboard</strong> in Local Music Organizer. Use <strong>Build / Refresh Library Index</strong> if this is the first scan. After smaller changes in Music.app, <strong>Refresh Music Changes</strong> is usually sufficient.</li>
+<li>Open <strong>Health Check</strong>, select the appropriate scope and run <strong>Run Health Check</strong>. Look at the <strong>Missing file</strong> results. Use <strong>Recheck</strong> to verify an individual result against the current file and Music.app state.</li>
+<li>If the file may have moved, use <strong>File Search</strong> to look through local or external folders you have authorized. You can reveal a possible match in Finder before changing the library link.</li>
+</ol>
+<h2>Repair the existing Music.app link</h2>
+<p>For one track, <strong>Repair Local Link...</strong> lets you choose the replacement file for the existing Music.app record. For a folder that has moved, <strong>Relink This Folder...</strong> asks for the new folder, previews relative-path matches and relinks the matching records. Neither operation moves, renames or deletes the actual audio files. The relink is checked against the record's Music.app Persistent ID.</p>
+<h2>Missing files and orphan files are not the same</h2>
+<p><strong>Missing file</strong> means a Music.app record points to a local path that is unavailable. <strong>Orphan physical file</strong> means the file exists, but its exact path is not present in the saved Music.app library. An orphan is not necessarily damaged or unwanted. Compare the paths before deciding whether to relink an existing record or import anything new.</p>
+<p><strong>Remove Missing Record...</strong> is a separate action that removes the selected Music.app library record after confirmation; it does not delete an audio file. Check where the track is used before choosing it. The <a href="support">Health Check documentation</a> and the <a href="LocalMusicOrganizer_UserGuide.pdf">illustrated user guide</a> describe the available actions in detail.</p>
+<img class="guide-screenshot" src="screenshots/8-health-check.jpg" alt="Local Music Organizer Health Check showing diagnostic results for a local Music.app collection" loading="lazy" width="1400">
+<p class="guide-caption">Health Check displays the affected Music.app entries and lets you verify individual findings before acting.</p>
+<div class="notice guide-note">These checks are for local audio files and Music.app library records, not cloud-only or streaming tracks. Back up your music library before making changes to its records or file locations.</div>
+<div class="actions">
+<a class="button" href="https://apps.apple.com/us/app/local-music-organizer/id6790746382?mt=12" rel="noopener" target="_blank">Local Music Organizer on the Mac App Store</a>
+<a class="button secondary" href="LocalMusicOrganizer_UserGuide.pdf">Read the illustrated user guide</a>
+</div>
+<div class="guide-related"><h2>Other LMO guides</h2><p><a href="duplicate-songs-music-app">Duplicate songs in Music.app</a>, <a href="compare-audio-recordings">Compare two recordings</a>, <a href="/">All features</a>, <a href="support">Support</a></p></div>
+</article>
+</main>
+<footer class="footer">
+<div class="wrap footer-grid">
+<div><strong>Local Music Organizer</strong><br>Local tools for serious music libraries.</div>
+<div><a href="/">Home</a><a href="/#guides">Guides</a><a href="support">Support</a><a href="privacy">Privacy</a><a href="LocalMusicOrganizer_UserGuide.pdf">User Guide</a></div>
+<div>© 2026 Sergey Belenky</div>
+</div>
+</footer>
+</body>
+</html>

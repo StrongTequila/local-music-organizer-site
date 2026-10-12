@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Find Duplicate Songs in Music.app on Mac | LMO</title>
+<meta name="description" content="Find repeated playlist entries, duplicate Music.app records and separate audio versions on Mac. Learn what to check before removing anything.">
+<link rel="canonical" href="https://local-music-organizer-site.pages.dev/duplicate-songs-music-app">
+<link rel="icon" href="favicon.ico?v=20261010c">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=20261010c">
+<link rel="stylesheet" href="style.css?v=20261012seo1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Find Duplicate Songs in Music.app on Mac | LMO">
+<meta property="og:description" content="Find repeated playlist entries, duplicate Music.app records and separate audio versions on Mac. Learn what to check before removing anything.">
+<meta property="og:url" content="https://local-music-organizer-site.pages.dev/duplicate-songs-music-app">
+<meta property="og:image" content="https://local-music-organizer-site.pages.dev/icon.png">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"How to find duplicate songs in Music.app on Mac","url":"https://local-music-organizer-site.pages.dev/duplicate-songs-music-app","description":"Find repeated playlist entries, duplicate Music.app records and separate audio versions on Mac. Learn what to check before removing anything.","isPartOf":{"@type":"WebSite","name":"Local Music Organizer","url":"https://local-music-organizer-site.pages.dev/"},"about":{"@type":"SoftwareApplication","name":"Local Music Organizer","url":"https://local-music-organizer-site.pages.dev/"}}</script>
+</head>
+<body>
+<header class="top">
+<nav class="wrap">
+<a class="brand" href="/">
+<img alt="Local Music Organizer app icon" src="icon.png?v=20261010c">
+<span>Local Music Organizer</span>
+</a>
+<div class="links">
+<a class="keep" href="/">Home</a>
+<a href="/#guides">Guides</a>
+<a href="support">Support</a>
+<a class="keep" href="https://apps.apple.com/us/app/local-music-organizer/id6790746382?mt=12" rel="noopener" target="_blank">Mac App Store</a>
+</div>
+</nav>
+</header>
+<main class="subpage">
+<article class="wrap panel guide-content">
+<span class="badge">Music.app duplicates</span>
+<h1>How to find duplicate songs in Music.app on Mac</h1>
+<p class="guide-intro">A repeated song in a playlist is not necessarily a duplicate audio file. Music.app can also contain two library records for the same file, or separate files with different versions of a recording. Local Music Organizer has a different tool for each case.</p>
+<h2>Choose the right duplicate scan</h2>
+<p><strong>Playlist Duplicates</strong> finds repeated entries inside one selected playlist. Run <strong>Scan Playlist Duplicates</strong> and review which occurrence should remain. Removing an occurrence here leaves both the Music.app library record and the audio file in place.</p>
+<p><strong>Library Duplicates</strong> looks for duplicate Music.app library records. This includes records pointing to the same local file and other verified duplicate patterns. It requires a complete <strong>Full Library Records</strong> index; a partial index is not enough for this scan. <strong>Scan Library Duplicates</strong> is read-only. If you later remove selected duplicate records, their physical audio files are not deleted.</p>
+<p><strong>Quality Duplicates</strong> compares different physical versions of what appears to be the same recording using saved playlist data. Run <strong>Find Quality Duplicates</strong> to see candidate groups. The <strong>Likely Best</strong> label is a technical ranking, not a judgment about mastering or sound quality.</p>
+<h2>What to check before removing anything</h2>
+<p>Start with <strong>Build / Refresh Library Index</strong> in Library Dashboard. Include playlist usage when you need to see where records are used. Then run the scan that matches the problem. Compare the file paths, playlist relationships and technical details. Where two separate recordings are involved, you can open <a href="compare-audio-recordings">A/B Duplicate Compare</a> and listen to the same passage from each file.</p>
+<p>Keep in mind what each action changes. <strong>Remove Selected Playlist Entries</strong> removes playlist occurrences. <strong>Remove Selected Duplicate Records</strong> removes Music.app records, not their files. In Quality Duplicates, <strong>Remove From Playlist</strong> changes a playlist entry, whereas <strong>Move to Trash</strong> moves the chosen physical file to macOS Trash and does not automatically clean up Music.app references. Review those relationships first.</p>
+<h2>When two versions are worth keeping</h2>
+<p>A CD release, remaster, live recording or vinyl transfer may be intentionally stored as a separate file. Higher bitrate or sample rate alone does not establish which version sounds better. Compare the recordings before treating either one as disposable.</p>
+<p>The <a href="/#quality-duplicates-guide">Quality Duplicates walkthrough</a>, <a href="/#features">feature overview</a> and <a href="support">Support documentation</a> provide more context about the individual tools.</p>
+<img class="guide-screenshot" src="screenshots/17-quality-duplicates.jpg" alt="Quality Duplicates in Local Music Organizer, showing comparison and review of two physical audio recordings" loading="lazy" width="1400">
+<p class="guide-caption">Quality Duplicates shows separate physical versions and their technical details for review.</p>
+<div class="notice guide-note">The scans do not automatically delete records or audio. File and library changes require a separate action. These tools work with local files and Music.app records rather than cloud-only or streaming audio. Keep a backup before making changes.</div>
+<div class="actions">
+<a class="button" href="https://apps.apple.com/us/app/local-music-organizer/id6790746382?mt=12" rel="noopener" target="_blank">Local Music Organizer on the Mac App Store</a>
+<a class="button secondary" href="LocalMusicOrganizer_UserGuide.pdf">Read the illustrated user guide</a>
+</div>
+<div class="guide-related"><h2>Other LMO guides</h2><p><a href="missing-music-files">Missing files in Music.app</a>, <a href="compare-audio-recordings">A/B audio comparison</a>, <a href="/">All features</a>, <a href="support">Support</a></p></div>
+</article>
+</main>
+<footer class="footer">
+<div class="wrap footer-grid">
+<div><strong>Local Music Organizer</strong><br>Local tools for serious music libraries.</div>
+<div><a href="/">Home</a><a href="/#guides">Guides</a><a href="support">Support</a><a href="privacy">Privacy</a><a href="LocalMusicOrganizer_UserGuide.pdf">User Guide</a></div>
+<div>© 2026 Sergey Belenky</div>
+</div>
+</footer>
+</body>
+</html>
