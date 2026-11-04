@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Why I Built Shuffle Builder | Local Music Organizer</title>
+<meta name="description" content="The personal story behind Shuffle Builder: car listening, repeated songs, Italo disco and artist-family rules for related projects and similar voices.">
+<link rel="canonical" href="https://local-music-organizer-site.pages.dev/why-i-built-shuffle-builder">
+<link rel="icon" href="favicon.ico?v=20261010c">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=20261010c">
+<link rel="stylesheet" href="style.css?v=20261012seo1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Why I Built Shuffle Builder | Local Music Organizer">
+<meta property="og:description" content="Why an old-school Italo disco fan wanted a shuffle that keeps related voices and projects apart.">
+<meta property="og:url" content="https://local-music-organizer-site.pages.dev/why-i-built-shuffle-builder">
+<meta property="og:image" content="https://local-music-organizer-site.pages.dev/icon.png">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Why I Built Shuffle Builder","description":"A music collector's personal story behind Shuffle Builder in Local Music Organizer.","author":{"@type":"Person","name":"Sergey Belenky"},"publisher":{"@type":"Organization","name":"Local Music Organizer"},"datePublished":"2026-11-04","dateModified":"2026-11-04","mainEntityOfPage":{"@type":"WebPage","@id":"https://local-music-organizer-site.pages.dev/why-i-built-shuffle-builder"},"image":"https://local-music-organizer-site.pages.dev/icon.png"}</script>
+</head>
+<body>
+<header class="top"><nav class="wrap">
+<a class="brand" href="/"><img alt="Local Music Organizer app icon" src="icon.png?v=20261010c"><span>Local Music Organizer</span></a>
+<div class="links"><a class="keep" href="/">Home</a><a href="/#guides">Guides</a><a href="LocalMusicOrganizer_UserGuide.pdf">User Guide</a><a href="support">Support</a><a class="keep" href="https://apps.apple.com/us/app/local-music-organizer/id6790746382?mt=12" target="_blank" rel="noopener">Mac App Store</a></div>
+</nav></header>
+<main class="subpage">
+<article class="wrap panel guide-content">
+<span class="badge">The story behind Shuffle Builder</span>
+<h1>Why I Built Shuffle Builder</h1>
+<p class="guide-intro">I listen to music in the car. In fact, that's pretty much the only place I listen. And that was where a small frustration gave me the idea for what would become Shuffle Builder.</p>
+<p>For some reason, when I used Apple's shuffle, I kept hearing certain songs again while others seemed never to come up. I hadn't set any favorites or listening preferences. I used to try rearranging playlist tracks by hand, but that was tedious and took far too long.</p>
+<p>So I had a simple idea: write a playlist randomizer. I could start a playlist in the car and enjoy a sequence that didn't keep throwing the same artists—or similar-sounding music—at me.</p>
+<h2>But an artist gap wasn't enough</h2>
+<p>The first rule was straightforward: keep a certain number of tracks between appearances by the same artist. Then I realized the catch. One voice can appear under several different names. Two tracks can list different artists and still feel like you're listening to the same singer—or the same musical family.</p>
+<p>I'm an old-school Italo disco fan, and <strong>Modern Talking</strong> was one of the groups that introduced me to this music. Keeping Modern Talking songs apart is easy. But <strong>Thomas Anders</strong> has his solo recordings too. Then there's <strong>Blue System</strong>, Dieter Bohlen's other project, with a sound closely associated with the same era. And <strong>Systems in Blue</strong>, formed by studio singers who had worked on Bohlen-related productions, has its own records with a recognizably similar style.</p>
+<p>Different artist names, connected musical worlds. Exactly the kind of situation where a simple artist-only shuffle can fall short.</p>
+<h2>One rule for a whole musical family</h2>
+<p>In Local Music Organizer, the <strong>Do not place near</strong> field lets me define that relationship directly. I can put these names on one comma-separated line:</p>
+<pre class="code" style="white-space:pre-wrap;overflow-wrap:anywhere;border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:14px;background:rgba(255,255,255,.045)">Modern Talking, Thomas Anders, Blue System, Systems in Blue</pre>
+<p>Now Shuffle Builder tries to keep tracks from that entire group apart—not merely tracks bearing the exact same artist name. The <strong>Artist / family gap</strong> controls the preferred separation. It's a rule the builder works toward, not a promise that every playlist can satisfy every constraint.</p>
+<p>And I might add <strong>Mark Ashley</strong> to that line, too. If you know his music, you'll understand why. ;-)</p>
+<h2>A small detour into pop history</h2>
+<p>There's a real story behind the studio voices. Rolf Köhler, Detlef Wiedeke and Michael Scholz were involved in a compensation dispute relating to their work on Modern Talking recordings. In 2001, the three reached a <strong>settlement</strong> reportedly worth about 100,000 Deutsche Marks each. That was a negotiated settlement, not a court judgment in their favor—and it wasn't specifically a ruling about unpaid extra studio hours. <a href="https://laut.de/News/Modern-Talking-Singt-Dieter-Bohlen-oder-singt-er-nicht-22-03-2001-428" target="_blank" rel="noopener noreferrer">A contemporary account of the dispute</a> gives the background. But that's a story of its own.</p>
+<p>For me, the point was simple: shuffle should understand that artist names don't always tell the whole story. That's how a small playlist randomizer grew into one of the ideas behind <strong>Local Music Organizer</strong>.</p>
+<img class="guide-screenshot" src="screenshots/18-shuffle-builder.jpg" alt="Shuffle Builder in Local Music Organizer showing playlist spacing and related-artist controls" loading="lazy" width="1400">
+<p class="guide-caption">Shuffle Builder lets you define related-artist groups, preview an arrangement and create a separate playlist.</p>
+<div class="notice guide-note">The original playlist remains unchanged. Shuffle Builder creates a new ordering and reports any spacing rules it could not satisfy completely.</div>
+<div class="actions"><a class="button" href="https://apps.apple.com/us/app/local-music-organizer/id6790746382?mt=12" rel="noopener" target="_blank">Local Music Organizer on the Mac App Store</a><a class="button secondary" href="LocalMusicOrganizer_UserGuide.pdf">Read the user guide</a></div>
+<div class="guide-related"><h2>More about Local Music Organizer</h2><p><a href="/">All features</a> · <a href="/#guides">Other practical guides</a> · <a href="support">Support</a></p></div>
+</article>
+</main>
+<footer class="footer"><div class="wrap footer-grid"><div><strong>Local Music Organizer</strong><br>Local tools for serious music libraries.</div><div><a href="/">Home</a><a href="/#guides">Guides</a><a href="support">Support</a><a href="privacy">Privacy</a><a href="LocalMusicOrganizer_UserGuide.pdf">User Guide</a></div><div>© 2026 Sergey Belenky</div></div></footer>
+</body>
+</html>
