@@ -17,3 +17,7 @@
 /screenshots/14-repair-convert-2.jpg /screenshots/11-repair-convert-format.jpg 301
 /screenshots/15-shuffle-builder.jpg /screenshots/18-shuffle-builder.jpg 301
 /screenshots/18-setup-general.jpg /screenshots/1.2-settings.jpg 301
+
+# Legacy directory-wall page retired; preserve inbound links.
+/listings / 301
+/listings.html / 301
