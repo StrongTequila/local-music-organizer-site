@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Same Recording, Different Names: What Audio Fingerprints Revealed | Local Music Organizer</title>
+<meta name="description" content="A music collector discovers nearly 100 overlooked duplicates, mismatched song titles and lossless copies using Audio Fingerprints, Find Both and A/B Compare.">
+<link rel="canonical" href="https://local-music-organizer-site.pages.dev/same-recording-different-names">
+<link rel="icon" href="favicon.ico?v=20261010c">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=20261010c">
+<link rel="stylesheet" href="style.css?v=20261012seo1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Same Recording, Different Names: What Audio Fingerprints Revealed">
+<meta property="og:description" content="A music collector discovers nearly 100 overlooked duplicates, mismatched song titles and lossless copies using Audio Fingerprints, Find Both and A/B Compare.">
+<meta property="og:url" content="https://local-music-organizer-site.pages.dev/same-recording-different-names">
+<meta property="og:image" content="https://local-music-organizer-site.pages.dev/screenshots/quality-duplicates-christin-stark-match.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Same Recording, Different Names: What Audio Fingerprints Revealed","description":"A music collector discovers nearly 100 overlooked duplicates, mismatched song titles and lossless copies using Audio Fingerprints, Find Both and A/B Compare.","datePublished":"2026-11-16","dateModified":"2026-11-17","publisher":{"@type":"Organization","name":"Local Music Organizer"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://local-music-organizer-site.pages.dev/same-recording-different-names"},"image":["https://local-music-organizer-site.pages.dev/screenshots/quality-duplicates-christin-stark-match.jpg","https://local-music-organizer-site.pages.dev/screenshots/quality-duplicates-find-both-finder.jpg"]}</script>
+<style id="lmo-fingerprint-video-styles">
+/* A privacy-conscious video preview: YouTube loads only after Play is clicked. */
+.fingerprint-video{margin:30px 0 34px}
+.fingerprint-video h2{margin:0 0 12px}
+.fingerprint-video-player{position:relative;overflow:hidden;aspect-ratio:16/9;border:1px solid var(--line);border-radius:16px;background:#101018}
+.fingerprint-video-player iframe{display:block;position:absolute;inset:0;width:100%;height:100%;border:0}
+.fingerprint-video-play{display:block;position:relative;width:100%;height:100%;padding:0;border:0;background:#101018;color:#fff;cursor:pointer;text-align:center}
+.fingerprint-video-play img{display:block;width:100%;height:100%;object-fit:cover;opacity:.68}
+.fingerprint-video-play::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 35%,rgba(6,7,13,.80));pointer-events:none}
+.fingerprint-video-play-symbol{position:absolute;z-index:1;top:50%;left:50%;transform:translate(-50%,-50%);display:grid;place-items:center;width:78px;height:78px;padding-left:4px;border-radius:50%;font-size:29px;background:linear-gradient(135deg,var(--accent),var(--blue));border:1px solid rgba(255,255,255,.45);box-shadow:0 10px 30px rgba(0,0,0,.5)}
+.fingerprint-video-play-label{position:absolute;z-index:1;bottom:17px;left:16px;right:16px;font-weight:750;text-shadow:0 2px 8px #000}
+.fingerprint-video-play:focus-visible{outline:3px solid var(--blue);outline-offset:-4px}
+.fingerprint-video-meta{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px 15px;margin-top:10px;color:var(--soft);font-size:13px}
+@media(max-width:620px){.fingerprint-video-play-symbol{width:60px;height:60px;font-size:24px}.fingerprint-video-play-label{font-size:12px;bottom:10px}}
+</style>
+</head>
+<body>
+<header class="top"><nav class="wrap">
+<a class="brand" href="/"><img alt="Local Music Organizer app icon" src="icon.png?v=20261010c"><span>Local Music Organizer</span></a>
+<div class="links"><a class="keep" href="/">Home</a><a href="/#guides">Guides</a><a href="LocalMusicOrganizer_UserGuide.pdf">User Guide</a><a href="support">Support</a><a class="keep" href="https://apps.apple.com/us/app/local-music-organizer/id6790746382?mt=12" target="_blank" rel="noopener">Mac App Store</a></div>
+</nav></header>
+<main class="subpage">
+<article class="wrap panel guide-content">
+<span class="badge">An unexpected discovery in Quality Duplicates</span>
+<h1>Same Recording, Different Names: What Audio Fingerprints Revealed</h1>
+<p class="guide-intro">I thought I knew my own music library. Then I added audio fingerprint matching to Quality Duplicates and found nearly 100 duplicates that had been hiding in plain sight.</p>
+<p>The idea came to me almost by accident. I stumbled across two tracks that sounded identical but had different names. It was the sort of discovery that makes you wonder how many more are lurking in a collection built up over decades. I decided to expand Quality Duplicates so it could search for matching audio, not just matching titles and metadata.</p>
+<p>I expected to find a few forgotten copies. Instead, the new Audio Index led me into parts of my library I thought were already well organized.</p>
+
+<section id="audio-fingerprinting-video" class="fingerprint-video" aria-labelledby="fingerprint-video-heading">
+<h2 id="fingerprint-video-heading">See Audio Fingerprinting in action</h2>
+<p>Watch a 2-minute demonstration of Quality Duplicates finding matching recordings with different names, and revealing both physical files in Finder.</p>
+<div class="fingerprint-video-player" id="fingerprint-video-player">
+<button class="fingerprint-video-play" type="button" id="fingerprint-video-play" aria-label="Play the Audio Fingerprinting demonstration">
+<img src="screenshots/thumbs/17-quality-duplicates.jpg?v=20261116fingerprints" alt="" loading="lazy" decoding="async" width="1200" height="665">
+<span class="fingerprint-video-play-symbol" aria-hidden="true">▶</span>
+<span class="fingerprint-video-play-label">Play Audio Fingerprinting demonstration (2:24)</span>
+</button>
+</div>
+<div class="fingerprint-video-meta"><span>YouTube loads only when you press Play.</span><a href="https://youtu.be/oyw4JX5BIyQ" target="_blank" rel="noopener noreferrer">Watch on YouTube</a><a href="https://www.youtube.com/playlist?list=PLD5I6JkKw7y4" target="_blank" rel="noopener noreferrer" aria-label="Watch all Local Music Organizer demos and tutorials on YouTube">All demos &amp; tutorials</a></div>
+</section>
+
+<h2>The same song can have many names</h2>
+<p>Compilations have a talent for giving the same recording a different identity. Artist names can appear in a different order. An ordinary album track becomes a “Radio Edit” on a compilation. A “12 Inch” mix reappears somewhere else as an “Extended Version.” A song that was just another track on its original album becomes a “Bonus Track” on a reissue.</p>
+<p>Then there are original releases and remasters, where a familiar title gains the suffix “Remastered.” Sometimes those labels describe genuine musical or mastering differences. Sometimes two differently labeled files turn out to contain essentially the same recording. The name alone cannot settle the question.</p>
+<p>A few discoveries were stranger still: tracks with the wrong artist or an incorrect title altogether. No sensible title comparison would have connected them.</p>
+
+<h2>Example 1: Christin Stark in two different folders</h2>
+<p>One result summed up the problem nicely. In my Dance folder I had <strong>Christin Stark - Sag wann - Fox Mix.m4a</strong>. Elsewhere, in a Various folder, I had <strong>Christin Stark - Sag wann.m4a</strong>.</p>
+<p>Quality Duplicates flagged the pair as having the same acoustic fingerprint. Yet their filenames, descriptions and folder locations were different. They had never looked like an obvious duplicate pair when I browsed the library by name.</p>
+<figure>
+<a href="screenshots/quality-duplicates-christin-stark-match.jpg" target="_blank" rel="noopener" aria-label="Open the full-resolution screenshot of the two matching Christin Stark recordings">
+<img class="guide-screenshot" src="screenshots/quality-duplicates-christin-stark-match.jpg" alt="Quality Duplicates identifies Christin Stark - Sag wann - Fox Mix and Christin Stark - Sag wann as an acoustic match in two separate folders" loading="lazy" decoding="async" width="2048" height="238">
+</a>
+<figcaption class="guide-caption">Quality Duplicates finds an acoustic match despite different filenames and folder paths. Click the image for full size.</figcaption>
+</figure>
+<p>Discovering the match was useful. But I also wanted to see <em>both actual files</em>, immediately, without copying long paths or searching through crowded folders. That is how the <strong>Find Both</strong> action became part of the feature.</p>
+<p>One click opens two independent Finder windows side by side, selects the matching file in each, and scrolls it into view. It even works when the two recordings are buried in entirely different directories. You can instantly inspect their paths and filenames and decide what to compare next.</p>
+<figure>
+<a href="screenshots/quality-duplicates-find-both-finder.jpg" target="_blank" rel="noopener" aria-label="Open the full-resolution screenshot of Find Both revealing both recordings in Finder">
+<img class="guide-screenshot" src="screenshots/quality-duplicates-find-both-finder.jpg" alt="Find Both opens two Finder windows and reveals the matching Christin Stark audio files with both selected and scrolled into view" loading="lazy" decoding="async" width="2048" height="189">
+</a>
+<figcaption class="guide-caption">Find Both reveals the two physical files simultaneously. Click the image to inspect the full-size Finder view.</figcaption>
+</figure>
+
+<h2>Example 2: Lossless versions I didn't know I owned</h2>
+<p>Another surprise was more important to me as a collector. Some recordings I had kept as MP3s also existed elsewhere in the library in lossless formats. I had been certain that a better-quality copy was unavailable to me. In fact, I already owned one; I simply hadn't recognized it under another title or compilation entry.</p>
+<p>This wasn't always a straightforward file-for-file match. Different releases can contain different leading silences, sometimes just a short pause before the music starts. That can defeat naive comparisons based on exact file bytes or fixed positions. Fingerprints based on the audio content can reveal candidates worth investigating even when names and file structures differ.</p>
+<p>It is important to be precise about what this means. An acoustic fingerprint match is a <strong>reason to compare recordings, not proof of identical mastering or superior sound quality</strong>. A lossless file also does not automatically sound better simply because it is lossless.</p>
+<p>That's why I use <strong>A/B Compare</strong> after finding a promising pair. I can line up the playback positions, loop the same passage, switch instantly between the two files, temporarily match their loudness and look at the live spectra. None of that alters the originals. It helps me decide whether the versions are really interchangeable and which one I would rather keep.</p>
+
+<h2>Almost 100 duplicates I hadn't noticed</h2>
+<p>After going through the discoveries, I found around <strong>100 genuinely duplicate recordings</strong> that I had overlooked. Some had misleading version labels. Others were on different compilations or attributed to the wrong artist. Some existed in both MP3 and lossless formats.</p>
+<p>This turned out to be about much more than freeing disk space. I corrected mistakes in my collection, understood why certain tracks had been hiding from ordinary duplicate searches, and found better source files that I had forgotten I owned.</p>
+<p>The last step has to remain deliberate. With Quality Duplicates I can remove a track from one Music.app playlist without touching the file, move an unwanted physical file to Trash, or explicitly choose to remove the file together with its verified Music.app library records. <strong>Finding a match never means the app should delete it automatically.</strong></p>
+
+<h2>The fingerprint scan takes time. For me, it was worth it.</h2>
+<p>Computing audio fingerprints is more demanding than comparing filenames. A first scan of thousands of tracks — especially in multi-terabyte libraries — can take a long time. Local Music Organizer saves the Audio Index, so completed fingerprints can be reused instead of decoding unchanged recordings again and again.</p>
+<p>My library still managed to surprise me after years of careful organization. I suspect people with several terabytes of music may discover some equally unexpected things about theirs.</p>
+<p>What began as a small extension of Quality Duplicates has become one of the most revealing tools I've added to Local Music Organizer. I was looking for duplicates. I ended up rediscovering my own collection.</p>
+
+<div class="notice guide-note"><strong>Before cleanup:</strong> Acoustic matching identifies candidates, not an authoritative “best version.” Use Find Both, inspect the metadata and compare the sound. Audio scans are read-only; moving a file to Trash or deleting a Music.app record requires a separate, explicitly confirmed action.</div>
+<div class="actions"><a class="button" href="https://apps.apple.com/us/app/local-music-organizer/id6790746382?mt=12" target="_blank" rel="noopener">Local Music Organizer on the Mac App Store</a><a class="button secondary" href="LocalMusicOrganizer_UserGuide.pdf">Read the illustrated user guide</a></div>
+<div class="guide-related"><h2>More about Local Music Organizer</h2><p><a href="/#quality-duplicates-guide">Quality Duplicates and Audio Fingerprints</a> · <a href="duplicate-songs-music-app">Find duplicate songs</a> · <a href="compare-audio-recordings">Compare two recordings</a> · <a href="/#guides">Other stories and guides</a></p></div>
+</article>
+</main>
+<footer class="footer"><div class="wrap footer-grid"><div><strong>Local Music Organizer</strong><br>Local tools for serious music libraries.</div><div><a href="/">Home</a><a href="/#guides">Guides</a><a href="support">Support</a><a href="privacy">Privacy</a><a href="LocalMusicOrganizer_UserGuide.pdf">User Guide</a></div><div>© 2026 Local Music Organizer</div></div></footer>
+<script id="lmo-fingerprint-video-script">
+(function () {
+  'use strict';
+  var trigger = document.getElementById('fingerprint-video-play');
+  var frame = document.getElementById('fingerprint-video-player');
+  if (!trigger || !frame) return;
+  trigger.addEventListener('click', function () {
+    var player = document.createElement('iframe');
+    player.src = 'https://www.youtube-nocookie.com/embed/oyw4JX5BIyQ?autoplay=1&rel=0';
+    player.title = 'Audio Fingerprinting — finding duplicate recordings with different names';
+    player.setAttribute('allow', 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share');
+    player.setAttribute('allowfullscreen', '');
+    player.referrerPolicy = 'strict-origin-when-cross-origin';
+    frame.replaceChildren(player);
+  }, { once: true });
+}());
+</script>
+</body>
+</html>
