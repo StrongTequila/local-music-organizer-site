@@ -7,3 +7,4 @@ https://local-music-organizer-site.pages.dev/privacy
 https://local-music-organizer-site.pages.dev/open-source
 https://local-music-organizer-site.pages.dev/why-i-built-shuffle-builder
 https://local-music-organizer-site.pages.dev/same-recording-different-names
+https://local-music-organizer-site.pages.dev/listings
