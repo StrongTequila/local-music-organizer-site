@@ -8,13 +8,13 @@
 
 ## What the app does
 
-- **Music library indexing and diagnostics:** Inspect Music.app tracks, playlists, file locations, metadata, artwork, missing files, and broken references using a private local index.
+- **Music library indexing and diagnostics:** Inspect Music.app tracks, playlists, file locations, metadata, artwork, missing files, and broken references using a private local index with resumable initial indexing, verified recovery and optional XML-assisted reading.
 - **Duplicate detection:** Find duplicate library records, repeated playlist entries, and different quality versions of the same recording.
-- **Two complementary A/B workflows:** Compare recordings in Quality Duplicates with loop/alignment/loudness matching, or use Audio Inspector Compare A/B for separate technical inspections and Waveforms for two unnormalized full-track waveforms with relative RMS signal-power measurement. Both modes are read-only.
+- **Two complementary A/B workflows:** Compare recordings in Quality Duplicates with loop/alignment/loudness matching, or use Audio Inspector Compare A/B for separate technical inspections and Waveforms for two unnormalized full-track waveforms with relative RMS signal-power measurement. Waveform Compare opens the Inspector directly from a duplicate group. Comparison modes do not edit source files.
 - **File search and maintenance:** Find audio on authorized local or external drives and review supported file and metadata maintenance tasks.
 - **Audio inspection, Dynamic Range and conversion:** Inspect codecs, sample rates, bit depth, DR/LUFS/LRA and audio-quality indicators; run per-track or album DR analysis; repair or convert supported files, including supported CUE and SACD/DSD sources.
 - **Batch Audio Gain:** Analyze and adjust one or more tracks or albums using manual, automatic increase or automatic decrease modes, with original-folder permission checks, clipping warnings, artwork preservation and an optional consolidated log.
-- **Playlist tools and players:** Compare playlists, inspect track usage, build randomized playlists with Shuffle Builder, and use original players including a customizable 3D Glass Player.
+- **Playlist tools and players:** Compare playlists, inspect track usage, build randomized playlists with Shuffle Builder, and use original players including a customizable 3D Glass Player and ORIGINAL waveform and spectrum color settings.
 
 LMO runs on **macOS 14 or later**, on both **Apple Silicon and Intel** Macs. The three-day trial, limited tool allowances, permanently free local players and one-time **US$29.99** unlock are explained in one place in the [Trial & Full Version section](https://local-music-organizer-site.pages.dev/#trial). No subscription or automatic charge.
 

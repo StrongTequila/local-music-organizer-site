@@ -39,7 +39,7 @@
     ["15.1-file-maintenance-result.jpg", "File Maintenance — hidden-tag results with exact field review"],
     ["15.2-file-maintenance-process.jpg", "File Maintenance — dedicated M4A Encoded with (©too) review panel"],
     ["16-repair-convert-vinyl-decklinker.jpg", "Repair / Convert — Vinyl De-click controls"],
-    ["17-quality-duplicates.jpg", "Quality Duplicates — candidate review and independent Manual A/B Compare button"],
+    ["17-quality-duplicates.jpg", "Quality Duplicates — unified matches, A/B Compare, Waveform Compare and Find Both"],
     ["17.1-quality-duplicates.jpg", "A/B Duplicate Compare — overlaid line spectra for two physical versions"],
     ["17.2-quality-duplicates.jpg", "A/B Duplicate Compare — paired spectrum bars for two physical versions"],
     ["18-shuffle-builder.jpg", "Shuffle Builder — anti-repeat playlist rules"],
@@ -52,8 +52,9 @@
     ["21-file-search-result.jpg", "File Search — physical file results"],
     ["22-Audio-Authenticity-Analyzer.jpg", "Audio Inspector — Audio Authenticity Analyzer results"],
     ["23-Audio-Authenticity-Analyzer-Playlist.jpg", "Audio Inspector — Audio Authenticity Analyzer playlist/library mode"],
-    ["24-live-spectrum-options.jpg", "Live Spectrum Player — appearance, queue and playback controls"],
-    ["25-live-spectrum.jpg", "Live Spectrum Player — spectrum and full-track waveform"],
+    ["24-live-spectrum-options.jpg", "ORIGINAL — Spectrum Appearance and waveform controls"],
+    ["24.1-live-spectrum-options.jpg", "ORIGINAL — Spectrum Colors customization"],
+    ["25-live-spectrum.jpg", "ORIGINAL — live spectrum and full-track waveform"],
     ["26-live-spectrum-classic.jpg", "Live Spectrum Player — Classic skin with hardware-style analyzer controls"],
     ["26-live-spectrum-classic-queue.jpg", "Classic Live Spectrum — Current Queue over the analyzer"],
     ["27-live-spectrum-classic-artist.jpg", "Classic Live Spectrum — Track Card with artwork and playback metadata"],
@@ -72,8 +73,8 @@
   ].map(([file, title]) => ({ file, title }));
 
   const revision = "20261123duplicates";
-  const updatedMaintenanceShots = new Set(["15-file-maintenance.jpg", "15.1-file-maintenance-result.jpg", "15.2-file-maintenance-process.jpg"]);
-  const assetSuffix = file => `?v=${revision}`;
+  const updatedShots = new Set(["17-quality-duplicates.jpg", "24-live-spectrum-options.jpg", "24.1-live-spectrum-options.jpg", "25-live-spectrum.jpg"]);
+  const assetSuffix = file => `?v=${updatedShots.has(file) ? "20261127r061" : revision}`;
   const previewSource = file => `screenshots/thumbs/${file}${assetSuffix(file)}`;
   const gallery = document.getElementById("gallery");
   const modal = document.getElementById("modal");
