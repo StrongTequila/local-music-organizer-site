@@ -207,3 +207,6 @@ body::before {
   .links .nav-story-group .nav-story{font-size:11px;padding:5px 8px}
 }
 @media(prefers-reduced-motion:reduce){.links .nav-story-group .nav-story{transition:none}}
+
+/* Inline visual references: retain the original text layout and make links recognizable. */
+a.screenshot-link{color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.17em;cursor:zoom-in}a.screenshot-link:hover,a.screenshot-link:focus-visible{color:var(--blue)}

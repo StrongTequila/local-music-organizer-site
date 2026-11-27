@@ -8,7 +8,7 @@
 <link rel="canonical" href="https://local-music-organizer-site.pages.dev/same-recording-different-names">
 <link rel="icon" href="favicon.ico?v=20261010c">
 <link rel="apple-touch-icon" href="apple-touch-icon.png?v=20261010c">
-<link rel="stylesheet" href="style.css?v=20261012seo1">
+<link rel="stylesheet" href="style.css?v=20261127links">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Same Recording, Different Names: What Audio Fingerprints Revealed">
 <meta property="og:description" content="A music collector discovers nearly 100 overlooked duplicates, mismatched song titles and lossless copies using Audio Fingerprints, Find Both and A/B Compare.">
@@ -72,15 +72,15 @@
 </a>
 <figcaption class="guide-caption">Quality Duplicates finds an acoustic match despite different filenames and folder paths. Click the image for full size.</figcaption>
 </figure>
-<p>Discovering the match was useful. But I also wanted a direct way to locate <em>both actual files</em> without copying long paths or searching through crowded folders. That is how the <strong>Find Both</strong> action became part of the feature.</p>
-<p><strong>Find Both</strong> uses the native macOS Finder API to reveal the two physical files. When both recordings are in the same folder, Finder selects both files together. When they are in different folders, Local Music Organizer requests a reveal for each file in sequence. Finder determines whether to open or reuse windows and where to position them. If files are far apart in a sorted folder, both can be selected without both being visible on screen at once.</p>
+<p>Discovering the match was useful. But I also wanted a direct way to locate <em>both actual files</em> without copying long paths or searching through crowded folders. That is how the <a class="screenshot-link" data-screenshot="quality-duplicates-find-both-finder.jpg" href="screenshots/quality-duplicates-find-both-finder.jpg?v=20261123duplicates" title="Open full-size screenshot"><strong>Find Both</strong></a> action became part of the feature.</p>
+<p><a class="screenshot-link" data-screenshot="quality-duplicates-find-both-finder.jpg" href="screenshots/quality-duplicates-find-both-finder.jpg?v=20261123duplicates" title="Open full-size screenshot"><strong>Find Both</strong></a> uses the native macOS Finder API to reveal the two physical files. When both recordings are in the same folder, Finder selects both files together. When they are in different folders, Local Music Organizer requests a reveal for each file in sequence. Finder determines whether to open or reuse windows and where to position them. If files are far apart in a sorted folder, both can be selected without both being visible on screen at once.</p>
 <p>This action does not modify either recording and does not require Finder Automation permission. You can also use the individual <strong>Reveal</strong> controls to locate either file separately.</p>
 
 <h2>Example 2: Lossless versions I didn't know I owned</h2>
 <p>Another surprise was more important to me as a collector. Some recordings I had kept as MP3s also existed elsewhere in the library in lossless formats. I had been certain that a better-quality copy was unavailable to me. In fact, I already owned one; I simply hadn't recognized it under another title or compilation entry.</p>
 <p>This wasn't always a straightforward file-for-file match. Different releases can contain different leading silences, sometimes just a short pause before the music starts. That can defeat naive comparisons based on exact file bytes or fixed positions. Fingerprints based on the audio content can reveal candidates worth investigating even when names and file structures differ.</p>
 <p>It is important to be precise about what this means. An acoustic fingerprint match is a <strong>reason to compare recordings, not proof of identical mastering or superior sound quality</strong>. A lossless file also does not automatically sound better simply because it is lossless.</p>
-<p>That's why I use <strong>A/B Compare</strong> after finding a promising pair. I can line up the playback positions, loop the same passage, switch instantly between the two files, temporarily match their loudness and look at the live spectra. None of that alters the originals. It helps me decide whether the versions are really interchangeable and which one I would rather keep.</p>
+<p>That's why I use <a class="screenshot-link" data-screenshot="17.1-quality-duplicates.jpg" href="screenshots/17.1-quality-duplicates.jpg?v=20261123duplicates" title="Open full-size screenshot"><strong>A/B Compare</strong></a> after finding a promising pair. I can line up the playback positions, loop the same passage, switch instantly between the two files, temporarily match their loudness and look at the live spectra. None of that alters the originals. It helps me decide whether the versions are really interchangeable and which one I would rather keep.</p>
 
 <h2>Almost 100 duplicates I hadn't noticed</h2>
 <p>After going through the discoveries, I found around <strong>100 genuinely duplicate recordings</strong> that I had overlooked. Some had misleading version labels. Others were on different compilations or attributed to the wrong artist. Some existed in both MP3 and lossless formats.</p>
@@ -115,5 +115,16 @@
   }, { once: true });
 }());
 </script>
+<div aria-hidden="true" aria-label="Screenshot preview" aria-modal="true" class="modal" id="modal" role="dialog">
+<button aria-label="Close enlarged screenshot" class="modal-close" id="modalClose" type="button">Close</button>
+<button aria-label="Previous screenshot" class="modal-nav modal-previous" id="modalPrevious" type="button">‹</button>
+<div class="modal-content">
+<img alt="" id="modalImage">
+<div class="modal-caption" id="modalCaption">
+</div>
+</div>
+<button aria-label="Next screenshot" class="modal-nav modal-next" id="modalNext" type="button">›</button>
+</div>
+<script src="site.js?v=20261127links"></script>
 </body>
 </html>

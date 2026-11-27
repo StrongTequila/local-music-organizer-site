@@ -8,7 +8,7 @@
 <link rel="canonical" href="https://local-music-organizer-site.pages.dev/compare-audio-recordings">
 <link rel="icon" href="favicon.ico?v=20261010c">
 <link rel="apple-touch-icon" href="apple-touch-icon.png?v=20261010c">
-<link rel="stylesheet" href="style.css?v=20261012seo1">
+<link rel="stylesheet" href="style.css?v=20261127links">
 <meta property="og:type" content="article">
 <meta property="og:title" content="A/B Compare Two Audio Recordings on Mac | LMO">
 <meta property="og:description" content="Compare any two local audio files on Mac, even outside Music.app playlists, with instant A/B switching, loudness matching, B offset and live spectra.">
@@ -38,8 +38,8 @@
 <h1>How to A/B compare two audio recordings on Mac</h1>
 <p class="guide-intro">Two files with the same song title may contain different masterings, edits or transfers. Instead of deciding from file size or sample rate, you can listen to the same section of both recordings and switch between them while playback continues.</p>
 <h2>Open the comparison window</h2>
-<p><strong>From a found group:</strong> open <strong>Quality Duplicates</strong> and run <strong>Find Quality Duplicates</strong> using indexed Music.app records or available acoustic fingerprint matches. In a group with two different physical files, click <strong>A/B Compare...</strong>. The comparison opens with Version A and Version B already selected.</p>
-<p><strong>Independent manual comparison:</strong> on the Quality Duplicates toolbar click <strong>Manual A/B Compare...</strong>. The same comparison window opens with empty A and B selections. Use <strong>Browse...</strong> on each side to choose any two supported, readable local audio files. They do not need to be in Music.app, in the same playlist, or in a discovered duplicate group. Browse can also replace either file after opening from a group.</p>
+<p><strong>From a found group:</strong> open <strong>Quality Duplicates</strong> and run <strong>Find Quality Duplicates</strong> using indexed Music.app records or available acoustic fingerprint matches. In a group with two different physical files, click <a class="screenshot-link" data-screenshot="17.1-quality-duplicates.jpg" href="screenshots/17.1-quality-duplicates.jpg?v=20261123duplicates" title="Open full-size screenshot"><strong>A/B Compare...</strong></a>. The comparison opens with Version A and Version B already selected.</p>
+<p><strong>Independent manual comparison:</strong> on the Quality Duplicates toolbar click <a class="screenshot-link" data-screenshot="17.1-quality-duplicates.jpg" href="screenshots/17.1-quality-duplicates.jpg?v=20261123duplicates" title="Open full-size screenshot"><strong>Manual A/B Compare...</strong></a>. The same comparison window opens with empty A and B selections. Use <strong>Browse...</strong> on each side to choose any two supported, readable local audio files. They do not need to be in Music.app, in the same playlist, or in a discovered duplicate group. Browse can also replace either file after opening from a group.</p>
 <h2>Compare the same passage</h2>
 <ol class="list">
 <li>Use <strong>Start</strong> to choose where the comparison begins and <strong>Loop</strong> to set its length. A loop can run from 5 seconds to 3 minutes, provided the passage fits in both files.</li>
@@ -48,13 +48,13 @@
 <li>Turn on <strong>Loudness Match</strong> when level differences make it hard to compare the sound. This applies temporary playback gain without changing the files.</li>
 </ol>
 <h2>Read the spectrum alongside what you hear</h2>
-<p>The live spectrum offers <strong>Bars</strong> and <strong>Lines</strong> views, with <strong>A + B</strong>, <strong>A</strong> or <strong>B</strong> displayed. <strong>Peak</strong>, <strong>RMS</strong>, <strong>LUFS</strong> and <strong>Gain</strong> give additional context. The <strong>LISTENING</strong> indicator shows which version is currently audible.</p>
+<p>The live spectrum offers <a class="screenshot-link" data-screenshot="17.2-quality-duplicates.jpg" href="screenshots/17.2-quality-duplicates.jpg?v=20261123duplicates" title="Open full-size screenshot"><strong>Bars</strong></a> and <a class="screenshot-link" data-screenshot="17.1-quality-duplicates.jpg" href="screenshots/17.1-quality-duplicates.jpg?v=20261123duplicates" title="Open full-size screenshot"><strong>Lines</strong></a> views, with <strong>A + B</strong>, <strong>A</strong> or <strong>B</strong> displayed. <strong>Peak</strong>, <strong>RMS</strong>, <strong>LUFS</strong> and <strong>Gain</strong> give additional context. The <strong>LISTENING</strong> indicator shows which version is currently audible.</p>
 <p>The spectrum can show a measurable difference, but it cannot tell you whether one mastering or mix is artistically better. Listen to more than one passage if the versions differ in their edits or arrangement. A/B comparison is playback-only: it does not rewrite, normalize, retag or move either source file, nor does it change Music.app records. Cleanup actions are separate.</p>
 <h2>Another comparison: Audio Inspector Compare A/B and Waveforms</h2>
-<p>From a Quality Duplicates group, <strong>Waveform Compare...</strong> loads the pair directly into Audio Inspector and starts waveform analysis. Either selected file can be replaced independently.</p>
-<p>For technical inspection rather than looping a passage, open <strong>Audio Inspector → Compare A/B</strong>. Choose two local recordings and inspect independent codec/file characteristics, authenticity evidence and spectrograms. Each side has its own transport and retained playback position; seeking on the other side switches which recording you hear.</p>
-<p>Switch to <strong>Audio Inspector → Waveforms</strong> to inspect both <em>complete</em> recordings on the same 0 dBFS amplitude reference, without automatically making their waveforms equally tall. Compare RMS and relative digital signal power, peak, and available loudness/dynamic measurements. This view does not edit audio or automatically declare one master better. Unlike the Quality Duplicates listening window described above, these Inspector modes do not provide passage looping, millisecond B alignment or temporary loudness matching.</p>
-<p><a href="/#audio-inspector-compare">Explore Inspector Compare A/B and Waveforms with both full-resolution screenshots</a>, or see <a href="LocalMusicOrganizer_UserGuide.pdf#page=72">section 15 (pages 72–80) in the illustrated manual</a>. The <a href="support">Quality Duplicates A/B listening documentation</a> explains the separate passage, offset and spectrum controls.</p>
+<p>From a Quality Duplicates group, <a class="screenshot-link" data-screenshot="20.0.2.-audio-inspector-compare-waveform.jpg" href="screenshots/20.0.2.-audio-inspector-compare-waveform.jpg?v=20261123duplicates" title="Open full-size screenshot"><strong>Waveform Compare...</strong></a> loads the pair directly into Audio Inspector and starts waveform analysis. Either selected file can be replaced independently.</p>
+<p>For technical inspection rather than looping a passage, open <a class="screenshot-link" data-screenshot="20.0.1.-audio-inspector-compare-ab.jpg" href="screenshots/20.0.1.-audio-inspector-compare-ab.jpg?v=20261123duplicates" title="Open full-size screenshot"><strong>Audio Inspector → Compare A/B</strong></a>. Choose two local recordings and inspect independent codec/file characteristics, authenticity evidence and spectrograms. Each side has its own transport and retained playback position; seeking on the other side switches which recording you hear.</p>
+<p>Switch to <a class="screenshot-link" data-screenshot="20.0.2.-audio-inspector-compare-waveform.jpg" href="screenshots/20.0.2.-audio-inspector-compare-waveform.jpg?v=20261123duplicates" title="Open full-size screenshot"><strong>Audio Inspector → Waveforms</strong></a> to inspect both <em>complete</em> recordings on the same 0 dBFS amplitude reference, without automatically making their waveforms equally tall. Compare RMS and relative digital signal power, peak, and available loudness/dynamic measurements. This view does not edit audio or automatically declare one master better. Unlike the Quality Duplicates listening window described above, these Inspector modes do not provide passage looping, millisecond B alignment or temporary loudness matching.</p>
+<p><a href="/#audio-inspector-compare">Explore the Inspector Compare A/B and Waveforms walkthrough</a>, or view <a class="screenshot-link" data-screenshot="20.0.1.-audio-inspector-compare-ab.jpg" href="screenshots/20.0.1.-audio-inspector-compare-ab.jpg?v=20261123duplicates" title="Open full-size screenshot">Compare A/B screenshot</a> and <a class="screenshot-link" data-screenshot="20.0.2.-audio-inspector-compare-waveform.jpg" href="screenshots/20.0.2.-audio-inspector-compare-waveform.jpg?v=20261123duplicates" title="Open full-size screenshot">Waveforms screenshot</a>. See also <a href="LocalMusicOrganizer_UserGuide.pdf#page=72">section 15 (pages 72–80) in the illustrated manual</a>. The <a href="support">Quality Duplicates A/B listening documentation</a> explains the separate passage, offset and spectrum controls.</p>
 <img class="guide-screenshot" src="screenshots/17.2-quality-duplicates.jpg" alt="Audio comparison controls in Local Music Organizer for assessing two versions of the same song" loading="lazy" width="1400">
 <p class="guide-caption">The shared A/B comparison window provides passage controls and live measurements in both group-based and manual modes. The example shows a pair already selected from Quality Duplicates.</p>
 <div class="notice guide-note">This comparison uses physically available local audio files. Cloud-only and streaming tracks are not part of the workflow. The listening window does not modify the source recordings.</div>
@@ -72,5 +72,16 @@
 <div>© 2026 Sergey Belenky</div>
 </div>
 </footer>
+<div aria-hidden="true" aria-label="Screenshot preview" aria-modal="true" class="modal" id="modal" role="dialog">
+<button aria-label="Close enlarged screenshot" class="modal-close" id="modalClose" type="button">Close</button>
+<button aria-label="Previous screenshot" class="modal-nav modal-previous" id="modalPrevious" type="button">‹</button>
+<div class="modal-content">
+<img alt="" id="modalImage">
+<div class="modal-caption" id="modalCaption">
+</div>
+</div>
+<button aria-label="Next screenshot" class="modal-nav modal-next" id="modalNext" type="button">›</button>
+</div>
+<script src="site.js?v=20261127links"></script>
 </body>
 </html>

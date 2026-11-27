@@ -84,6 +84,7 @@
   const modalPrevious = document.getElementById("modalPrevious");
   const modalNext = document.getElementById("modalNext");
   let currentIndex = 0;
+  let standaloneReference = false;
   let lastFocusedElement = null;
 
   if (gallery) {
@@ -131,6 +132,7 @@
 
   function showImage(index) {
     if (!modalImage || !modalCaption) return;
+    standaloneReference = false;
     currentIndex = Math.max(0, Math.min(index, screenshots.length - 1));
     const item = screenshots[currentIndex];
     modalImage.src = `screenshots/${item.file}${assetSuffix(item.file)}`;
@@ -206,13 +208,47 @@
 
     previewLink.addEventListener("click", event => {
       const file = previewLink.dataset.activeShotFile;
-      const index = screenshots.findIndex(item => item.file === file);
-      if (index < 0) return;
-      event.preventDefault();
-      openModal(index, previewLink);
+      if (openReference(file, previewLink)) event.preventDefault();
     });
 
     activate(tabs.find(tab => tab.classList.contains("active")) || tabs[0]);
+  });
+
+  // Keep supplemental screenshots outside the regular gallery, but give
+  // them the same viewer as the regular gallery and feature showcases.
+  const supplementalTitles = new Map([
+    ["1.1-settings.jpg", "Setup — Stored Databases and selective cache cleanup"],
+    ["quality-duplicates-find-both-finder.jpg", "Find Both — the two matching physical files in Finder"]
+  ]);
+  function openReference(file, trigger) {
+    if (!modal || !modalImage || !modalCaption) return false;
+    const index = screenshots.findIndex(item => item.file === file);
+    if (index >= 0) {
+      openModal(index, trigger);
+      return true;
+    }
+    const title = supplementalTitles.get(file);
+    if (!title) return false;
+    lastFocusedElement = trigger;
+    standaloneReference = true;
+    modalImage.src = `screenshots/${file}${assetSuffix(file)}`;
+    modalImage.alt = title;
+    modalCaption.textContent = title;
+    if (modalPrevious) modalPrevious.disabled = true;
+    if (modalNext) modalNext.disabled = true;
+    modal.classList.add("open");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("modal-open");
+    modalClose?.focus();
+    return true;
+  }
+
+  // Prose links open the exact screenshot, without changing scroll position.
+  // The real href remains usable without JavaScript or with a modified click.
+  document.addEventListener("click", event => {
+    const link = event.target.closest?.("a[data-screenshot]");
+    if (!link || event.defaultPrevented || event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+    if (openReference(link.dataset.screenshot, link)) event.preventDefault();
   });
 
   modalClose?.addEventListener("click", closeModal);
@@ -225,7 +261,7 @@
   document.addEventListener("keydown", event => {
     if (!modal?.classList.contains("open")) return;
     if (event.key === "Escape") closeModal();
-    if (event.key === "ArrowLeft") showImage(currentIndex - 1);
-    if (event.key === "ArrowRight") showImage(currentIndex + 1);
+    if (!standaloneReference && event.key === "ArrowLeft") showImage(currentIndex - 1);
+    if (!standaloneReference && event.key === "ArrowRight") showImage(currentIndex + 1);
   });
 })();

@@ -8,7 +8,7 @@
 <link rel="canonical" href="https://local-music-organizer-site.pages.dev/missing-music-files">
 <link rel="icon" href="favicon.ico?v=20261010c">
 <link rel="apple-touch-icon" href="apple-touch-icon.png?v=20261010c">
-<link rel="stylesheet" href="style.css?v=20261012seo1">
+<link rel="stylesheet" href="style.css?v=20261127links">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Find Missing Music Files in Music.app on Mac | LMO">
 <meta property="og:description" content="Music.app cannot find a song after moving folders or drives? Learn how to identify missing local files and safely relink existing tracks on Mac.">
@@ -54,12 +54,12 @@
 <h2>Check where the file went</h2>
 <p>If the music is on an external drive, connect it and confirm that Finder can open the folder. Also check whether the folder was renamed or moved. A missing Music.app link does not necessarily mean the audio file is gone.</p>
 <ol class="list">
-<li>Open <strong>Library Dashboard</strong> in Local Music Organizer. Use <strong>Build / Refresh Library Index</strong> if this is the first scan. After smaller changes in Music.app, <strong>Refresh Music Changes</strong> is usually sufficient.</li>
+<li>Open <strong>Library Dashboard</strong> in Local Music Organizer. Use <a class="screenshot-link" data-screenshot="2-library-dashboard.jpg" href="screenshots/2-library-dashboard.jpg?v=20261123duplicates" title="Open full-size screenshot"><strong>Build / Refresh Library Index</strong></a> if this is the first scan. After smaller changes in Music.app, <strong>Refresh Music Changes</strong> is usually sufficient.</li>
 <li>Open <strong>Health Check</strong>, select the appropriate scope and run <strong>Run Health Check</strong>. Look at the <strong>Missing file</strong> results. Use <strong>Recheck</strong> to verify an individual result against the current file and Music.app state.</li>
 <li>If the file may have moved, use <strong>File Search</strong> to look through local or external folders you have authorized. You can reveal a possible match in Finder before changing the library link.</li>
 </ol>
 <h2>Repair the existing Music.app link</h2>
-<p>For one track, <strong>Repair Local Link...</strong> lets you choose the replacement file for the existing Music.app record. For a folder that has moved, <strong>Relink This Folder...</strong> asks for the new folder, previews relative-path matches and relinks the matching records. Neither operation moves, renames or deletes the actual audio files. The relink is checked against the record's Music.app Persistent ID.</p>
+<p>For one track, <a class="screenshot-link" data-screenshot="8.6-health-check.jpg" href="screenshots/8.6-health-check.jpg?v=20261123duplicates" title="Open full-size screenshot"><strong>Repair Local Link...</strong></a> lets you choose the replacement file for the existing Music.app record. For a folder that has moved, <strong>Relink This Folder...</strong> asks for the new folder, previews relative-path matches and relinks the matching records. Neither operation moves, renames or deletes the actual audio files. The relink is checked against the record's Music.app Persistent ID.</p>
 <h2>Missing files and orphan files are not the same</h2>
 <p><strong>Missing file</strong> means a Music.app record points to a local path that is unavailable. <strong>Orphan physical file</strong> means the file exists, but its exact path is not present in the saved Music.app library. An orphan is not necessarily damaged or unwanted. Compare the paths before deciding whether to relink an existing record or import anything new.</p>
 <section class="recover-video-section" id="recover-orphan-video" aria-labelledby="recover-orphan-video-heading">
@@ -68,7 +68,7 @@
 <ol class="list">
 <li>After removing a library entry, choose <strong>Refresh Music Changes</strong> in LMO to update the saved Music.app index.</li>
 <li>Open <strong>Health Check → Entire Music.app Library</strong>, enable <strong>Find orphan physical files</strong>, and run the scan over your configured music folder.</li>
-<li>Review the candidate's path, then choose <strong>Import as New Music.app Record...</strong>. Select an existing Music.app playlist or enter a new playlist name.</li>
+<li>Review the candidate's path, then choose <a class="screenshot-link" data-screenshot="8.2-health-check.jpg" href="screenshots/8.2-health-check.jpg?v=20261123duplicates" title="Open full-size screenshot"><strong>Import as New Music.app Record...</strong></a>. Select an existing Music.app playlist or enter a new playlist name.</li>
 </ol>
 <div class="recover-video-frame" id="recover-video-frame">
 <button class="recover-video-button" id="recover-video-button" type="button" aria-label="Play missing-song recovery demonstration on YouTube">
@@ -116,5 +116,16 @@
   }, { once: true });
 }());
 </script>
+<div aria-hidden="true" aria-label="Screenshot preview" aria-modal="true" class="modal" id="modal" role="dialog">
+<button aria-label="Close enlarged screenshot" class="modal-close" id="modalClose" type="button">Close</button>
+<button aria-label="Previous screenshot" class="modal-nav modal-previous" id="modalPrevious" type="button">‹</button>
+<div class="modal-content">
+<img alt="" id="modalImage">
+<div class="modal-caption" id="modalCaption">
+</div>
+</div>
+<button aria-label="Next screenshot" class="modal-nav modal-next" id="modalNext" type="button">›</button>
+</div>
+<script src="site.js?v=20261127links"></script>
 </body>
 </html>
