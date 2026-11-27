@@ -66,6 +66,17 @@
 .resource-logo-grid .lmo-dailypings-link.lmo-dailypings-loaded img{opacity:1}
 .resource-logo-grid .lmo-dailypings-link.lmo-dailypings-loaded .lmo-dailypings-fallback{visibility:hidden}
 </style>
+<style id="lmo-noonlaunch-fallback-style">
+.resource-logo-grid .lmo-noonlaunch-link{position:relative;display:inline-flex;align-items:center;justify-content:center;width:220px;height:60px;max-width:100%;overflow:hidden;text-decoration:none}
+.resource-logo-grid .lmo-noonlaunch-fallback{display:flex;align-items:center;justify-content:center;gap:12px;width:100%;height:100%;box-sizing:border-box;padding:7px 10px;color:#fff;background:#181b22;border:1px solid #666c79;border-radius:10px}
+.resource-logo-grid .lmo-noonlaunch-mark{display:grid;place-items:center;flex:0 0 34px;height:34px;border-radius:8px;background:#343b48;color:#fff;font-size:21px;font-weight:800;line-height:1}
+.resource-logo-grid .lmo-noonlaunch-label{display:flex;flex-direction:column;align-items:flex-start;gap:4px;line-height:1}
+.resource-logo-grid .lmo-noonlaunch-label small{color:#c4c8d0;font-size:8px;letter-spacing:.06em;font-weight:700}
+.resource-logo-grid .lmo-noonlaunch-label strong{color:#fff;font-size:16px;font-weight:800}
+.resource-logo-grid .lmo-noonlaunch-link img{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:contain;opacity:0}
+.resource-logo-grid .lmo-noonlaunch-link.lmo-noonlaunch-loaded img{opacity:1}
+.resource-logo-grid .lmo-noonlaunch-link.lmo-noonlaunch-loaded .lmo-noonlaunch-fallback{visibility:hidden}
+</style>
 </head>
 <body>
 <header class="top">
@@ -1137,7 +1148,8 @@
 </a>
 </div>
 <div class="resource-logo-link">
-<a href="https://noonlaunch.com/product/local-music-organizer" rel="dofollow" target="_blank">
+<a class="lmo-noonlaunch-link" href="https://noonlaunch.com/product/local-music-organizer" rel="dofollow" target="_blank" aria-label="Local Music Organizer on Noonlaunch">
+<span class="lmo-noonlaunch-fallback" aria-hidden="true"><span class="lmo-noonlaunch-mark">N</span><span class="lmo-noonlaunch-label"><small>SOFTWARE DIRECTORY</small><strong>Noonlaunch</strong></span></span>
 <img alt="Featured on Noonlaunch" height="60" src="https://noonlaunch.com/badges/local-music-organizer.svg?theme=dark" width="220"/>
 </a>
 </div>
@@ -1236,6 +1248,20 @@
       frame.replaceChildren(player);
     }, { once: true });
   });
+}());
+</script>
+<script id="lmo-noonlaunch-fallback-script">
+(function () {
+  'use strict';
+  var link = document.querySelector('.lmo-noonlaunch-link');
+  var image = link && link.querySelector('img');
+  if (!image) return;
+  function sync() {
+    link.classList.toggle('lmo-noonlaunch-loaded', image.complete && image.naturalWidth > 0 && image.naturalHeight > 0);
+  }
+  image.addEventListener('load', sync);
+  image.addEventListener('error', sync);
+  sync();
 }());
 </script>
 </body>
